@@ -64,6 +64,7 @@ class ScoringEngine:
             single_gpu_loadable=single_gpu_loadable,
             safe_context_tokens=safe_context_tokens,
             decode_tokens_per_sec=decode_tps,
+            vram_headroom_gb=vram_headroom_gb,
             vram_headroom_ratio=vram_headroom_ratio,
             host_ram_headroom_gb=host_ram_headroom_gb,
             config=self.config,

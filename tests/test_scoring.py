@@ -4,6 +4,7 @@ import unittest
 
 from canirunai.collectors.seed_catalog import cpu_seed_specs, gpu_seed_specs, model_seed_specs
 from canirunai.config.loader import ScoringConfig
+from canirunai.gpu_compute import normalize_gpu_compute_metrics
 from canirunai.scoring.engine import ScoringEngine
 from canirunai.schemas.base import RawReference
 from canirunai.schemas.cpu import CpuSpec
@@ -193,3 +194,23 @@ class ScoringEngineTest(unittest.TestCase):
         compute_gflops = self.engine.estimator._gpu_compute_gflops_for_model(model=model, gpu=gpu)
 
         self.assertEqual(compute_gflops, 364_240.0)
+
+    def test_normalize_gpu_compute_metrics_upgrades_flat_catalog_values(self) -> None:
+        gpu = GpuSpec(
+            canonical_name="NVIDIA RTX A5000",
+            aliases=[],
+            vendor="nvidia",
+            memory_size_gib=24.0,
+            memory_bandwidth_gbs=768.0,
+            cuda_compute_capability="8.6",
+            processing_power_fp32_gflops=27_770.0,
+            processing_power_fp16_gflops=27_770.0,
+            processing_power_bf16_gflops=27_770.0,
+            source_url="https://example.com/gpu",
+            raw_ref=RawReference(cache_key="gpu"),
+        )
+
+        normalized = normalize_gpu_compute_metrics(gpu)
+
+        self.assertEqual(normalized.processing_power_fp16_gflops, 111_080.0)
+        self.assertEqual(normalized.processing_power_bf16_gflops, 111_080.0)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from ..gpu_compute import normalize_gpu_compute_metrics
 from ..parsers.normalization import lookup_key
 from ..schemas.base import CollectionSource
 from ..schemas.gpu import GpuCatalog, GpuSpec
@@ -11,7 +12,13 @@ class GpuLoader:
         self.store = store
 
     def load(self) -> GpuCatalog:
-        return self.store.load_gpu_catalog()
+        catalog = self.store.load_gpu_catalog()
+        return GpuCatalog(
+            schema_version=catalog.schema_version,
+            generated_at=catalog.generated_at,
+            source=catalog.source,
+            items=[normalize_gpu_compute_metrics(item) for item in catalog.items],
+        )
 
     def list(self) -> list[GpuSpec]:
         return self.load().items
@@ -27,7 +34,10 @@ class GpuLoader:
 
     def upsert(self, items: list[GpuSpec], notes: str) -> GpuCatalog:
         current = self.load()
-        merged = self.store.merge_items(current.items, items)
+        merged = self.store.merge_items(
+            current.items,
+            [normalize_gpu_compute_metrics(item) for item in items],
+        )
         catalog = GpuCatalog(
             source=CollectionSource(collector="canirunai.collectors.gpu_wikipedia", notes=notes),
             items=merged,

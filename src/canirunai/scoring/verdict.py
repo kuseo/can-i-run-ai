@@ -11,6 +11,7 @@ def determine_verdict(
     single_gpu_loadable: bool,
     safe_context_tokens: int,
     decode_tokens_per_sec: float,
+    vram_headroom_gb: float,
     vram_headroom_ratio: float,
     host_ram_headroom_gb: float,
     config: ScoringConfig,
@@ -31,6 +32,12 @@ def determine_verdict(
 
     if safe_context_tokens >= great_context_threshold and decode_tokens_per_sec >= config.great_decode_tps:
         if tight_resources:
+            if (
+                host_ram_headroom_gb >= 0
+                and vram_headroom_gb >= 2.0
+                and vram_headroom_ratio >= max(config.tight_fit_headroom_ratio / 2, 0.05)
+            ):
+                return "RUNS GREAT"
             return "RUNS WELL"
         return "RUNS GREAT"
 

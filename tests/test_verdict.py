@@ -15,6 +15,7 @@ class VerdictPolicyTest(unittest.TestCase):
             single_gpu_loadable=True,
             safe_context_tokens=15_390,
             decode_tokens_per_sec=113.72,
+            vram_headroom_gb=1.8,
             vram_headroom_ratio=0.095,
             host_ram_headroom_gb=128.0,
             config=self.config,
@@ -27,6 +28,7 @@ class VerdictPolicyTest(unittest.TestCase):
             single_gpu_loadable=True,
             safe_context_tokens=192,
             decode_tokens_per_sec=16.62,
+            vram_headroom_gb=0.06,
             vram_headroom_ratio=0.002,
             host_ram_headroom_gb=128.0,
             config=self.config,
@@ -39,7 +41,21 @@ class VerdictPolicyTest(unittest.TestCase):
             single_gpu_loadable=True,
             safe_context_tokens=20_000,
             decode_tokens_per_sec=50.0,
+            vram_headroom_gb=8.0,
             vram_headroom_ratio=0.15,
+            host_ram_headroom_gb=128.0,
+            config=self.config,
+        )
+
+        self.assertEqual(verdict, "RUNS GREAT")
+
+    def test_strong_run_with_real_headroom_can_be_runs_great_even_when_ratio_is_tight(self) -> None:
+        verdict = determine_verdict(
+            single_gpu_loadable=True,
+            safe_context_tokens=15_390,
+            decode_tokens_per_sec=113.72,
+            vram_headroom_gb=2.28,
+            vram_headroom_ratio=0.095,
             host_ram_headroom_gb=128.0,
             config=self.config,
         )

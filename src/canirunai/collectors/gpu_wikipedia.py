@@ -3,6 +3,7 @@ from __future__ import annotations
 from loguru import logger
 
 from ..config.loader import AppConfig
+from ..gpu_compute import normalize_gpu_compute_metrics
 from ..store.raw_cache import RawCache
 from .base import CollectionResult
 from .seed_catalog import gpu_seed_specs
@@ -27,7 +28,8 @@ class GpuWikipediaCollector:
                     snapshot = self.client.fetch_page_snapshot(page_url)
                     cache_key = self.raw_cache.write_text("wiki/gpu", cache_label, snapshot.html, suffix=".html")
                     items.extend(
-                        parse_gpu_specs_from_snapshot(
+                        normalize_gpu_compute_metrics(spec)
+                        for spec in parse_gpu_specs_from_snapshot(
                             snapshot,
                             vendor=vendor,
                             cache_key=cache_key,
@@ -43,5 +45,8 @@ class GpuWikipediaCollector:
                 logger.warning("GPU live collection failed, using seed fallback: {}", exc)
 
         if self.config.sdk.offline_seed_fallback:
-            return CollectionResult(items=gpu_seed_specs(), notes="offline seed fallback")
+            return CollectionResult(
+                items=[normalize_gpu_compute_metrics(spec) for spec in gpu_seed_specs()],
+                notes="offline seed fallback",
+            )
         raise RuntimeError("GPU collection failed and offline seed fallback is disabled.")
