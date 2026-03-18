@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T06:08:47.888971Z",
+  "source": {
+    "collector": "canirunai.collectors.gpu_wikipedia",
+    "notes": "offline seed fallback"
+  },
+  "items": [
+    {
+      "kind": "gpu",
+      "canonical_name": "AMD Radeon RX 7900 XTX",
+      "aliases": [
+        "rx 7900 xtx",
+        "radeon rx 7900 xtx"
+      ],
+      "collected_at": "2026-03-18T06:08:47.888854Z",
+      "source_url": "https://en.wikipedia.org/wiki/List_of_AMD_graphics_processing_units",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/wiki/gpu/amd-seed.json"
+      },
+      "vendor": "amd",
+      "product_line": "Radeon",
+      "architecture": "RDNA 3",
+      "codename": "Navi 31",
+      "process_nm": 5.0,
+      "bus_interface": "PCIe 4.0 x16",
+      "memory_size_gib": 24.0,
+      "memory_bus_width_bit": 384,
+      "memory_bandwidth_gbs": 960.0,
+      "tdp_w": 355.0,
+      "api_support": {
+        "vulkan": "1.x",
+        "direct3d": "12",
+        "opengl": "4.x"
+      },
+      "processing_power_fp32_gflops": 61400.0
+    },
+    {
+      "kind": "gpu",
+      "canonical_name": "NVIDIA GeForce RTX 3090",
+      "aliases": [
+        "rtx 3090",
+        "geforce rtx 3090"
+      ],
+      "collected_at": "2026-03-18T06:08:47.888832Z",
+      "source_url": "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/wiki/gpu/nvidia-seed.json"
+      },
+      "vendor": "nvidia",
+      "product_line": "GeForce",
+      "architecture": "Ampere",
+      "codename": "GA102",
+      "process_nm": 8.0,
+      "bus_interface": "PCIe 4.0 x16",
+      "memory_size_gib": 24.0,
+      "memory_bus_width_bit": 384,
+      "memory_bandwidth_gbs": 936.0,
+      "tdp_w": 350.0,
+      "api_support": {
+        "vulkan": "1.x",
+        "direct3d": "12",
+        "opengl": "4.x"
+      },
+      "cuda_compute_capability": "8.6",
+      "processing_power_fp32_gflops": 35600.0
+    },
+    {
+      "kind": "gpu",
+      "canonical_name": "NVIDIA GeForce RTX 4070 SUPER",
+      "aliases": [
+        "rtx 4070 super",
+        "geforce rtx 4070 super"
+      ],
+      "collected_at": "2026-03-18T06:08:47.888846Z",
+      "source_url": "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/wiki/gpu/nvidia-seed.json"
+      },
+      "vendor": "nvidia",
+      "product_line": "GeForce",
+      "architecture": "Ada Lovelace",
+      "codename": "AD104",
+      "process_nm": 5.0,
+      "bus_interface": "PCIe 4.0 x16",
+      "memory_size_gib": 12.0,
+      "memory_bus_width_bit": 192,
+      "memory_bandwidth_gbs": 504.0,
+      "tdp_w": 220.0,
+      "api_support": {
+        "vulkan": "1.x",
+        "direct3d": "12",
+        "opengl": "4.x"
+      },
+      "cuda_compute_capability": "8.9",
+      "processing_power_fp32_gflops": 35800.0
+    },
+    {
+      "kind": "gpu",
+      "canonical_name": "NVIDIA GeForce RTX 4090",
+      "aliases": [
+        "rtx 4090",
+        "geforce rtx 4090"
+      ],
+      "collected_at": "2026-03-18T06:08:47.888796Z",
+      "source_url": "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/wiki/gpu/nvidia-seed.json"
+      },
+      "vendor": "nvidia",
+      "product_line": "GeForce",
+      "architecture": "Ada Lovelace",
+      "codename": "AD102",
+      "process_nm": 4.0,
+      "bus_interface": "PCIe 4.0 x16",
+      "memory_size_gib": 24.0,
+      "memory_bus_width_bit": 384,
+      "memory_bandwidth_gbs": 1008.0,
+      "tdp_w": 450.0,
+      "api_support": {
+        "vulkan": "1.x",
+        "direct3d": "12",
+        "opengl": "4.x"
+      },
+      "cuda_compute_capability": "8.9",
+      "processing_power_fp32_gflops": 82600.0
+    }
+  ]
+}

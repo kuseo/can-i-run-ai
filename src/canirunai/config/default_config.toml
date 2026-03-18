@@ -1,0 +1,58 @@
+[sdk]
+data_dir = "./data"
+raw_cache_dir = "./data/raw_cache"
+log_level = "INFO"
+prefer_live_requests = false
+offline_seed_fallback = true
+
+[openai_parser]
+api_key = "ENV:OPENAI_API_KEY"
+base_url = "https://api.openai.com/v1"
+model = "gpt-5"
+max_retries = 3
+timeout_sec = 60
+
+[wikipedia]
+user_agent = "canirunai/0.1 (contact: unknown)"
+request_delay_sec = 1.0
+
+[wikipedia.cpu_intel]
+page_url = "https://en.wikipedia.org/wiki/List_of_Intel_processors"
+
+[wikipedia.cpu_amd_ryzen]
+page_url = "https://en.wikipedia.org/wiki/List_of_AMD_Ryzen_processors"
+
+[wikipedia.gpu_nvidia]
+page_url = "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units"
+
+[wikipedia.gpu_amd]
+page_url = "https://en.wikipedia.org/wiki/List_of_AMD_graphics_processing_units"
+
+[huggingface]
+endpoint = "https://huggingface.co"
+request_delay_sec = 0.2
+max_models_total = 2000
+max_models_per_team = 200
+pipeline_tag = "text-generation"
+license_id = "apache-2.0"
+inference_provider = "all"
+num_parameters = "min:0.3B,max:200B"
+teams = ["Qwen", "openai", "meta-llama", "google", "deepseek-ai", "MiniMaxAI", "mistralai", "lgai-exaone", "nvidia"]
+
+[scoring]
+overhead_ratio = 0.08
+safe_context_ratio = 0.85
+min_context_tokens = 2048
+too_heavy_context_tokens = 4096
+tight_fit_headroom_ratio = 0.10
+min_decode_tps = 5.0
+good_decode_tps = 20.0
+great_decode_tps = 40.0
+great_context_tokens = 16384
+eff_bw = 0.72
+eff_flops = 0.45
+stream_reuse_factor = 0.8
+prefill_multiplier = 24.0
+default_kv_element_bits = 16
+host_ram_weight_fraction = 0.35
+cpu_threads_per_replica = 8

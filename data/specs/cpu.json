@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T06:08:23.554979Z",
+  "source": {
+    "collector": "canirunai.collectors.cpu_wikipedia",
+    "notes": "offline seed fallback"
+  },
+  "items": [
+    {
+      "kind": "cpu",
+      "canonical_name": "AMD Ryzen 7 5800X3D",
+      "aliases": [
+        "ryzen 7 5800x3d"
+      ],
+      "collected_at": "2026-03-18T06:08:23.554843Z",
+      "source_url": "https://en.wikipedia.org/wiki/List_of_AMD_Ryzen_processors",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/wiki/cpu/amd-ryzen-seed.json"
+      },
+      "vendor": "amd",
+      "family": "Ryzen 7",
+      "model": "5800X3D",
+      "cores": 8,
+      "threads": 16,
+      "base_clock_ghz": 3.4,
+      "boost_clock_ghz": 4.5,
+      "l3_cache_mb": 96.0,
+      "tdp_w": 105.0,
+      "codename": "Vermeer",
+      "socket": "AM4",
+      "release": "Q1 2022"
+    },
+    {
+      "kind": "cpu",
+      "canonical_name": "AMD Ryzen 9 7950X",
+      "aliases": [
+        "ryzen 9 7950x"
+      ],
+      "collected_at": "2026-03-18T06:08:23.554811Z",
+      "source_url": "https://en.wikipedia.org/wiki/List_of_AMD_Ryzen_processors",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/wiki/cpu/amd-ryzen-seed.json"
+      },
+      "vendor": "amd",
+      "family": "Ryzen 9",
+      "model": "7950X",
+      "cores": 16,
+      "threads": 32,
+      "base_clock_ghz": 4.5,
+      "boost_clock_ghz": 5.7,
+      "l3_cache_mb": 64.0,
+      "tdp_w": 170.0,
+      "codename": "Raphael",
+      "socket": "AM5",
+      "release": "Q3 2022"
+    },
+    {
+      "kind": "cpu",
+      "canonical_name": "Intel Core i7-8086K",
+      "aliases": [
+        "core i7 8086k",
+        "i7-8086k"
+      ],
+      "collected_at": "2026-03-18T06:08:23.554855Z",
+      "source_url": "https://en.wikipedia.org/wiki/List_of_Intel_processors",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/wiki/cpu/intel-seed.json"
+      },
+      "vendor": "intel",
+      "family": "Core i7",
+      "model": "8086K",
+      "cores": 6,
+      "threads": 12,
+      "base_clock_ghz": 4.0,
+      "boost_clock_ghz": 5.0,
+      "l3_cache_mb": 12.0,
+      "tdp_w": 95.0,
+      "codename": "Coffee Lake",
+      "socket": "LGA 1151",
+      "release": "Q2 2018"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-03-18T06:15:26.596469Z",
+  "source": {
+    "collector": "canirunai.collectors.model_huggingface",
+    "notes": "offline seed fallback"
+  },
+  "items": [
+    {
+      "kind": "model",
+      "canonical_name": "deepseek-ai/DeepSeek-R1@bf16",
+      "aliases": [
+        "DeepSeek-R1",
+        "deepseek r1 bf16"
+      ],
+      "collected_at": "2026-03-18T06:15:26.596339Z",
+      "source_url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/huggingface/model/deepseek-r1-seed.json"
+      },
+      "source": "huggingface",
+      "hf_repo_id": "deepseek-ai/DeepSeek-R1",
+      "variant": {
+        "precision": "bf16",
+        "format": "safetensors"
+      },
+      "task": "text-generation",
+      "license_id": "apache-2.0",
+      "inference": {
+        "provider_required": true,
+        "status": "warm"
+      },
+      "declared_context_tokens": 32768,
+      "architecture_hint": {
+        "model_type": "llama",
+        "num_layers": 80,
+        "hidden_size": 8192,
+        "num_attention_heads": 64,
+        "num_kv_heads": 8,
+        "vocab_size": 128000
+      },
+      "num_parameters": 70000000000,
+      "weights": {
+        "total_size_bytes": 140000000000,
+        "files": []
+      },
+      "popularity": {
+        "downloads_30d": 200000,
+        "likes": 15000
+      }
+    },
+    {
+      "kind": "model",
+      "canonical_name": "Qwen/Qwen2.5-7B-Instruct@bf16",
+      "aliases": [
+        "Qwen2.5-7B-Instruct",
+        "qwen2.5 7b instruct bf16"
+      ],
+      "collected_at": "2026-03-18T06:15:26.596299Z",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/huggingface/model/qwen-7b-seed.json"
+      },
+      "source": "huggingface",
+      "hf_repo_id": "Qwen/Qwen2.5-7B-Instruct",
+      "variant": {
+        "precision": "bf16",
+        "format": "safetensors"
+      },
+      "task": "text-generation",
+      "license_id": "apache-2.0",
+      "inference": {
+        "provider_required": true,
+        "status": "warm"
+      },
+      "declared_context_tokens": 32768,
+      "architecture_hint": {
+        "model_type": "qwen2",
+        "num_layers": 28,
+        "hidden_size": 3584,
+        "num_attention_heads": 28,
+        "num_kv_heads": 4,
+        "vocab_size": 152064
+      },
+      "num_parameters": 7610000000,
+      "weights": {
+        "total_size_bytes": 15220000000,
+        "files": []
+      },
+      "popularity": {
+        "downloads_30d": 500000,
+        "likes": 10000
+      }
+    },
+    {
+      "kind": "model",
+      "canonical_name": "Qwen/Qwen2.5-7B-Instruct@q4_k_m",
+      "aliases": [
+        "Qwen2.5-7B-Instruct-GGUF",
+        "qwen2.5 7b instruct q4_k_m"
+      ],
+      "collected_at": "2026-03-18T06:15:26.596328Z",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-GGUF",
+      "raw_ref": {
+        "cache_key": "data/raw_cache/huggingface/model/qwen-7b-gguf-seed.json"
+      },
+      "source": "huggingface",
+      "hf_repo_id": "Qwen/Qwen2.5-7B-Instruct-GGUF",
+      "variant": {
+        "quantization": "q4_k_m",
+        "format": "gguf"
+      },
+      "task": "text-generation",
+      "license_id": "apache-2.0",
+      "inference": {
+        "provider_required": false,
+        "status": "warm"
+      },
+      "declared_context_tokens": 32768,
+      "architecture_hint": {
+        "model_type": "qwen2",
+        "num_layers": 28,
+        "hidden_size": 3584,
+        "num_attention_heads": 28,
+        "num_kv_heads": 4,
+        "vocab_size": 152064
+      },
+      "num_parameters": 7610000000,
+      "weights": {
+        "total_size_bytes": 4700000000,
+        "files": []
+      },
+      "popularity": {
+        "downloads_30d": 150000,
+        "likes": 3000
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "canirunai"
+version = "0.1.0"
+description = "Hardware-to-model fit estimation SDK for LLM inference"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "click>=8.1",
+    "loguru>=0.7",
+    "pydantic>=2.11",
+]
+
+[project.optional-dependencies]
+live = [
+    "huggingface_hub>=0.34",
+    "openai>=1.0",
+]
+
+[project.scripts]
+canirunai = "canirunai.cli.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/canirunai"]
