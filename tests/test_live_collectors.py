@@ -133,6 +133,29 @@ GPU_FP32_LABELLED_HTML = """
 </table>
 """
 
+GPU_HOPPER_HTML = """
+<table class="wikitable sortable">
+  <tr>
+    <th>Model</th>
+    <th>Memory / Size ( GB )</th>
+    <th>Memory / Bandwidth ( GB /s)</th>
+    <th>Processing power (T FLOPS ) / Half precision Tensor Core FP32 Accumulate</th>
+    <th>Processing power (T FLOPS ) / Single precision (MAD or FMA )</th>
+    <th>CUDA compute capability</th>
+    <th>TDP (W)</th>
+  </tr>
+  <tr>
+    <td>H100 GPU accelerator (PCIe card)</td>
+    <td>80</td>
+    <td>2039</td>
+    <td>756.4</td>
+    <td>51.2</td>
+    <td>9.0</td>
+    <td>350</td>
+  </tr>
+</table>
+"""
+
 CPU_COMPLEX_HTML = """
 <table class="wikitable sortable">
   <tr>
@@ -229,6 +252,22 @@ class WikipediaLiveParserTest(unittest.TestCase):
         self.assertEqual(specs[0].canonical_name, "AMD PRO 7730U")
         self.assertEqual(specs[0].aliases, ["PRO 7730U"])
         self.assertEqual(specs[0].boost_clock_ghz, 4.5)
+
+    def test_parse_gpu_specs_extracts_low_precision_compute_fields(self) -> None:
+        snapshot = WikipediaPageSnapshot(
+            page_url="https://example.com/nvidia-hopper",
+            revision_id=791,
+            html=GPU_HOPPER_HTML,
+        )
+
+        specs = parse_gpu_specs_from_snapshot(snapshot, vendor="nvidia", cache_key="raw/wiki/gpu/hopper.html")
+
+        self.assertEqual(len(specs), 1)
+        self.assertEqual(specs[0].canonical_name, "NVIDIA H100 GPU accelerator (PCIe card)")
+        self.assertIsNone(specs[0].process_nm)
+        self.assertEqual(specs[0].processing_power_fp32_gflops, 51_200.0)
+        self.assertEqual(specs[0].processing_power_fp16_gflops, 756_400.0)
+        self.assertEqual(specs[0].processing_power_bf16_gflops, 756_400.0)
 
 
 class FakeHuggingFaceClient:

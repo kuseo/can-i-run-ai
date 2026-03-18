@@ -201,14 +201,11 @@ def _gpu_spec_from_row(
         bandwidth_cell[1] if bandwidth_cell else None,
         unit_hint=bandwidth_cell[0] if bandwidth_cell else None,
     )
-
-    processing_power_cell = _find_cell(
-        row,
-        ["processing power"],
-        ["single precision"],
-        ["performance", "gflops"],
-        ["performance", "flops"],
-    )
+    fp32_cell = _find_gpu_compute_cell(row, kind="fp32")
+    fp16_cell = _find_gpu_compute_cell(row, kind="fp16")
+    bf16_cell = _find_gpu_compute_cell(row, kind="bf16")
+    fp8_cell = _find_gpu_compute_cell(row, kind="fp8")
+    int8_cell = _find_gpu_compute_cell(row, kind="int8")
 
     spec = GpuSpec(
         canonical_name=canonical_name,
@@ -219,7 +216,7 @@ def _gpu_spec_from_row(
         vendor=vendor,
         product_line=_infer_gpu_product_line(canonical_name),
         codename=_find_value(row, ["code name"]),
-        process_nm=_parse_float(_find_value(row, ["fab"], ["process"])),
+        process_nm=_parse_float(_find_process_value(row)),
         bus_interface=_find_value(row, ["bus interface"]),
         memory_size_gib=memory_size,
         memory_bus_width_bit=bus_width,
@@ -227,8 +224,28 @@ def _gpu_spec_from_row(
         tdp_w=_parse_float(_find_value(row, ["tdp"])),
         cuda_compute_capability=_find_value(row, ["compute capability"]),
         processing_power_fp32_gflops=_parse_flops_gflops(
-            processing_power_cell[1] if processing_power_cell else None,
-            unit_hint=processing_power_cell[0] if processing_power_cell else None,
+            fp32_cell[1] if fp32_cell else None,
+            unit_hint=fp32_cell[0] if fp32_cell else None,
+        ),
+        processing_power_fp16_gflops=_parse_flops_gflops(
+            fp16_cell[1] if fp16_cell else None,
+            unit_hint=fp16_cell[0] if fp16_cell else None,
+        ),
+        processing_power_bf16_gflops=_parse_flops_gflops(
+            bf16_cell[1] if bf16_cell else None,
+            unit_hint=bf16_cell[0] if bf16_cell else None,
+        )
+        or _parse_flops_gflops(
+            fp16_cell[1] if fp16_cell else None,
+            unit_hint=fp16_cell[0] if fp16_cell else None,
+        ),
+        processing_power_fp8_gflops=_parse_flops_gflops(
+            fp8_cell[1] if fp8_cell else None,
+            unit_hint=fp8_cell[0] if fp8_cell else None,
+        ),
+        processing_power_int8_gops=_parse_ops_gops(
+            int8_cell[1] if int8_cell else None,
+            unit_hint=int8_cell[0] if int8_cell else None,
         ),
         source_url=source_url,
         source_revision_id=source_revision_id,
@@ -264,6 +281,60 @@ def _find_value(row: dict[str, str], *patterns: list[str]) -> str | None:
     if cell is None:
         return None
     return cell[1]
+
+
+def _find_process_value(row: dict[str, str]) -> str | None:
+    for header, value in row.items():
+        normalized = _normalize_header(header)
+        if normalized in {"fab", "fab nm", "process", "process nm", "node", "node nm"}:
+            cleaned = _clean_cell_value(value)
+            if cleaned:
+                return cleaned
+    return None
+
+
+def _find_gpu_compute_cell(row: dict[str, str], *, kind: str) -> tuple[str, str] | None:
+    for header, value in row.items():
+        normalized = _normalize_header(header)
+        if not normalized or "processing power" not in normalized and "precision" not in normalized and "tops" not in normalized:
+            continue
+        if kind == "fp32":
+            if "single precision" in normalized and "accumulate" not in normalized:
+                cleaned = _clean_cell_value(value)
+                if cleaned:
+                    return header, cleaned
+            if "processing power" in normalized and not any(
+                token in normalized
+                for token in ("half precision", "fp16", "bf16", "bfloat16", "fp8", "int8", "double precision", "accumulate")
+            ):
+                cleaned = _clean_cell_value(value)
+                if cleaned:
+                    return header, cleaned
+            continue
+        if kind == "fp16":
+            if "half precision" in normalized or "fp16" in normalized:
+                cleaned = _clean_cell_value(value)
+                if cleaned:
+                    return header, cleaned
+            continue
+        if kind == "bf16":
+            if "bf16" in normalized or "bfloat16" in normalized:
+                cleaned = _clean_cell_value(value)
+                if cleaned:
+                    return header, cleaned
+            continue
+        if kind == "fp8":
+            if "fp8" in normalized:
+                cleaned = _clean_cell_value(value)
+                if cleaned:
+                    return header, cleaned
+            continue
+        if kind == "int8":
+            if "int8" in normalized:
+                cleaned = _clean_cell_value(value)
+                if cleaned:
+                    return header, cleaned
+    return None
 
 
 def _normalize_header(value: str) -> str:
@@ -396,11 +467,27 @@ def _parse_flops_gflops(value: str | None, *, unit_hint: str | None = None) -> f
     number = _parse_float(value)
     if number is None:
         return None
-    lower = f"{unit_hint or ''} {value}".casefold()
+    lower = _normalize_measurement_text(f"{unit_hint or ''} {value}")
     if "tflops" in lower:
         return number * 1000
     if "pflops" in lower:
         return number * 1_000_000
+    return number
+
+
+def _parse_ops_gops(value: str | None, *, unit_hint: str | None = None) -> float | None:
+    if not value:
+        return None
+    number = _parse_float(value)
+    if number is None:
+        return None
+    lower = _normalize_measurement_text(f"{unit_hint or ''} {value}")
+    if "tops" in lower:
+        return number * 1000
+    if "pops" in lower:
+        return number * 1_000_000
+    if "gops" in lower:
+        return number
     return number
 
 
@@ -411,6 +498,10 @@ def _parse_numeric_values(value: str | None) -> list[float]:
         float(match.group().replace(",", ""))
         for match in re.finditer(r"(?<![A-Za-z0-9])-?\d[\d,]*(?:\.\d+)?", value)
     ]
+
+
+def _normalize_measurement_text(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", value.casefold())
 
 
 def _infer_cpu_family(name: str) -> str | None:

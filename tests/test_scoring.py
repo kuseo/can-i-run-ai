@@ -5,6 +5,10 @@ import unittest
 from canirunai.collectors.seed_catalog import cpu_seed_specs, gpu_seed_specs, model_seed_specs
 from canirunai.config.loader import ScoringConfig
 from canirunai.scoring.engine import ScoringEngine
+from canirunai.schemas.base import RawReference
+from canirunai.schemas.cpu import CpuSpec
+from canirunai.schemas.gpu import GpuSpec
+from canirunai.schemas.model import ArchitectureHint, ModelSpec, VariantSpec, WeightsInfo
 
 
 class ScoringEngineTest(unittest.TestCase):
@@ -34,3 +38,127 @@ class ScoringEngineTest(unittest.TestCase):
         )
         self.assertGreater(report.throughput_estimate.decode_tokens_per_sec, 0)
         self.assertGreater(report.context_estimate.safe_context_tokens, 0)
+
+    def test_missing_architecture_details_fall_back_to_parameter_based_context_estimate(self) -> None:
+        cpu = CpuSpec(
+            canonical_name="Intel Core i7 9700E",
+            aliases=[],
+            vendor="intel",
+            cores=8,
+            threads=8,
+            source_url="https://example.com/cpu",
+            raw_ref=RawReference(cache_key="cpu"),
+        )
+        gpu = GpuSpec(
+            canonical_name="NVIDIA H100 GPU accelerator (PCIe card)",
+            aliases=[],
+            vendor="nvidia",
+            memory_size_gib=80.0,
+            memory_bandwidth_gbs=2039.0,
+            processing_power_fp32_gflops=51_200.0,
+            processing_power_fp16_gflops=756_400.0,
+            processing_power_bf16_gflops=756_400.0,
+            source_url="https://example.com/gpu",
+            raw_ref=RawReference(cache_key="gpu"),
+        )
+        model = ModelSpec(
+            canonical_name="openai/gpt-oss-20b@mxfp4",
+            aliases=[],
+            source_url="https://example.com/model",
+            raw_ref=RawReference(cache_key="model"),
+            hf_repo_id="openai/gpt-oss-20b",
+            variant=VariantSpec(precision="bf16", quantization="mxfp4", format="safetensors"),
+            task="text-generation",
+            architecture_hint=ArchitectureHint(model_type="gpt_oss"),
+            num_parameters=21_511_953_984,
+            weights=WeightsInfo(total_size_bytes=41_382_448_021),
+        )
+
+        report = self.engine.score(
+            cpus=[cpu],
+            gpus=[gpu],
+            memory_gb=256,
+            model=model,
+        )
+
+        self.assertNotEqual(report.verdict, "IMPOSSIBLE")
+        self.assertGreaterEqual(report.context_estimate.safe_context_tokens, self.engine.config.min_context_tokens)
+
+    def test_gpt_oss_mxfp4_uses_runtime_weight_estimate_and_active_parameters(self) -> None:
+        cpu = CpuSpec(
+            canonical_name="Intel Core i7 9700E",
+            aliases=[],
+            vendor="intel",
+            cores=8,
+            threads=8,
+            source_url="https://example.com/cpu",
+            raw_ref=RawReference(cache_key="cpu"),
+        )
+        gpu = GpuSpec(
+            canonical_name="NVIDIA H100 GPU accelerator (PCIe card)",
+            aliases=[],
+            vendor="nvidia",
+            memory_size_gib=80.0,
+            memory_bandwidth_gbs=2039.0,
+            processing_power_fp32_gflops=51_200.0,
+            processing_power_fp16_gflops=756_400.0,
+            processing_power_bf16_gflops=756_400.0,
+            source_url="https://example.com/gpu",
+            raw_ref=RawReference(cache_key="gpu"),
+        )
+        model = ModelSpec(
+            canonical_name="openai/gpt-oss-120b@mxfp4",
+            aliases=[],
+            source_url="https://example.com/model",
+            raw_ref=RawReference(cache_key="model"),
+            hf_repo_id="openai/gpt-oss-120b",
+            variant=VariantSpec(precision="bf16", quantization="mxfp4", format="safetensors"),
+            task="text-generation",
+            architecture_hint=ArchitectureHint(model_type="gpt_oss"),
+            num_parameters=120_412_337_472,
+            weights=WeightsInfo(total_size_bytes=195_851_052_807),
+        )
+
+        report = self.engine.score(
+            cpus=[cpu],
+            gpus=[gpu],
+            memory_gb=128,
+            model=model,
+        )
+
+        self.assertNotEqual(report.verdict, "IMPOSSIBLE")
+        self.assertLess(report.wide.memory_estimate.weights_vram_gb, 80.0)
+        self.assertGreater(report.context_estimate.safe_context_tokens, 2048)
+        self.assertGreater(report.throughput_estimate.decode_tokens_per_sec, 0)
+
+    def test_low_precision_models_prefer_low_precision_gpu_compute(self) -> None:
+        gpu = GpuSpec(
+            canonical_name="NVIDIA H100 GPU accelerator (PCIe card)",
+            aliases=[],
+            vendor="nvidia",
+            memory_size_gib=80.0,
+            memory_bandwidth_gbs=2039.0,
+            processing_power_fp32_gflops=51_200.0,
+            processing_power_fp16_gflops=756_400.0,
+            processing_power_bf16_gflops=756_400.0,
+            source_url="https://example.com/gpu",
+            raw_ref=RawReference(cache_key="gpu"),
+        )
+        model = ModelSpec(
+            canonical_name="openai/gpt-oss-20b@mxfp4",
+            aliases=[],
+            source_url="https://example.com/model",
+            raw_ref=RawReference(cache_key="model"),
+            hf_repo_id="openai/gpt-oss-20b",
+            variant=VariantSpec(precision="bf16", quantization="mxfp4", format="safetensors"),
+            task="text-generation",
+            architecture_hint=ArchitectureHint(model_type="gpt_oss"),
+            num_parameters=21_511_953_984,
+            weights=WeightsInfo(total_size_bytes=41_382_448_021),
+        )
+
+        decode_tps = self.engine.estimator.single_gpu_decode_tps(model=model, gpu=gpu)
+        report = self.engine.score(cpus=[self.cpu], gpus=[gpu], memory_gb=256, model=model)
+
+        self.assertGreater(decode_tps, self.engine.config.great_decode_tps)
+        self.assertEqual(report.verdict, "RUNS GREAT")

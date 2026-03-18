@@ -28,6 +28,10 @@ class GpuSpec(BaseSpec):
     api_support: ApiSupport | None = None
     cuda_compute_capability: str | None = None
     processing_power_fp32_gflops: float | None = None
+    processing_power_fp16_gflops: float | None = None
+    processing_power_bf16_gflops: float | None = None
+    processing_power_fp8_gflops: float | None = None
+    processing_power_int8_gops: float | None = None
 
 
 class GpuCatalog(CatalogBase):
