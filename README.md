@@ -32,6 +32,76 @@ memory: weights=14.19 GB total_at_safe=22.82 GB headroom=1.18 GB
 bottlenecks: gpu_bandwidth, gpu_compute
 ```
 
+The same command with `--output json`:
+
+```bash
+uv run canirunai check \
+  --cpu "AMD Ryzen 9 7950X" \
+  --gpu "NVIDIA GeForce RTX 4090" \
+  --memory 64 \
+  --model "Qwen/Qwen2.5-7B-Instruct@bf16" \
+  --output json
+```
+
+Example JSON output:
+
+```json
+{
+  "schema_version": 1,
+  "verdict": "RUNS WELL",
+  "score": 82,
+  "inputs": {
+    "cpu": [
+      "AMD Ryzen 9 7950X"
+    ],
+    "gpu": [
+      "NVIDIA GeForce RTX 4090"
+    ],
+    "memory_gb": 64.0,
+    "model": "Qwen/Qwen2.5-7B-Instruct@bf16"
+  },
+  "placement_estimate": {
+    "mode": "replicated_serving",
+    "single_gpu_loadable": true,
+    "replica_count": 1,
+    "used_gpu_canonical_names": [
+      "NVIDIA GeForce RTX 4090"
+    ]
+  },
+  "context_estimate": {
+    "max_supported_context_tokens": 18237,
+    "safe_context_tokens": 15501
+  },
+  "throughput_estimate": {
+    "decode_tokens_per_sec": 59.56,
+    "prefill_tokens_per_sec": 1429.48
+  },
+  "wide": {
+    "memory_estimate": {
+      "weights_vram_gb": 14.19,
+      "runtime_overhead_vram_gb": 1.92,
+      "kv_cache_gb_per_1k_tokens": 0.4329,
+      "total_vram_gb_at_safe_context": 22.82,
+      "vram_headroom_gb": 1.18,
+      "host_ram_required_gb": 8.96,
+      "host_ram_headroom_gb": 55.04
+    },
+    "latency_estimate": {
+      "first_token_ms_per_1k_prompt_tokens": 700,
+      "generation_ms_per_128_output_tokens": 2149
+    },
+    "bottlenecks": {
+      "primary": "gpu_bandwidth",
+      "secondary": "gpu_compute"
+    },
+    "confidence": {
+      "context": "high",
+      "throughput": "medium"
+    }
+  }
+}
+```
+
 ### Python
 
 `canirunai` can also be used directly from Python:
