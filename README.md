@@ -6,6 +6,8 @@ This project was inspired by [canirun.ai](https://canirun.ai), and its ideation 
 
 ## Quick Start
 
+### CLI
+
 ```bash
 uv sync
 uv run canirunai update cpu
@@ -19,13 +21,63 @@ uv run canirunai check \
   --output wide
 ```
 
-By default, the SDK ships with an offline-capable seed catalog so `update/list/get/check` work without live network parsing. Set `sdk.prefer_live_requests = true` in a custom config to enable live source fetch attempts.
+Example `check` output from the current local catalog:
 
-Live collection is now implemented with deterministic parsers for Wikipedia and Hugging Face sources. The intended parser policy is "rules first, LLM only on failure": rule-based parsing runs first, and an LLM parser should only be used as a fallback when deterministic parsing cannot recover a valid structured result.
+```text
+verdict: RUNS WELL
+score: 82
+context: safe=15501 max=18237
+throughput: decode=59.56 tps prefill=1429.48 tps
+memory: weights=14.19 GB total_at_safe=22.82 GB headroom=1.18 GB
+bottlenecks: gpu_bandwidth, gpu_compute
+```
+
+### Python
+
+`canirunai` can also be used directly from Python:
+
+```python
+from canirunai import CanIRunAI
+
+sdk = CanIRunAI()
+
+report = sdk.check(
+    cpu_names=["AMD Ryzen 9 7950X"],
+    gpu_names=["NVIDIA GeForce RTX 4090"],
+    memory_gb=64,
+    model_name="Qwen/Qwen2.5-7B-Instruct@bf16",
+)
+
+print(report.verdict)
+print(report.score)
+print(report.context_estimate.safe_context_tokens)
+print(report.throughput_estimate.decode_tokens_per_sec)
+```
+
+The built-in config currently tries live collection first and falls back to bundled seed catalogs if live collection fails. Once local catalogs exist, `list`, `get`, and `check` work from those local JSON files.
+
+Live collection is implemented with deterministic parsers for Wikipedia and Hugging Face sources. The long-term parser policy is still "rules first, LLM only on failure", but the current collectors do not yet invoke the OpenAI fallback parser automatically.
 
 ## For More Information
 
-- [CLI](docs/cli.md)
-- [Configuration](docs/configuration.md)
-- [Spec Collection](docs/spec-collection.md)
-- [Scoring](docs/scoring.md)
+### Implementation
+
+- [CLI](docs/implementation/cli.md): command tree, options, output modes, and current limitations.
+- [Configuration](docs/implementation/configuration.md): built-in defaults, merge rules, and how each config section maps to the code.
+- [Spec Collection](docs/implementation/spec-collection.md): live Wikipedia and Hugging Face collection flow, raw cache, normalization, and seed fallback behavior.
+- [Scoring](docs/implementation/scoring.md): weight, KV cache, throughput, verdict, and score estimation rules.
+
+### QA
+
+- [QA Check Report](docs/qa/qa-check-report.md): targeted manual QA of `check` against the current local catalogs.
+- [Random Sampling Review 1](docs/qa/check-verdict-random-sampling-2026-03-18-23-58-29.md): first subjective-versus-scorer sampling review.
+- [Random Sampling Review 2](docs/qa/check-verdict-random-sampling-2026-03-19-00-05-08.md): second review after verdict and low-precision scoring fixes.
+- [Random Sampling Review 3](docs/qa/check-verdict-random-sampling-2026-03-19-00-17-03.md): latest review after additional verdict and GPU metric normalization changes.
+
+### Project Notes
+
+- [Vibe Coding Improvement Scenarios](docs/vibe-coding-improvements.md): short narrative of the user-driven prompts that shaped the SDK after the initial implementation.
+
+## Future Work
+
+- Add concurrency-aware scoring for multi-user serving environments. The current scorer estimates single-node fit and replicated throughput, but it does not yet model concurrent sessions, per-user KV cache growth, batching, queueing latency, or multi-tenant contention.
