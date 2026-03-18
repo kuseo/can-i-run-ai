@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from urllib.parse import urlencode, urlsplit
 from urllib.request import Request, urlopen
 
+from loguru import logger
+
 from ..config.loader import WikipediaConfig
 
 
@@ -17,8 +19,9 @@ class WikipediaPageSnapshot:
 
 
 class WikipediaClient:
-    def __init__(self, config: WikipediaConfig) -> None:
+    def __init__(self, config: WikipediaConfig, *, verbose: bool = False) -> None:
         self.config = config
+        self.verbose = verbose
 
     def fetch_page_snapshot(self, page_url: str) -> WikipediaPageSnapshot:
         title = urlsplit(page_url).path.rsplit("/", 1)[-1]
@@ -48,6 +51,8 @@ class WikipediaClient:
 
     def _request(self, params: dict[str, str]) -> dict:
         url = "https://en.wikipedia.org/w/api.php?" + urlencode(params)
+        if self.verbose:
+            logger.info("Fetching URL {}", url)
         request = Request(url, headers={"User-Agent": self.config.user_agent})
         with urlopen(request) as response:
             payload = json.loads(response.read().decode("utf-8"))

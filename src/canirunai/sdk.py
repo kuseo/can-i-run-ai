@@ -39,18 +39,18 @@ class CanIRunAI:
         self.model_loader = ModelLoader(self.store)
         self.scoring = ScoringEngine(self.config.scoring)
 
-    def update_cpu(self) -> CpuCatalog:
-        collector = CpuWikipediaCollector(self.config, self.raw_cache)
+    def update_cpu(self, *, verbose: bool = False) -> CpuCatalog:
+        collector = CpuWikipediaCollector(self.config, self.raw_cache, verbose=verbose)
         result = collector.collect()
         return self.cpu_loader.upsert(result.items, result.notes)
 
-    def update_gpu(self) -> GpuCatalog:
-        collector = GpuWikipediaCollector(self.config, self.raw_cache)
+    def update_gpu(self, *, verbose: bool = False) -> GpuCatalog:
+        collector = GpuWikipediaCollector(self.config, self.raw_cache, verbose=verbose)
         result = collector.collect()
         return self.gpu_loader.upsert(result.items, result.notes)
 
-    def update_model(self, hf_repo_id: str | None = None) -> ModelCatalog:
-        collector = ModelHuggingFaceCollector(self.config, self.raw_cache)
+    def update_model(self, hf_repo_id: str | None = None, *, verbose: bool = False) -> ModelCatalog:
+        collector = ModelHuggingFaceCollector(self.config, self.raw_cache, verbose=verbose)
         result = collector.collect(hf_repo_id=hf_repo_id)
         return self.model_loader.upsert(result.items, result.notes)
 

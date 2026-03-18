@@ -5,12 +5,15 @@ import time
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
+from loguru import logger
+
 from ..config.loader import HuggingFaceConfig
 
 
 class HuggingFaceClient:
-    def __init__(self, config: HuggingFaceConfig) -> None:
+    def __init__(self, config: HuggingFaceConfig, *, verbose: bool = False) -> None:
         self.config = config
+        self.verbose = verbose
 
     def model_info(self, repo_id: str) -> dict:
         url = f"{self.config.endpoint}/api/models/{quote(repo_id, safe='/')}"
@@ -30,6 +33,8 @@ class HuggingFaceClient:
         return payload
 
     def _request(self, url: str) -> dict | list[dict]:
+        if self.verbose:
+            logger.info("Fetching URL {}", url)
         request = Request(url, headers={"User-Agent": "canirunai/0.1"})
         with urlopen(request) as response:
             payload = json.loads(response.read().decode("utf-8"))

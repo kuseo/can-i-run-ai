@@ -24,24 +24,27 @@ def update() -> None:
 
 
 @update.command("cpu")
+@click.option("--verbose", is_flag=True, default=False)
 @click.pass_context
-def update_cpu(ctx: click.Context) -> None:
-    catalog = ctx.obj["sdk"].update_cpu()
+def update_cpu(ctx: click.Context, verbose: bool) -> None:
+    catalog = ctx.obj["sdk"].update_cpu(verbose=verbose)
     click.echo(f"updated cpu catalog with {len(catalog.items)} items")
 
 
 @update.command("gpu")
+@click.option("--verbose", is_flag=True, default=False)
 @click.pass_context
-def update_gpu(ctx: click.Context) -> None:
-    catalog = ctx.obj["sdk"].update_gpu()
+def update_gpu(ctx: click.Context, verbose: bool) -> None:
+    catalog = ctx.obj["sdk"].update_gpu(verbose=verbose)
     click.echo(f"updated gpu catalog with {len(catalog.items)} items")
 
 
 @update.command("model")
 @click.option("--hfname", type=str, default=None)
+@click.option("--verbose", is_flag=True, default=False)
 @click.pass_context
-def update_model(ctx: click.Context, hfname: str | None) -> None:
-    catalog = ctx.obj["sdk"].update_model(hfname)
+def update_model(ctx: click.Context, hfname: str | None, verbose: bool) -> None:
+    catalog = ctx.obj["sdk"].update_model(hfname, verbose=verbose)
     click.echo(f"updated model catalog with {len(catalog.items)} items")
 
 

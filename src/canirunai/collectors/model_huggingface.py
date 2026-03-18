@@ -16,10 +16,10 @@ from .seed_catalog import model_seed_specs
 
 
 class ModelHuggingFaceCollector:
-    def __init__(self, config: AppConfig, raw_cache: RawCache) -> None:
+    def __init__(self, config: AppConfig, raw_cache: RawCache, *, verbose: bool = False) -> None:
         self.config = config
         self.raw_cache = raw_cache
-        self.client = HuggingFaceClient(config.huggingface)
+        self.client = HuggingFaceClient(config.huggingface, verbose=verbose)
 
     def collect(self, *, hf_repo_id: str | None = None) -> CollectionResult:
         if self.config.sdk.prefer_live_requests:

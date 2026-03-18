@@ -4,6 +4,8 @@ import tempfile
 import textwrap
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import Mock, patch
 
 from click.testing import CliRunner
 
@@ -55,3 +57,15 @@ class CliFlowTest(unittest.TestCase):
             )
             self.assertEqual(check.exit_code, 0)
             self.assertIn("verdict:", check.output)
+
+    def test_update_verbose_flag_is_forwarded_to_sdk(self) -> None:
+        runner = CliRunner()
+        fake_sdk = Mock()
+        fake_sdk.update_cpu.return_value = SimpleNamespace(items=[object(), object()])
+
+        with patch("canirunai.cli.main._sdk", return_value=fake_sdk):
+            result = runner.invoke(cli, ["update", "cpu", "--verbose"])
+
+        self.assertEqual(result.exit_code, 0)
+        fake_sdk.update_cpu.assert_called_once_with(verbose=True)
+        self.assertIn("updated cpu catalog with 2 items", result.output)

@@ -11,10 +11,10 @@ from .wikipedia_client import WikipediaClient
 
 
 class GpuWikipediaCollector:
-    def __init__(self, config: AppConfig, raw_cache: RawCache) -> None:
+    def __init__(self, config: AppConfig, raw_cache: RawCache, *, verbose: bool = False) -> None:
         self.config = config
         self.raw_cache = raw_cache
-        self.client = WikipediaClient(config.wikipedia)
+        self.client = WikipediaClient(config.wikipedia, verbose=verbose)
 
     def collect(self) -> CollectionResult:
         if self.config.sdk.prefer_live_requests:
