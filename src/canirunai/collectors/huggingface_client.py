@@ -13,7 +13,7 @@ class HuggingFaceClient:
         self.config = config
 
     def model_info(self, repo_id: str) -> dict:
-        url = f"{self.config.endpoint}/api/models/{quote(repo_id, safe='')}"
+        url = f"{self.config.endpoint}/api/models/{quote(repo_id, safe='/')}"
         return self._request(url)
 
     def list_models(self, *, author: str | None = None, limit: int | None = None) -> list[dict]:

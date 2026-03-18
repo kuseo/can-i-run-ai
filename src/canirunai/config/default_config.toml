@@ -2,7 +2,7 @@
 data_dir = "./data"
 raw_cache_dir = "./data/raw_cache"
 log_level = "INFO"
-prefer_live_requests = false
+prefer_live_requests = true
 offline_seed_fallback = true
 
 [openai_parser]

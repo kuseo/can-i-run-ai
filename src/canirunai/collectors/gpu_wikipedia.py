@@ -6,6 +6,7 @@ from ..config.loader import AppConfig
 from ..store.raw_cache import RawCache
 from .base import CollectionResult
 from .seed_catalog import gpu_seed_specs
+from .wikipedia_live_parser import parse_gpu_specs_from_snapshot
 from .wikipedia_client import WikipediaClient
 
 
@@ -18,18 +19,29 @@ class GpuWikipediaCollector:
     def collect(self) -> CollectionResult:
         if self.config.sdk.prefer_live_requests:
             try:
-                for label, page in (
-                    ("nvidia-gpus", self.config.wikipedia.gpu_nvidia.page_url),
-                    ("amd-gpus", self.config.wikipedia.gpu_amd.page_url),
+                items = []
+                for cache_label, page_url, vendor in (
+                    ("nvidia-gpus", self.config.wikipedia.gpu_nvidia.page_url, "nvidia"),
+                    ("amd-gpus", self.config.wikipedia.gpu_amd.page_url, "amd"),
                 ):
-                    snapshot = self.client.fetch_page_snapshot(page)
-                    self.raw_cache.write_text("wiki/gpu", label, snapshot.html, suffix=".html")
-                logger.warning("Live GPU collection fetched raw pages but parser wiring is not enabled; using seed catalog.")
-                return CollectionResult(
-                    items=gpu_seed_specs(),
-                    notes="live wikipedia fetch succeeded; offline seed parser fallback used",
-                )
+                    snapshot = self.client.fetch_page_snapshot(page_url)
+                    cache_key = self.raw_cache.write_text("wiki/gpu", cache_label, snapshot.html, suffix=".html")
+                    items.extend(
+                        parse_gpu_specs_from_snapshot(
+                            snapshot,
+                            vendor=vendor,
+                            cache_key=cache_key,
+                        )
+                    )
+                if items:
+                    logger.info("Collected {} GPU specs from live Wikipedia pages.", len(items))
+                    return CollectionResult(items=items, notes="live wikipedia collection")
+                raise RuntimeError("Live GPU collection produced no specs.")
             except Exception as exc:
+                if not self.config.sdk.offline_seed_fallback:
+                    raise
                 logger.warning("GPU live collection failed, using seed fallback: {}", exc)
 
-        return CollectionResult(items=gpu_seed_specs(), notes="offline seed fallback")
+        if self.config.sdk.offline_seed_fallback:
+            return CollectionResult(items=gpu_seed_specs(), notes="offline seed fallback")
+        raise RuntimeError("GPU collection failed and offline seed fallback is disabled.")

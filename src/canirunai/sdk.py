@@ -83,4 +83,4 @@ class CanIRunAI:
 
     def _configure_logging(self) -> None:
         logger.remove()
-        logger.add(sys.stderr, level=self.config.sdk.log_level)
+        logger.add(sys.__stderr__, level=self.config.sdk.log_level)
