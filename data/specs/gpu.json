@@ -17336,7 +17336,8 @@
       "cuda_compute_capability": "8.6",
       "processing_power_fp32_gflops": 31240.0,
       "processing_power_fp16_gflops": 125000.0,
-      "processing_power_bf16_gflops": 125000.0
+      "processing_power_bf16_gflops": 125000.0,
+      "processing_power_int8_gops": 499840.0
     },
     {
       "kind": "gpu",
@@ -17358,7 +17359,8 @@
       "cuda_compute_capability": "8.0",
       "processing_power_fp32_gflops": 19500.0,
       "processing_power_fp16_gflops": 312000.0,
-      "processing_power_bf16_gflops": 312000.0
+      "processing_power_bf16_gflops": 312000.0,
+      "processing_power_int8_gops": 312000.0
     },
     {
       "kind": "gpu",
@@ -17379,8 +17381,9 @@
       "tdp_w": 250.0,
       "cuda_compute_capability": "8.6",
       "processing_power_fp32_gflops": 4000.0,
-      "processing_power_fp16_gflops": 4000.0,
-      "processing_power_bf16_gflops": 4000.0
+      "processing_power_fp16_gflops": 16000.0,
+      "processing_power_bf16_gflops": 16000.0,
+      "processing_power_int8_gops": 64000.0
     },
     {
       "kind": "gpu",
@@ -17402,7 +17405,8 @@
       "cuda_compute_capability": "8.6",
       "processing_power_fp32_gflops": 4531.0,
       "processing_power_fp16_gflops": 18120.0,
-      "processing_power_bf16_gflops": 18120.0
+      "processing_power_bf16_gflops": 18120.0,
+      "processing_power_int8_gops": 72496.0
     },
     {
       "kind": "gpu",
@@ -17424,7 +17428,8 @@
       "cuda_compute_capability": "8.0",
       "processing_power_fp32_gflops": 10320.0,
       "processing_power_fp16_gflops": 165100.0,
-      "processing_power_bf16_gflops": 165100.0
+      "processing_power_bf16_gflops": 165100.0,
+      "processing_power_int8_gops": 165120.0
     },
     {
       "kind": "gpu",
@@ -17446,7 +17451,8 @@
       "cuda_compute_capability": "8.6",
       "processing_power_fp32_gflops": 37420.0,
       "processing_power_fp16_gflops": 149700.0,
-      "processing_power_bf16_gflops": 149700.0
+      "processing_power_bf16_gflops": 149700.0,
+      "processing_power_int8_gops": 598720.0
     },
     {
       "kind": "gpu",
@@ -17467,8 +17473,10 @@
       "tdp_w": 700.0,
       "cuda_compute_capability": "10.1",
       "processing_power_fp32_gflops": 2000.0,
-      "processing_power_fp16_gflops": 2000.0,
-      "processing_power_bf16_gflops": 2000.0
+      "processing_power_fp16_gflops": 32000.0,
+      "processing_power_bf16_gflops": 32000.0,
+      "processing_power_fp8_gflops": 64000.0,
+      "processing_power_int8_gops": 128000.0
     },
     {
       "kind": "gpu",
@@ -17489,8 +17497,10 @@
       "tdp_w": 1000.0,
       "cuda_compute_capability": "10.0",
       "processing_power_fp32_gflops": 2000.0,
-      "processing_power_fp16_gflops": 2000.0,
-      "processing_power_bf16_gflops": 2000.0
+      "processing_power_fp16_gflops": 32000.0,
+      "processing_power_bf16_gflops": 32000.0,
+      "processing_power_fp8_gflops": 64000.0,
+      "processing_power_int8_gops": 128000.0
     },
     {
       "kind": "gpu",
@@ -26494,7 +26504,8 @@
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 4608.0,
       "processing_power_fp16_gflops": 9216.0,
-      "processing_power_bf16_gflops": 9216.0
+      "processing_power_bf16_gflops": 9216.0,
+      "processing_power_int8_gops": 73728.0
     },
     {
       "kind": "gpu",
@@ -26519,7 +26530,8 @@
       "tdp_w": 65.0,
       "processing_power_fp32_gflops": 4550.0,
       "processing_power_fp16_gflops": 9101.0,
-      "processing_power_bf16_gflops": 9101.0
+      "processing_power_bf16_gflops": 9101.0,
+      "processing_power_int8_gops": 72800.0
     },
     {
       "kind": "gpu",
@@ -26544,7 +26556,8 @@
       "tdp_w": 175.0,
       "processing_power_fp32_gflops": 6400.0,
       "processing_power_fp16_gflops": 12800.0,
-      "processing_power_bf16_gflops": 12800.0
+      "processing_power_bf16_gflops": 12800.0,
+      "processing_power_int8_gops": 102400.0
     },
     {
       "kind": "gpu",
@@ -26569,7 +26582,8 @@
       "tdp_w": 115.0,
       "processing_power_fp32_gflops": 6636.0,
       "processing_power_fp16_gflops": 13270.0,
-      "processing_power_bf16_gflops": 13270.0
+      "processing_power_bf16_gflops": 13270.0,
+      "processing_power_int8_gops": 106176.0
     },
     {
       "kind": "gpu",
@@ -26594,7 +26608,8 @@
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 5460.0,
       "processing_power_fp16_gflops": 10920.0,
-      "processing_power_bf16_gflops": 10920.0
+      "processing_power_bf16_gflops": 10920.0,
+      "processing_power_int8_gops": 87360.0
     },
     {
       "kind": "gpu",
@@ -26619,7 +26634,8 @@
       "tdp_w": 115.0,
       "processing_power_fp32_gflops": 7066.0,
       "processing_power_fp16_gflops": 14130.0,
-      "processing_power_bf16_gflops": 14130.0
+      "processing_power_bf16_gflops": 14130.0,
+      "processing_power_int8_gops": 113056.0
     },
     {
       "kind": "gpu",
@@ -26644,7 +26660,8 @@
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 5530.0,
       "processing_power_fp16_gflops": 11060.0,
-      "processing_power_bf16_gflops": 11060.0
+      "processing_power_bf16_gflops": 11060.0,
+      "processing_power_int8_gops": 88480.0
     },
     {
       "kind": "gpu",
@@ -26669,7 +26686,8 @@
       "tdp_w": 150.0,
       "processing_power_fp32_gflops": 9362.0,
       "processing_power_fp16_gflops": 18720.0,
-      "processing_power_bf16_gflops": 18720.0
+      "processing_power_bf16_gflops": 18720.0,
+      "processing_power_int8_gops": 149792.0
     },
     {
       "kind": "gpu",
@@ -26694,7 +26712,8 @@
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 6447.0,
       "processing_power_fp16_gflops": 12890.0,
-      "processing_power_bf16_gflops": 12890.0
+      "processing_power_bf16_gflops": 12890.0,
+      "processing_power_int8_gops": 103152.0
     },
     {
       "kind": "gpu",
@@ -26719,7 +26738,8 @@
       "tdp_w": 150.0,
       "processing_power_fp32_gflops": 9585.0,
       "processing_power_fp16_gflops": 19170.0,
-      "processing_power_bf16_gflops": 19170.0
+      "processing_power_bf16_gflops": 19170.0,
+      "processing_power_int8_gops": 153360.0
     },
     {
       "kind": "gpu",
@@ -26744,7 +26764,8 @@
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 6636.0,
       "processing_power_fp16_gflops": 13270.0,
-      "processing_power_bf16_gflops": 13270.0
+      "processing_power_bf16_gflops": 13270.0,
+      "processing_power_int8_gops": 106176.0
     },
     {
       "kind": "gpu",
@@ -26769,7 +26790,8 @@
       "tdp_w": 250.0,
       "processing_power_fp32_gflops": 11750.0,
       "processing_power_fp16_gflops": 23500.0,
-      "processing_power_bf16_gflops": 23500.0
+      "processing_power_bf16_gflops": 23500.0,
+      "processing_power_int8_gops": 188000.0
     },
     {
       "kind": "gpu",
@@ -26793,8 +26815,9 @@
       "memory_bandwidth_gbs": 224.0,
       "tdp_w": 130.0,
       "processing_power_fp32_gflops": 7950.0,
-      "processing_power_fp16_gflops": 7950.0,
-      "processing_power_bf16_gflops": 7950.0
+      "processing_power_fp16_gflops": 31800.0,
+      "processing_power_bf16_gflops": 31800.0,
+      "processing_power_int8_gops": 127200.0
     },
     {
       "kind": "gpu",
@@ -26818,8 +26841,9 @@
       "memory_bandwidth_gbs": 176.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 2920.0,
-      "processing_power_fp16_gflops": 2920.0,
-      "processing_power_bf16_gflops": 2920.0
+      "processing_power_fp16_gflops": 11680.0,
+      "processing_power_bf16_gflops": 11680.0,
+      "processing_power_int8_gops": 46720.0
     },
     {
       "kind": "gpu",
@@ -26842,8 +26866,9 @@
       "memory_bus_width_bit": 128,
       "memory_bandwidth_gbs": 192.0,
       "processing_power_fp32_gflops": 3760.0,
-      "processing_power_fp16_gflops": 3760.0,
-      "processing_power_bf16_gflops": 3760.0
+      "processing_power_fp16_gflops": 15040.0,
+      "processing_power_bf16_gflops": 15040.0,
+      "processing_power_int8_gops": 60160.0
     },
     {
       "kind": "gpu",
@@ -26867,8 +26892,9 @@
       "memory_bandwidth_gbs": 360.0,
       "tdp_w": 170.0,
       "processing_power_fp32_gflops": 9460.0,
-      "processing_power_fp16_gflops": 9460.0,
-      "processing_power_bf16_gflops": 9460.0
+      "processing_power_fp16_gflops": 37840.0,
+      "processing_power_bf16_gflops": 37840.0,
+      "processing_power_int8_gops": 151360.0
     },
     {
       "kind": "gpu",
@@ -26892,8 +26918,9 @@
       "memory_bandwidth_gbs": 288.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 6270.0,
-      "processing_power_fp16_gflops": 6270.0,
-      "processing_power_bf16_gflops": 6270.0
+      "processing_power_fp16_gflops": 25080.0,
+      "processing_power_bf16_gflops": 25080.0,
+      "processing_power_int8_gops": 100320.0
     },
     {
       "kind": "gpu",
@@ -26917,8 +26944,9 @@
       "memory_bandwidth_gbs": 608.0,
       "tdp_w": 200.0,
       "processing_power_fp32_gflops": 13720.0,
-      "processing_power_fp16_gflops": 13700.0,
-      "processing_power_bf16_gflops": 13700.0
+      "processing_power_fp16_gflops": 54880.0,
+      "processing_power_bf16_gflops": 54880.0,
+      "processing_power_int8_gops": 219520.0
     },
     {
       "kind": "gpu",
@@ -26942,8 +26970,9 @@
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 220.0,
       "processing_power_fp32_gflops": 17660.0,
-      "processing_power_fp16_gflops": 17660.0,
-      "processing_power_bf16_gflops": 17660.0
+      "processing_power_fp16_gflops": 70640.0,
+      "processing_power_bf16_gflops": 70640.0,
+      "processing_power_int8_gops": 282560.0
     },
     {
       "kind": "gpu",
@@ -26967,8 +26996,9 @@
       "memory_bandwidth_gbs": 384.0,
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 7990.0,
-      "processing_power_fp16_gflops": 7990.0,
-      "processing_power_bf16_gflops": 7990.0
+      "processing_power_fp16_gflops": 31960.0,
+      "processing_power_bf16_gflops": 31960.0,
+      "processing_power_int8_gops": 127840.0
     },
     {
       "kind": "gpu",
@@ -26992,8 +27022,9 @@
       "memory_bandwidth_gbs": 608.3,
       "tdp_w": 290.0,
       "processing_power_fp32_gflops": 19350.0,
-      "processing_power_fp16_gflops": 19350.0,
-      "processing_power_bf16_gflops": 19350.0
+      "processing_power_fp16_gflops": 77400.0,
+      "processing_power_bf16_gflops": 77400.0,
+      "processing_power_int8_gops": 309600.0
     },
     {
       "kind": "gpu",
@@ -27016,8 +27047,9 @@
       "memory_bus_width_bit": 256,
       "memory_bandwidth_gbs": 384.0,
       "processing_power_fp32_gflops": 6010.0,
-      "processing_power_fp16_gflops": 6010.0,
-      "processing_power_bf16_gflops": 6010.0
+      "processing_power_fp16_gflops": 24040.0,
+      "processing_power_bf16_gflops": 24040.0,
+      "processing_power_int8_gops": 96160.0
     },
     {
       "kind": "gpu",
@@ -27041,8 +27073,9 @@
       "memory_bandwidth_gbs": 912.0,
       "tdp_w": 350.0,
       "processing_power_fp32_gflops": 22600.0,
-      "processing_power_fp16_gflops": 22600.0,
-      "processing_power_bf16_gflops": 22600.0
+      "processing_power_fp16_gflops": 90400.0,
+      "processing_power_bf16_gflops": 90400.0,
+      "processing_power_int8_gops": 361600.0
     },
     {
       "kind": "gpu",
@@ -27066,8 +27099,9 @@
       "memory_bandwidth_gbs": 384.0,
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 9590.0,
-      "processing_power_fp16_gflops": 9590.0,
-      "processing_power_bf16_gflops": 9590.0
+      "processing_power_fp16_gflops": 38360.0,
+      "processing_power_bf16_gflops": 38360.0,
+      "processing_power_int8_gops": 153440.0
     },
     {
       "kind": "gpu",
@@ -27091,8 +27125,9 @@
       "memory_bandwidth_gbs": 912.0,
       "tdp_w": 350.0,
       "processing_power_fp32_gflops": 28570.0,
-      "processing_power_fp16_gflops": 28060.0,
-      "processing_power_bf16_gflops": 28060.0
+      "processing_power_fp16_gflops": 114280.0,
+      "processing_power_bf16_gflops": 114280.0,
+      "processing_power_int8_gops": 457120.0
     },
     {
       "kind": "gpu",
@@ -27115,8 +27150,9 @@
       "memory_bus_width_bit": 256,
       "memory_bandwidth_gbs": 384.0,
       "processing_power_fp32_gflops": 8680.0,
-      "processing_power_fp16_gflops": 8680.0,
-      "processing_power_bf16_gflops": 8680.0
+      "processing_power_fp16_gflops": 34720.0,
+      "processing_power_bf16_gflops": 34720.0,
+      "processing_power_int8_gops": 138880.0
     },
     {
       "kind": "gpu",
@@ -27140,8 +27176,9 @@
       "memory_bandwidth_gbs": 935.8,
       "tdp_w": 350.0,
       "processing_power_fp32_gflops": 29280.0,
-      "processing_power_fp16_gflops": 29380.0,
-      "processing_power_bf16_gflops": 29380.0
+      "processing_power_fp16_gflops": 117120.0,
+      "processing_power_bf16_gflops": 117120.0,
+      "processing_power_int8_gops": 468480.0
     },
     {
       "kind": "gpu",
@@ -27165,8 +27202,9 @@
       "memory_bandwidth_gbs": 1008.3,
       "tdp_w": 450.0,
       "processing_power_fp32_gflops": 33500.0,
-      "processing_power_fp16_gflops": 33500.0,
-      "processing_power_bf16_gflops": 33500.0
+      "processing_power_fp16_gflops": 134000.0,
+      "processing_power_bf16_gflops": 134000.0,
+      "processing_power_int8_gops": 536000.0
     },
     {
       "kind": "gpu",
@@ -27190,8 +27228,8 @@
       "memory_bandwidth_gbs": 168.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 5830.0,
-      "processing_power_fp16_gflops": 5830.0,
-      "processing_power_bf16_gflops": 5830.0,
+      "processing_power_fp16_gflops": 23320.0,
+      "processing_power_bf16_gflops": 23320.0,
       "processing_power_int8_gops": 93300.0
     },
     {
@@ -27216,8 +27254,9 @@
       "memory_bandwidth_gbs": 272.0,
       "tdp_w": 115.0,
       "processing_power_fp32_gflops": 11200.0,
-      "processing_power_fp16_gflops": 11200.0,
-      "processing_power_bf16_gflops": 11200.0
+      "processing_power_fp16_gflops": 44800.0,
+      "processing_power_bf16_gflops": 44800.0,
+      "processing_power_int8_gops": 179200.0
     },
     {
       "kind": "gpu",
@@ -27241,8 +27280,8 @@
       "memory_bandwidth_gbs": 224.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 7000.0,
-      "processing_power_fp16_gflops": 7000.0,
-      "processing_power_bf16_gflops": 7000.0,
+      "processing_power_fp16_gflops": 28000.0,
+      "processing_power_bf16_gflops": 28000.0,
       "processing_power_int8_gops": 112000.0
     },
     {
@@ -27267,8 +27306,9 @@
       "memory_bandwidth_gbs": 288.0,
       "tdp_w": 160.0,
       "processing_power_fp32_gflops": 20100.0,
-      "processing_power_fp16_gflops": 20100.0,
-      "processing_power_bf16_gflops": 20100.0
+      "processing_power_fp16_gflops": 80400.0,
+      "processing_power_bf16_gflops": 80400.0,
+      "processing_power_int8_gops": 321600.0
     },
     {
       "kind": "gpu",
@@ -27292,8 +27332,9 @@
       "memory_bandwidth_gbs": 504.0,
       "tdp_w": 200.0,
       "processing_power_fp32_gflops": 22600.0,
-      "processing_power_fp16_gflops": 22600.0,
-      "processing_power_bf16_gflops": 22600.0
+      "processing_power_fp16_gflops": 90400.0,
+      "processing_power_bf16_gflops": 90400.0,
+      "processing_power_int8_gops": 361600.0
     },
     {
       "kind": "gpu",
@@ -27317,8 +27358,8 @@
       "memory_bandwidth_gbs": 224.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 6770.0,
-      "processing_power_fp16_gflops": 6770.0,
-      "processing_power_bf16_gflops": 6770.0,
+      "processing_power_fp16_gflops": 27080.0,
+      "processing_power_bf16_gflops": 27080.0,
       "processing_power_int8_gops": 108300.0
     },
     {
@@ -27343,8 +27384,9 @@
       "memory_bandwidth_gbs": 504.0,
       "tdp_w": 220.0,
       "processing_power_fp32_gflops": 28390.0,
-      "processing_power_fp16_gflops": 28390.0,
-      "processing_power_bf16_gflops": 28390.0
+      "processing_power_fp16_gflops": 113560.0,
+      "processing_power_bf16_gflops": 113560.0,
+      "processing_power_int8_gops": 454240.0
     },
     {
       "kind": "gpu",
@@ -27368,8 +27410,9 @@
       "memory_bandwidth_gbs": 504.0,
       "tdp_w": 285.0,
       "processing_power_fp32_gflops": 35500.0,
-      "processing_power_fp16_gflops": 35500.0,
-      "processing_power_bf16_gflops": 35500.0
+      "processing_power_fp16_gflops": 142000.0,
+      "processing_power_bf16_gflops": 142000.0,
+      "processing_power_int8_gops": 568000.0
     },
     {
       "kind": "gpu",
@@ -27393,8 +27436,9 @@
       "memory_bandwidth_gbs": 672.0,
       "tdp_w": 285.0,
       "processing_power_fp32_gflops": 39540.0,
-      "processing_power_fp16_gflops": 39540.0,
-      "processing_power_bf16_gflops": 39540.0
+      "processing_power_fp16_gflops": 158160.0,
+      "processing_power_bf16_gflops": 158160.0,
+      "processing_power_int8_gops": 632640.0
     },
     {
       "kind": "gpu",
@@ -27418,8 +27462,9 @@
       "memory_bandwidth_gbs": 717.0,
       "tdp_w": 320.0,
       "processing_power_fp32_gflops": 43000.0,
-      "processing_power_fp16_gflops": 43000.0,
-      "processing_power_bf16_gflops": 43000.0
+      "processing_power_fp16_gflops": 172000.0,
+      "processing_power_bf16_gflops": 172000.0,
+      "processing_power_int8_gops": 688000.0
     },
     {
       "kind": "gpu",
@@ -27443,8 +27488,8 @@
       "memory_bandwidth_gbs": 336.0,
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 11800.0,
-      "processing_power_fp16_gflops": 11800.0,
-      "processing_power_bf16_gflops": 11800.0,
+      "processing_power_fp16_gflops": 47200.0,
+      "processing_power_bf16_gflops": 47200.0,
       "processing_power_int8_gops": 188800.0
     },
     {
@@ -27469,8 +27514,9 @@
       "memory_bandwidth_gbs": 736.0,
       "tdp_w": 320.0,
       "processing_power_fp32_gflops": 47000.0,
-      "processing_power_fp16_gflops": 47000.0,
-      "processing_power_bf16_gflops": 47000.0
+      "processing_power_fp16_gflops": 188000.0,
+      "processing_power_bf16_gflops": 188000.0,
+      "processing_power_int8_gops": 752000.0
     },
     {
       "kind": "gpu",
@@ -27494,8 +27540,9 @@
       "memory_bandwidth_gbs": 1008.0,
       "tdp_w": 450.0,
       "processing_power_fp32_gflops": 73100.0,
-      "processing_power_fp16_gflops": 73100.0,
-      "processing_power_bf16_gflops": 73100.0
+      "processing_power_fp16_gflops": 292400.0,
+      "processing_power_bf16_gflops": 292400.0,
+      "processing_power_int8_gops": 1169600.0
     },
     {
       "kind": "gpu",
@@ -27519,8 +27566,9 @@
       "memory_bandwidth_gbs": 1008.0,
       "tdp_w": 425.0,
       "processing_power_fp32_gflops": 66500.0,
-      "processing_power_fp16_gflops": 66500.0,
-      "processing_power_bf16_gflops": 66500.0
+      "processing_power_fp16_gflops": 266000.0,
+      "processing_power_bf16_gflops": 266000.0,
+      "processing_power_int8_gops": 1064000.0
     },
     {
       "kind": "gpu",
@@ -27544,8 +27592,8 @@
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 18000.0,
-      "processing_power_fp16_gflops": 18000.0,
-      "processing_power_bf16_gflops": 18000.0,
+      "processing_power_fp16_gflops": 72000.0,
+      "processing_power_bf16_gflops": 72000.0,
       "processing_power_int8_gops": 289500.0
     },
     {
@@ -27570,8 +27618,9 @@
       "memory_bandwidth_gbs": 320.0,
       "tdp_w": 130.0,
       "processing_power_fp32_gflops": 13170.0,
-      "processing_power_fp16_gflops": 13170.0,
-      "processing_power_bf16_gflops": 13170.0
+      "processing_power_fp16_gflops": 52680.0,
+      "processing_power_bf16_gflops": 52680.0,
+      "processing_power_int8_gops": 210720.0
     },
     {
       "kind": "gpu",
@@ -27595,8 +27644,9 @@
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 145.0,
       "processing_power_fp32_gflops": 19180.0,
-      "processing_power_fp16_gflops": 19180.0,
-      "processing_power_bf16_gflops": 19180.0
+      "processing_power_fp16_gflops": 76720.0,
+      "processing_power_bf16_gflops": 76720.0,
+      "processing_power_int8_gops": 306880.0
     },
     {
       "kind": "gpu",
@@ -27620,8 +27670,9 @@
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 180.0,
       "processing_power_fp32_gflops": 23700.0,
-      "processing_power_fp16_gflops": 23700.0,
-      "processing_power_bf16_gflops": 23700.0
+      "processing_power_fp16_gflops": 94800.0,
+      "processing_power_bf16_gflops": 94800.0,
+      "processing_power_int8_gops": 379200.0
     },
     {
       "kind": "gpu",
@@ -27645,8 +27696,9 @@
       "memory_bandwidth_gbs": 672.0,
       "tdp_w": 250.0,
       "processing_power_fp32_gflops": 30870.0,
-      "processing_power_fp16_gflops": 30870.0,
-      "processing_power_bf16_gflops": 30870.0
+      "processing_power_fp16_gflops": 123480.0,
+      "processing_power_bf16_gflops": 123480.0,
+      "processing_power_int8_gops": 493920.0
     },
     {
       "kind": "gpu",
@@ -27670,8 +27722,9 @@
       "memory_bandwidth_gbs": 896.0,
       "tdp_w": 300.0,
       "processing_power_fp32_gflops": 44350.0,
-      "processing_power_fp16_gflops": 44350.0,
-      "processing_power_bf16_gflops": 44350.0
+      "processing_power_fp16_gflops": 177400.0,
+      "processing_power_bf16_gflops": 177400.0,
+      "processing_power_int8_gops": 709600.0
     },
     {
       "kind": "gpu",
@@ -27695,8 +27748,9 @@
       "memory_bandwidth_gbs": 960.0,
       "tdp_w": 360.0,
       "processing_power_fp32_gflops": 56280.0,
-      "processing_power_fp16_gflops": 56280.0,
-      "processing_power_bf16_gflops": 56280.0
+      "processing_power_fp16_gflops": 225120.0,
+      "processing_power_bf16_gflops": 225120.0,
+      "processing_power_int8_gops": 900480.0
     },
     {
       "kind": "gpu",
@@ -27720,8 +27774,9 @@
       "memory_bandwidth_gbs": 1792.0,
       "tdp_w": 575.0,
       "processing_power_fp32_gflops": 104770.0,
-      "processing_power_fp16_gflops": 104770.0,
-      "processing_power_bf16_gflops": 104770.0
+      "processing_power_fp16_gflops": 419080.0,
+      "processing_power_bf16_gflops": 419080.0,
+      "processing_power_int8_gops": 1676320.0
     },
     {
       "kind": "gpu",
@@ -28470,7 +28525,9 @@
       "cuda_compute_capability": "9.0",
       "processing_power_fp32_gflops": 51200.0,
       "processing_power_fp16_gflops": 756400.0,
-      "processing_power_bf16_gflops": 756400.0
+      "processing_power_bf16_gflops": 756400.0,
+      "processing_power_fp8_gflops": 1638400.0,
+      "processing_power_int8_gops": 3276800.0
     },
     {
       "kind": "gpu",
@@ -28492,7 +28549,9 @@
       "cuda_compute_capability": "9.0",
       "processing_power_fp32_gflops": 66900.0,
       "processing_power_fp16_gflops": 989400.0,
-      "processing_power_bf16_gflops": 989400.0
+      "processing_power_bf16_gflops": 989400.0,
+      "processing_power_fp8_gflops": 2140800.0,
+      "processing_power_int8_gops": 4281600.0
     },
     {
       "kind": "gpu",
@@ -28514,7 +28573,9 @@
       "cuda_compute_capability": "9.0",
       "processing_power_fp32_gflops": 60320.0,
       "processing_power_fp16_gflops": 835000.0,
-      "processing_power_bf16_gflops": 835000.0
+      "processing_power_bf16_gflops": 835000.0,
+      "processing_power_fp8_gflops": 1930240.0,
+      "processing_power_int8_gops": 3860480.0
     },
     {
       "kind": "gpu",
@@ -28536,7 +28597,9 @@
       "cuda_compute_capability": "9.0",
       "processing_power_fp32_gflops": 66910.0,
       "processing_power_fp16_gflops": 989000.0,
-      "processing_power_bf16_gflops": 989000.0
+      "processing_power_bf16_gflops": 989000.0,
+      "processing_power_fp8_gflops": 2141120.0,
+      "processing_power_int8_gops": 4282240.0
     },
     {
       "kind": "gpu",
@@ -28556,7 +28619,11 @@
       "memory_bandwidth_gbs": 3360.0,
       "tdp_w": 700.0,
       "cuda_compute_capability": "9.0",
-      "processing_power_fp32_gflops": 59300.0
+      "processing_power_fp32_gflops": 59300.0,
+      "processing_power_fp16_gflops": 948800.0,
+      "processing_power_bf16_gflops": 948800.0,
+      "processing_power_fp8_gflops": 1897600.0,
+      "processing_power_int8_gops": 3795200.0
     },
     {
       "kind": "gpu",
@@ -28678,7 +28745,9 @@
       "cuda_compute_capability": "8.9",
       "processing_power_fp32_gflops": 30300.0,
       "processing_power_fp16_gflops": 121000.0,
-      "processing_power_bf16_gflops": 121000.0
+      "processing_power_bf16_gflops": 121000.0,
+      "processing_power_fp8_gflops": 242400.0,
+      "processing_power_int8_gops": 484800.0
     },
     {
       "kind": "gpu",
@@ -28700,7 +28769,9 @@
       "cuda_compute_capability": "8.9",
       "processing_power_fp32_gflops": 90520.0,
       "processing_power_fp16_gflops": 362100.0,
-      "processing_power_bf16_gflops": 362100.0
+      "processing_power_bf16_gflops": 362100.0,
+      "processing_power_fp8_gflops": 724160.0,
+      "processing_power_int8_gops": 1448320.0
     },
     {
       "kind": "gpu",
@@ -33272,7 +33343,8 @@
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 5600.0,
       "processing_power_fp16_gflops": 11200.0,
-      "processing_power_bf16_gflops": 11200.0
+      "processing_power_bf16_gflops": 11200.0,
+      "processing_power_int8_gops": 89600.0
     },
     {
       "kind": "gpu",
@@ -33297,7 +33369,8 @@
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 6359.0,
       "processing_power_fp16_gflops": 12720.0,
-      "processing_power_bf16_gflops": 12720.0
+      "processing_power_bf16_gflops": 12720.0,
+      "processing_power_int8_gops": 101744.0
     },
     {
       "kind": "gpu",
@@ -33320,7 +33393,10 @@
       "memory_bus_width_bit": 256,
       "memory_bandwidth_gbs": 416.0,
       "tdp_w": 100.0,
-      "processing_power_fp32_gflops": 7119.0
+      "processing_power_fp32_gflops": 7119.0,
+      "processing_power_fp16_gflops": 28476.0,
+      "processing_power_bf16_gflops": 28476.0,
+      "processing_power_int8_gops": 113904.0
     },
     {
       "kind": "gpu",
@@ -33345,7 +33421,8 @@
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 7066.0,
       "processing_power_fp16_gflops": 14130.0,
-      "processing_power_bf16_gflops": 14130.0
+      "processing_power_bf16_gflops": 14130.0,
+      "processing_power_int8_gops": 113056.0
     },
     {
       "kind": "gpu",
@@ -33370,7 +33447,8 @@
       "tdp_w": 110.0,
       "processing_power_fp32_gflops": 7987.0,
       "processing_power_fp16_gflops": 15970.0,
-      "processing_power_bf16_gflops": 15970.0
+      "processing_power_bf16_gflops": 15970.0,
+      "processing_power_int8_gops": 127792.0
     },
     {
       "kind": "gpu",
@@ -33393,7 +33471,10 @@
       "memory_bus_width_bit": 256,
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 125.0,
-      "processing_power_fp32_gflops": 11150.0
+      "processing_power_fp32_gflops": 11150.0,
+      "processing_power_fp16_gflops": 44600.0,
+      "processing_power_bf16_gflops": 44600.0,
+      "processing_power_int8_gops": 178400.0
     },
     {
       "kind": "gpu",
@@ -33418,7 +33499,8 @@
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 8294.0,
       "processing_power_fp16_gflops": 16590.0,
-      "processing_power_bf16_gflops": 16590.0
+      "processing_power_bf16_gflops": 16590.0,
+      "processing_power_int8_gops": 132704.0
     },
     {
       "kind": "gpu",
@@ -33443,7 +33525,8 @@
       "tdp_w": 110.0,
       "processing_power_fp32_gflops": 9492.0,
       "processing_power_fp16_gflops": 18980.0,
-      "processing_power_bf16_gflops": 18980.0
+      "processing_power_bf16_gflops": 18980.0,
+      "processing_power_int8_gops": 151872.0
     },
     {
       "kind": "gpu",
@@ -33466,7 +33549,10 @@
       "memory_bus_width_bit": 384,
       "memory_bandwidth_gbs": 672.0,
       "tdp_w": 100.0,
-      "processing_power_fp32_gflops": 16309.999999999998
+      "processing_power_fp32_gflops": 16309.999999999998,
+      "processing_power_fp16_gflops": 65239.99999999999,
+      "processing_power_bf16_gflops": 65239.99999999999,
+      "processing_power_int8_gops": 260959.99999999997
     },
     {
       "kind": "gpu",
@@ -33491,7 +33577,8 @@
       "tdp_w": 200.0,
       "processing_power_fp32_gflops": 13410.0,
       "processing_power_fp16_gflops": 26820.0,
-      "processing_power_bf16_gflops": 26820.0
+      "processing_power_bf16_gflops": 26820.0,
+      "processing_power_int8_gops": 214560.0
     },
     {
       "kind": "gpu",
@@ -33514,7 +33601,10 @@
       "memory_bus_width_bit": 384,
       "memory_bandwidth_gbs": 672.0,
       "tdp_w": 100.0,
-      "processing_power_fp32_gflops": 16309.999999999998
+      "processing_power_fp32_gflops": 16309.999999999998,
+      "processing_power_fp16_gflops": 65239.99999999999,
+      "processing_power_bf16_gflops": 65239.99999999999,
+      "processing_power_int8_gops": 260959.99999999997
     },
     {
       "kind": "gpu",
@@ -34191,8 +34281,10 @@
       "memory_bandwidth_gbs": 192.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 10370.0,
-      "processing_power_fp16_gflops": 10370.0,
-      "processing_power_bf16_gflops": 10370.0
+      "processing_power_fp16_gflops": 41480.0,
+      "processing_power_bf16_gflops": 41480.0,
+      "processing_power_fp8_gflops": 82960.0,
+      "processing_power_int8_gops": 165920.0
     },
     {
       "kind": "gpu",
@@ -34215,8 +34307,10 @@
       "memory_bandwidth_gbs": 224.0,
       "tdp_w": 70.0,
       "processing_power_fp32_gflops": 12000.0,
-      "processing_power_fp16_gflops": 12000.0,
-      "processing_power_bf16_gflops": 12000.0
+      "processing_power_fp16_gflops": 48000.0,
+      "processing_power_bf16_gflops": 48000.0,
+      "processing_power_fp8_gflops": 96000.0,
+      "processing_power_int8_gops": 192000.0
     },
     {
       "kind": "gpu",
@@ -34239,8 +34333,10 @@
       "memory_bandwidth_gbs": 256.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 12990.0,
-      "processing_power_fp16_gflops": 12990.0,
-      "processing_power_bf16_gflops": 12990.0
+      "processing_power_fp16_gflops": 51960.0,
+      "processing_power_bf16_gflops": 51960.0,
+      "processing_power_fp8_gflops": 103920.0,
+      "processing_power_int8_gops": 207840.0
     },
     {
       "kind": "gpu",
@@ -34263,8 +34359,10 @@
       "memory_bandwidth_gbs": 256.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 15620.0,
-      "processing_power_fp16_gflops": 15620.0,
-      "processing_power_bf16_gflops": 15620.0
+      "processing_power_fp16_gflops": 62480.0,
+      "processing_power_bf16_gflops": 62480.0,
+      "processing_power_fp8_gflops": 124960.0,
+      "processing_power_int8_gops": 249920.0
     },
     {
       "kind": "gpu",
@@ -34287,8 +34385,10 @@
       "memory_bandwidth_gbs": 432.0,
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 15820.0,
-      "processing_power_fp16_gflops": 15820.0,
-      "processing_power_bf16_gflops": 15820.0
+      "processing_power_fp16_gflops": 63280.0,
+      "processing_power_bf16_gflops": 63280.0,
+      "processing_power_fp8_gflops": 126560.0,
+      "processing_power_int8_gops": 253120.0
     },
     {
       "kind": "gpu",
@@ -34311,8 +34411,10 @@
       "memory_bandwidth_gbs": 360.0,
       "tdp_w": 130.0,
       "processing_power_fp32_gflops": 26730.0,
-      "processing_power_fp16_gflops": 26730.0,
-      "processing_power_bf16_gflops": 26730.0
+      "processing_power_fp16_gflops": 106920.0,
+      "processing_power_bf16_gflops": 106920.0,
+      "processing_power_fp8_gflops": 213840.0,
+      "processing_power_int8_gops": 427680.0
     },
     {
       "kind": "gpu",
@@ -34335,8 +34437,10 @@
       "memory_bandwidth_gbs": 432.0,
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 24720.0,
-      "processing_power_fp16_gflops": 24720.0,
-      "processing_power_bf16_gflops": 24720.0
+      "processing_power_fp16_gflops": 98880.0,
+      "processing_power_bf16_gflops": 98880.0,
+      "processing_power_fp8_gflops": 197760.0,
+      "processing_power_int8_gops": 395520.0
     },
     {
       "kind": "gpu",
@@ -34359,8 +34463,10 @@
       "memory_bandwidth_gbs": 280.0,
       "tdp_w": 70.0,
       "processing_power_fp32_gflops": 19230.0,
-      "processing_power_fp16_gflops": 19230.0,
-      "processing_power_bf16_gflops": 19230.0
+      "processing_power_fp16_gflops": 76920.0,
+      "processing_power_bf16_gflops": 76920.0,
+      "processing_power_fp8_gflops": 153840.0,
+      "processing_power_int8_gops": 307680.0
     },
     {
       "kind": "gpu",
@@ -34383,8 +34489,10 @@
       "memory_bandwidth_gbs": 432.0,
       "tdp_w": 210.0,
       "processing_power_fp32_gflops": 39630.0,
-      "processing_power_fp16_gflops": 39630.0,
-      "processing_power_bf16_gflops": 39630.0
+      "processing_power_fp16_gflops": 158520.0,
+      "processing_power_bf16_gflops": 158520.0,
+      "processing_power_fp8_gflops": 317040.0,
+      "processing_power_int8_gops": 634080.0
     },
     {
       "kind": "gpu",
@@ -34407,8 +34515,10 @@
       "memory_bandwidth_gbs": 128.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 8294.0,
-      "processing_power_fp16_gflops": 8294.0,
-      "processing_power_bf16_gflops": 8294.0
+      "processing_power_fp16_gflops": 33176.0,
+      "processing_power_bf16_gflops": 33176.0,
+      "processing_power_fp8_gflops": 66352.0,
+      "processing_power_int8_gops": 132704.0
     },
     {
       "kind": "gpu",
@@ -34431,8 +34541,10 @@
       "memory_bandwidth_gbs": 576.0,
       "tdp_w": 250.0,
       "processing_power_fp32_gflops": 65280.0,
-      "processing_power_fp16_gflops": 65280.0,
-      "processing_power_bf16_gflops": 65280.0
+      "processing_power_fp16_gflops": 261120.0,
+      "processing_power_bf16_gflops": 261120.0,
+      "processing_power_fp8_gflops": 522240.0,
+      "processing_power_int8_gops": 1044480.0
     },
     {
       "kind": "gpu",
@@ -34455,8 +34567,10 @@
       "memory_bandwidth_gbs": 576.0,
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 41150.0,
-      "processing_power_fp16_gflops": 41150.0,
-      "processing_power_bf16_gflops": 41150.0
+      "processing_power_fp16_gflops": 164600.0,
+      "processing_power_bf16_gflops": 164600.0,
+      "processing_power_fp8_gflops": 329200.0,
+      "processing_power_int8_gops": 658400.0
     },
     {
       "kind": "gpu",
@@ -34479,8 +34593,10 @@
       "memory_bandwidth_gbs": 960.0,
       "tdp_w": 285.0,
       "processing_power_fp32_gflops": 69270.0,
-      "processing_power_fp16_gflops": 69270.0,
-      "processing_power_bf16_gflops": 69270.0
+      "processing_power_fp16_gflops": 277080.0,
+      "processing_power_bf16_gflops": 277080.0,
+      "processing_power_fp8_gflops": 554160.0,
+      "processing_power_int8_gops": 1108320.0
     },
     {
       "kind": "gpu",
@@ -34503,8 +34619,10 @@
       "memory_bandwidth_gbs": 960.0,
       "tdp_w": 300.0,
       "processing_power_fp32_gflops": 91060.0,
-      "processing_power_fp16_gflops": 91060.0,
-      "processing_power_bf16_gflops": 91060.0
+      "processing_power_fp16_gflops": 364240.0,
+      "processing_power_bf16_gflops": 364240.0,
+      "processing_power_fp8_gflops": 728480.0,
+      "processing_power_int8_gops": 1456960.0
     },
     {
       "kind": "gpu",
@@ -34527,8 +34645,9 @@
       "memory_bandwidth_gbs": 192.0,
       "tdp_w": 50.0,
       "processing_power_fp32_gflops": 6737.0,
-      "processing_power_fp16_gflops": 6737.0,
-      "processing_power_bf16_gflops": 6737.0
+      "processing_power_fp16_gflops": 107792.0,
+      "processing_power_bf16_gflops": 107792.0,
+      "processing_power_int8_gops": 431168.0
     },
     {
       "kind": "gpu",
@@ -34551,8 +34670,9 @@
       "memory_bandwidth_gbs": 224.0,
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 4669.0,
-      "processing_power_fp16_gflops": 4669.0,
-      "processing_power_bf16_gflops": 4669.0
+      "processing_power_fp16_gflops": 74704.0,
+      "processing_power_bf16_gflops": 74704.0,
+      "processing_power_int8_gops": 298816.0
     },
     {
       "kind": "gpu",
@@ -34575,8 +34695,9 @@
       "memory_bandwidth_gbs": 168.0,
       "tdp_w": 95.0,
       "processing_power_fp32_gflops": 5837.0,
-      "processing_power_fp16_gflops": 5837.0,
-      "processing_power_bf16_gflops": 5837.0
+      "processing_power_fp16_gflops": 93392.0,
+      "processing_power_bf16_gflops": 93392.0,
+      "processing_power_int8_gops": 373568.0
     },
     {
       "kind": "gpu",
@@ -34599,8 +34720,9 @@
       "memory_bandwidth_gbs": 288.0,
       "tdp_w": 70.0,
       "processing_power_fp32_gflops": 7987.0,
-      "processing_power_fp16_gflops": 7987.0,
-      "processing_power_bf16_gflops": 7987.0
+      "processing_power_fp16_gflops": 31948.0,
+      "processing_power_bf16_gflops": 31948.0,
+      "processing_power_int8_gops": 127792.0
     },
     {
       "kind": "gpu",
@@ -34623,8 +34745,9 @@
       "memory_bandwidth_gbs": 192.0,
       "tdp_w": 95.0,
       "processing_power_fp32_gflops": 8637.0,
-      "processing_power_fp16_gflops": 8637.0,
-      "processing_power_bf16_gflops": 8637.0
+      "processing_power_fp16_gflops": 34548.0,
+      "processing_power_bf16_gflops": 34548.0,
+      "processing_power_int8_gops": 138192.0
     },
     {
       "kind": "gpu",
@@ -34647,8 +34770,9 @@
       "memory_bandwidth_gbs": 264.0,
       "tdp_w": 70.0,
       "processing_power_fp32_gflops": 10080.0,
-      "processing_power_fp16_gflops": 10080.0,
-      "processing_power_bf16_gflops": 10080.0
+      "processing_power_fp16_gflops": 161280.0,
+      "processing_power_bf16_gflops": 161280.0,
+      "processing_power_int8_gops": 645120.0
     },
     {
       "kind": "gpu",
@@ -34671,8 +34795,9 @@
       "memory_bandwidth_gbs": 336.0,
       "tdp_w": 115.0,
       "processing_power_fp32_gflops": 11800.0,
-      "processing_power_fp16_gflops": 11800.0,
-      "processing_power_bf16_gflops": 11800.0
+      "processing_power_fp16_gflops": 188800.0,
+      "processing_power_bf16_gflops": 188800.0,
+      "processing_power_int8_gops": 755200.0
     },
     {
       "kind": "gpu",
@@ -34695,8 +34820,9 @@
       "memory_bandwidth_gbs": 96.0,
       "tdp_w": 50.0,
       "processing_power_fp32_gflops": 2706.0,
-      "processing_power_fp16_gflops": 2706.0,
-      "processing_power_bf16_gflops": 2706.0
+      "processing_power_fp16_gflops": 10824.0,
+      "processing_power_bf16_gflops": 10824.0,
+      "processing_power_int8_gops": 43296.0
     },
     {
       "kind": "gpu",
@@ -34719,8 +34845,9 @@
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 140.0,
       "processing_power_fp32_gflops": 19170.0,
-      "processing_power_fp16_gflops": 19170.0,
-      "processing_power_bf16_gflops": 19170.0
+      "processing_power_fp16_gflops": 76680.0,
+      "processing_power_bf16_gflops": 76680.0,
+      "processing_power_int8_gops": 306720.0
     },
     {
       "kind": "gpu",
@@ -34743,8 +34870,9 @@
       "memory_bandwidth_gbs": 384.0,
       "tdp_w": 140.0,
       "processing_power_fp32_gflops": 17200.0,
-      "processing_power_fp16_gflops": 17200.0,
-      "processing_power_bf16_gflops": 17200.0
+      "processing_power_fp16_gflops": 68800.0,
+      "processing_power_bf16_gflops": 68800.0,
+      "processing_power_int8_gops": 275200.0
     },
     {
       "kind": "gpu",
@@ -34767,8 +34895,9 @@
       "memory_bandwidth_gbs": 640.0,
       "tdp_w": 200.0,
       "processing_power_fp32_gflops": 23660.0,
-      "processing_power_fp16_gflops": 23660.0,
-      "processing_power_bf16_gflops": 23660.0
+      "processing_power_fp16_gflops": 94640.0,
+      "processing_power_bf16_gflops": 94640.0,
+      "processing_power_int8_gops": 378560.0
     },
     {
       "kind": "gpu",
@@ -34791,8 +34920,9 @@
       "memory_bandwidth_gbs": 512.0,
       "tdp_w": 140.0,
       "processing_power_fp32_gflops": 17660.0,
-      "processing_power_fp16_gflops": 17660.0,
-      "processing_power_bf16_gflops": 17660.0
+      "processing_power_fp16_gflops": 70640.0,
+      "processing_power_bf16_gflops": 70640.0,
+      "processing_power_int8_gops": 282560.0
     },
     {
       "kind": "gpu",
@@ -34815,8 +34945,9 @@
       "memory_bandwidth_gbs": 112.0,
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 6296.0,
-      "processing_power_fp16_gflops": 6296.0,
-      "processing_power_bf16_gflops": 6296.0
+      "processing_power_fp16_gflops": 25184.0,
+      "processing_power_bf16_gflops": 25184.0,
+      "processing_power_int8_gops": 100736.0
     },
     {
       "kind": "gpu",
@@ -34839,8 +34970,9 @@
       "memory_bandwidth_gbs": 768.0,
       "tdp_w": 230.0,
       "processing_power_fp32_gflops": 27770.0,
-      "processing_power_fp16_gflops": 27770.0,
-      "processing_power_bf16_gflops": 27770.0
+      "processing_power_fp16_gflops": 111080.0,
+      "processing_power_bf16_gflops": 111080.0,
+      "processing_power_int8_gops": 444320.0
     },
     {
       "kind": "gpu",
@@ -34863,8 +34995,9 @@
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 150.0,
       "processing_power_fp32_gflops": 19350.0,
-      "processing_power_fp16_gflops": 19350.0,
-      "processing_power_bf16_gflops": 19350.0
+      "processing_power_fp16_gflops": 77400.0,
+      "processing_power_bf16_gflops": 77400.0,
+      "processing_power_int8_gops": 309600.0
     },
     {
       "kind": "gpu",
@@ -34887,8 +35020,9 @@
       "memory_bandwidth_gbs": 768.0,
       "tdp_w": 230.0,
       "processing_power_fp32_gflops": 34100.0,
-      "processing_power_fp16_gflops": 34100.0,
-      "processing_power_bf16_gflops": 34100.0
+      "processing_power_fp16_gflops": 136400.0,
+      "processing_power_bf16_gflops": 136400.0,
+      "processing_power_int8_gops": 545600.0
     },
     {
       "kind": "gpu",
@@ -34911,8 +35045,9 @@
       "memory_bandwidth_gbs": 512.0,
       "tdp_w": 165.0,
       "processing_power_fp32_gflops": 22270.0,
-      "processing_power_fp16_gflops": 22270.0,
-      "processing_power_bf16_gflops": 22270.0
+      "processing_power_fp16_gflops": 89080.0,
+      "processing_power_bf16_gflops": 89080.0,
+      "processing_power_int8_gops": 356320.0
     },
     {
       "kind": "gpu",
@@ -34935,8 +35070,9 @@
       "memory_bandwidth_gbs": 768.0,
       "tdp_w": 300.0,
       "processing_power_fp32_gflops": 38710.0,
-      "processing_power_fp16_gflops": 38710.0,
-      "processing_power_bf16_gflops": 38710.0
+      "processing_power_fp16_gflops": 154840.0,
+      "processing_power_bf16_gflops": 154840.0,
+      "processing_power_int8_gops": 619360.0
     },
     {
       "kind": "gpu",
@@ -34959,8 +35095,9 @@
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 12900.0,
-      "processing_power_fp16_gflops": 12900.0,
-      "processing_power_bf16_gflops": 12900.0
+      "processing_power_fp16_gflops": 51600.0,
+      "processing_power_bf16_gflops": 51600.0,
+      "processing_power_int8_gops": 206400.0
     },
     {
       "kind": "gpu",
@@ -34983,8 +35120,9 @@
       "memory_bandwidth_gbs": 288.0,
       "tdp_w": 70.0,
       "processing_power_fp32_gflops": 17030.0,
-      "processing_power_fp16_gflops": 17030.0,
-      "processing_power_bf16_gflops": 17030.0
+      "processing_power_fp16_gflops": 68120.0,
+      "processing_power_bf16_gflops": 68120.0,
+      "processing_power_int8_gops": 272480.0
     },
     {
       "kind": "gpu",
@@ -35007,8 +35145,9 @@
       "memory_bandwidth_gbs": 448.0,
       "tdp_w": 45.0,
       "processing_power_fp32_gflops": 9684.0,
-      "processing_power_fp16_gflops": 9684.0,
-      "processing_power_bf16_gflops": 9684.0
+      "processing_power_fp16_gflops": 38736.0,
+      "processing_power_bf16_gflops": 38736.0,
+      "processing_power_int8_gops": 154944.0
     },
     {
       "kind": "gpu",
@@ -35031,8 +35170,9 @@
       "memory_bandwidth_gbs": 672.0,
       "tdp_w": 60.0,
       "processing_power_fp32_gflops": 17040.0,
-      "processing_power_fp16_gflops": 17040.0,
-      "processing_power_bf16_gflops": 17040.0
+      "processing_power_fp16_gflops": 68160.0,
+      "processing_power_bf16_gflops": 68160.0,
+      "processing_power_int8_gops": 272640.0
     },
     {
       "kind": "gpu",
@@ -35055,8 +35195,9 @@
       "memory_bandwidth_gbs": 672.0,
       "tdp_w": 140.0,
       "processing_power_fp32_gflops": 46900.0,
-      "processing_power_fp16_gflops": 46900.0,
-      "processing_power_bf16_gflops": 46900.0
+      "processing_power_fp16_gflops": 187600.0,
+      "processing_power_bf16_gflops": 187600.0,
+      "processing_power_int8_gops": 750400.0
     },
     {
       "kind": "gpu",
@@ -35079,8 +35220,9 @@
       "memory_bandwidth_gbs": 896.0,
       "tdp_w": 80.0,
       "processing_power_fp32_gflops": 23040.0,
-      "processing_power_fp16_gflops": 23040.0,
-      "processing_power_bf16_gflops": 23040.0
+      "processing_power_fp16_gflops": 92160.0,
+      "processing_power_bf16_gflops": 92160.0,
+      "processing_power_int8_gops": 368640.0
     },
     {
       "kind": "gpu",
@@ -35103,8 +35245,9 @@
       "memory_bandwidth_gbs": 896.0,
       "tdp_w": 200.0,
       "processing_power_fp32_gflops": 54940.0,
-      "processing_power_fp16_gflops": 54940.0,
-      "processing_power_bf16_gflops": 54940.0
+      "processing_power_fp16_gflops": 219760.0,
+      "processing_power_bf16_gflops": 219760.0,
+      "processing_power_int8_gops": 879040.0
     },
     {
       "kind": "gpu",
@@ -35127,8 +35270,9 @@
       "memory_bandwidth_gbs": 336.0,
       "tdp_w": 35.0,
       "processing_power_fp32_gflops": 9032.0,
-      "processing_power_fp16_gflops": 9032.0,
-      "processing_power_bf16_gflops": 9032.0
+      "processing_power_fp16_gflops": 36128.0,
+      "processing_power_bf16_gflops": 36128.0,
+      "processing_power_int8_gops": 144512.0
     },
     {
       "kind": "gpu",
@@ -35151,8 +35295,9 @@
       "memory_bandwidth_gbs": 1344.0,
       "tdp_w": 300.0,
       "processing_power_fp32_gflops": 73690.0,
-      "processing_power_fp16_gflops": 73690.0,
-      "processing_power_bf16_gflops": 73690.0
+      "processing_power_fp16_gflops": 294760.0,
+      "processing_power_bf16_gflops": 294760.0,
+      "processing_power_int8_gops": 1179040.0
     },
     {
       "kind": "gpu",
@@ -35175,8 +35320,9 @@
       "memory_bandwidth_gbs": 896.0,
       "tdp_w": 95.0,
       "processing_power_fp32_gflops": 31800.0,
-      "processing_power_fp16_gflops": 31800.0,
-      "processing_power_bf16_gflops": 31800.0
+      "processing_power_fp16_gflops": 127200.0,
+      "processing_power_bf16_gflops": 127200.0,
+      "processing_power_int8_gops": 508800.0
     },
     {
       "kind": "gpu",
@@ -35199,8 +35345,9 @@
       "memory_bandwidth_gbs": 1792.0,
       "tdp_w": 300.0,
       "processing_power_fp32_gflops": 110100.0,
-      "processing_power_fp16_gflops": 110100.0,
-      "processing_power_bf16_gflops": 110100.0
+      "processing_power_fp16_gflops": 440400.0,
+      "processing_power_bf16_gflops": 440400.0,
+      "processing_power_int8_gops": 1761600.0
     },
     {
       "kind": "gpu",
@@ -35223,8 +35370,9 @@
       "memory_bandwidth_gbs": 1792.0,
       "tdp_w": 600.0,
       "processing_power_fp32_gflops": 126000.0,
-      "processing_power_fp16_gflops": 126000.0,
-      "processing_power_bf16_gflops": 126000.0
+      "processing_power_fp16_gflops": 504000.0,
+      "processing_power_bf16_gflops": 504000.0,
+      "processing_power_int8_gops": 2016000.0
     },
     {
       "kind": "gpu",
@@ -35455,7 +35603,8 @@
       "tdp_w": 280.0,
       "processing_power_fp32_gflops": 12440.0,
       "processing_power_fp16_gflops": 24880.0,
-      "processing_power_bf16_gflops": 24880.0
+      "processing_power_bf16_gflops": 24880.0,
+      "processing_power_int8_gops": 199040.0
     },
     {
       "kind": "gpu",
