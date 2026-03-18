@@ -153,7 +153,7 @@ class LlmEstimator:
 
     def _gpu_compute_gflops_for_model(self, *, model: ModelSpec, gpu: GpuSpec) -> float:
         for metric in self._preferred_gpu_compute_metrics(model=model):
-            value = getattr(gpu, metric)
+            value = self._gpu_metric_value(metric=metric, gpu=gpu)
             if value:
                 return float(value)
         return 0.0
@@ -199,3 +199,76 @@ class LlmEstimator:
                 "processing_power_fp32_gflops",
             )
         return ("processing_power_fp32_gflops",)
+
+    def _gpu_metric_value(self, *, metric: str, gpu: GpuSpec) -> float | None:
+        value = getattr(gpu, metric)
+        derived = self._derived_tensor_metric(metric=metric, gpu=gpu)
+        if derived is not None:
+            return derived
+        if value:
+            return float(value)
+        return None
+
+    def _derived_tensor_metric(self, *, metric: str, gpu: GpuSpec) -> float | None:
+        if metric not in {
+            "processing_power_fp16_gflops",
+            "processing_power_bf16_gflops",
+            "processing_power_fp8_gflops",
+            "processing_power_int8_gops",
+        }:
+            return None
+        if gpu.vendor.casefold() != "nvidia":
+            return None
+
+        fp32 = gpu.processing_power_fp32_gflops or 0.0
+        if fp32 <= 0:
+            return None
+
+        current = getattr(gpu, metric)
+        if current and current > fp32 * 1.05:
+            return None
+
+        tensor_multiplier = self._nvidia_tensor_multiplier(gpu)
+        if tensor_multiplier is None:
+            return None
+
+        if metric in {"processing_power_fp16_gflops", "processing_power_bf16_gflops"}:
+            return fp32 * tensor_multiplier
+        if metric == "processing_power_fp8_gflops":
+            if not self._has_native_fp8_support(gpu):
+                return None
+            return fp32 * tensor_multiplier * 2
+        if metric == "processing_power_int8_gops":
+            return fp32 * tensor_multiplier * 4
+        return None
+
+    def _nvidia_tensor_multiplier(self, gpu: GpuSpec) -> float | None:
+        capability = self._cuda_compute_capability(gpu)
+        if capability is not None:
+            if capability >= 9.0:
+                return 16.0
+            if capability >= 8.0:
+                return 4.0
+
+        name = gpu.canonical_name.casefold()
+        if any(token in name for token in ("h100", "h200", "h800", "a100", "a30")):
+            return 16.0
+        if any(token in name for token in ("rtx", "a10", "a40", "l4", "l40")):
+            return 4.0
+        return None
+
+    def _has_native_fp8_support(self, gpu: GpuSpec) -> bool:
+        capability = self._cuda_compute_capability(gpu)
+        if capability is not None:
+            return capability >= 8.9
+        name = gpu.canonical_name.casefold()
+        return any(token in name for token in ("h100", "h200", "h800", "l4", "l40", "ada"))
+
+    def _cuda_compute_capability(self, gpu: GpuSpec) -> float | None:
+        raw = (gpu.cuda_compute_capability or "").strip()
+        if not raw:
+            return None
+        try:
+            return float(raw)
+        except ValueError:
+            return None

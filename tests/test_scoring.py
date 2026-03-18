@@ -162,3 +162,34 @@ class ScoringEngineTest(unittest.TestCase):
 
         self.assertGreater(decode_tps, self.engine.config.great_decode_tps)
         self.assertEqual(report.verdict, "RUNS GREAT")
+
+    def test_nvidia_tensor_core_fallback_derives_low_precision_metric_when_catalog_is_flat(self) -> None:
+        gpu = GpuSpec(
+            canonical_name="NVIDIA RTX 6000 Ada Generation",
+            aliases=[],
+            vendor="nvidia",
+            memory_size_gib=48.0,
+            memory_bandwidth_gbs=960.0,
+            cuda_compute_capability="8.9",
+            processing_power_fp32_gflops=91_060.0,
+            processing_power_fp16_gflops=91_060.0,
+            processing_power_bf16_gflops=91_060.0,
+            source_url="https://example.com/gpu",
+            raw_ref=RawReference(cache_key="gpu"),
+        )
+        model = ModelSpec(
+            canonical_name="Qwen/Qwen2.5-14B@bf16",
+            aliases=[],
+            source_url="https://example.com/model",
+            raw_ref=RawReference(cache_key="model"),
+            hf_repo_id="Qwen/Qwen2.5-14B",
+            variant=VariantSpec(precision="bf16", format="safetensors"),
+            task="text-generation",
+            architecture_hint=ArchitectureHint(model_type="qwen2"),
+            num_parameters=14_770_033_664,
+            weights=WeightsInfo(total_size_bytes=29_540_067_328),
+        )
+
+        compute_gflops = self.engine.estimator._gpu_compute_gflops_for_model(model=model, gpu=gpu)
+
+        self.assertEqual(compute_gflops, 364_240.0)
