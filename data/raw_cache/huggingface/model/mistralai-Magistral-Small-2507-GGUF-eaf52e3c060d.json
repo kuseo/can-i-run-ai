@@ -1,0 +1,129 @@
+{
+  "_id": "68815100871d2df87daacf2e",
+  "id": "mistralai/Magistral-Small-2507-GGUF",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "llama.cpp",
+  "tags": [
+    "llama.cpp",
+    "gguf",
+    "text-generation",
+    "en",
+    "fr",
+    "de",
+    "es",
+    "pt",
+    "it",
+    "ja",
+    "ko",
+    "ru",
+    "zh",
+    "ar",
+    "fa",
+    "id",
+    "ms",
+    "ne",
+    "pl",
+    "ro",
+    "sr",
+    "sv",
+    "tr",
+    "uk",
+    "vi",
+    "hi",
+    "bn",
+    "base_model:mistralai/Magistral-Small-2507",
+    "base_model:quantized:mistralai/Magistral-Small-2507",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 268,
+  "likes": 13,
+  "modelId": "mistralai/Magistral-Small-2507-GGUF",
+  "author": "mistralai",
+  "sha": "129d7a005ec2180c7b6a56b8f175032d48ff78d9",
+  "lastModified": "2025-07-25T15:44:31.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "My name is Julien and I like to"
+    },
+    {
+      "text": "I like traveling by train because"
+    },
+    {
+      "text": "Paris is an amazing place to visit,"
+    },
+    {
+      "text": "Once upon a time,"
+    }
+  ],
+  "model-index": null,
+  "cardData": {
+    "language": [
+      "en",
+      "fr",
+      "de",
+      "es",
+      "pt",
+      "it",
+      "ja",
+      "ko",
+      "ru",
+      "zh",
+      "ar",
+      "fa",
+      "id",
+      "ms",
+      "ne",
+      "pl",
+      "ro",
+      "sr",
+      "sv",
+      "tr",
+      "uk",
+      "vi",
+      "hi",
+      "bn"
+    ],
+    "license": "apache-2.0",
+    "library_name": "llama.cpp",
+    "inference": false,
+    "base_model": [
+      "mistralai/Magistral-Small-2507"
+    ],
+    "extra_gated_description": "If you want to learn more about how we process your personal data, please read our <a href=\"https://mistral.ai/terms/\">Privacy Policy</a>.",
+    "pipeline_tag": "text-generation"
+  },
+  "gguf": {
+    "total": 23572403200,
+    "architecture": "llama",
+    "context_length": 40960,
+    "bos_token": "<s>",
+    "eos_token": "</s>"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "Magistral-Small-2507-BF16.gguf"
+    },
+    {
+      "rfilename": "Magistral-Small-2507-Q4_K_M.gguf"
+    },
+    {
+      "rfilename": "Magistral-Small-2507-Q5_K_M.gguf"
+    },
+    {
+      "rfilename": "Magistral-Small-2507-Q8_0.gguf"
+    },
+    {
+      "rfilename": "README.md"
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2025-07-23T21:15:44.000Z",
+  "usedStorage": 103308283648
+}

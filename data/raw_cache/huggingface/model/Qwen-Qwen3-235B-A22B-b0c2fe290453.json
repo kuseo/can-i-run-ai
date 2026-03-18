@@ -1,0 +1,564 @@
+{
+  "_id": "680daa4ac41c05ba341b67d1",
+  "id": "Qwen/Qwen3-235B-A22B",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen3_moe",
+    "text-generation",
+    "conversational",
+    "arxiv:2309.00071",
+    "arxiv:2505.09388",
+    "license:apache-2.0",
+    "eval-results",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "downloads": 751970,
+  "likes": 1081,
+  "modelId": "Qwen/Qwen3-235B-A22B",
+  "author": "Qwen",
+  "sha": "8efa61729e24bd65b1d152b5ab5409052aa80e65",
+  "lastModified": "2025-07-26T03:45:13.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen3MoeForCausalLM"
+    ],
+    "model_type": "qwen3_moe",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0].role == 'system' %}\n        {{- messages[0].content + '\\n\\n' }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0].content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" and message.content is string and not(message.content.startswith('<tool_response>') and message.content.endswith('</tool_response>')) %}\n        {%- set ns.multi_step_tool = false %}\n        {%- set ns.last_query_index = index %}\n    {%- endif %}\n{%- endfor %}\n{%- for message in messages %}\n    {%- if message.content is string %}\n        {%- set content = message.content %}\n    {%- else %}\n        {%- set content = '' %}\n    {%- endif %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {%- if loop.last or (not loop.last and reasoning_content) %}\n                {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content.strip('\\n') + '\\n</think>\\n\\n' + content.lstrip('\\n') }}\n            {%- else %}\n                {{- '<|im_start|>' + message.role + '\\n' + content }}\n            {%- endif %}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if (loop.first and content) or (not loop.first) %}\n                    {{- '\\n' }}\n                {%- endif %}\n                {%- if tool_call.function %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {{- '<tool_call>\\n{\"name\": \"' }}\n                {{- tool_call.name }}\n                {{- '\", \"arguments\": ' }}\n                {%- if tool_call.arguments is string %}\n                    {{- tool_call.arguments }}\n                {%- else %}\n                    {{- tool_call.arguments | tojson }}\n                {%- endif %}\n                {{- '}\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.first or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- endif %}\n{%- endif %}",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "library_name": "transformers",
+    "license": "apache-2.0",
+    "license_link": "https://huggingface.co/Qwen/Qwen3-235B-A22B/blob/main/LICENSE",
+    "pipeline_tag": "text-generation"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "merges.txt"
+    },
+    {
+      "rfilename": "model-00001-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00002-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00003-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00004-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00005-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00006-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00007-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00008-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00009-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00010-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00011-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00012-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00013-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00014-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00015-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00016-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00017-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00018-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00019-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00020-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00021-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00022-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00023-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00024-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00025-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00026-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00027-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00028-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00029-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00030-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00031-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00032-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00033-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00034-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00035-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00036-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00037-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00038-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00039-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00040-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00041-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00042-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00043-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00044-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00045-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00046-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00047-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00048-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00049-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00050-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00051-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00052-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00053-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00054-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00055-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00056-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00057-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00058-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00059-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00060-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00061-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00062-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00063-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00064-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00065-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00066-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00067-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00068-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00069-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00070-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00071-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00072-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00073-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00074-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00075-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00076-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00077-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00078-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00079-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00080-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00081-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00082-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00083-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00084-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00085-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00086-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00087-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00088-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00089-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00090-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00091-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00092-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00093-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00094-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00095-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00096-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00097-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00098-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00099-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00100-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00101-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00102-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00103-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00104-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00105-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00106-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00107-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00108-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00109-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00110-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00111-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00112-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00113-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00114-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00115-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00116-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00117-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model-00118-of-00118.safetensors"
+    },
+    {
+      "rfilename": "model.safetensors.index.json"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "vocab.json"
+    }
+  ],
+  "spaces": [
+    "pliny-the-prompter/obliteratus",
+    "Qwen/Qwen3-Demo",
+    "ask-dev/TinyCodeAgent",
+    "enzostvs/qwensite",
+    "hadadrjt/ai",
+    "Nymbo/Serverless-TextGen-Hub",
+    "aiqtech/LLM-Token-Visual",
+    "ISEEKYAN/megatron_memory_estimator",
+    "ISEEKYAN/megatron_memory_estimator_old",
+    "ginipick/Qwen3-235B-A22B",
+    "viktor-hu/novita-anysite",
+    "Agents-MCP-Hackathon/TinyCodeAgent",
+    "jairwaal/image",
+    "Agents-MCP-Hackathon/NoCoMind-Dynamic-Customizable-AI-Agent-Systems",
+    "openfree/qwen3-235b-a22b-research",
+    "Agents-MCP-Hackathon/TDAgent",
+    "Agents-MCP-Hackathon/xhmcp",
+    "umint/openwebui",
+    "mgbam/builder",
+    "nyamberekimeu/Qwen3-Token-Counter",
+    "Agents-MCP-Hackathon/dolibarr-mcp-server",
+    "DataDiva88/AutomatedProblemSolver_Final_Assignment",
+    "BeyondHsueh/ReliableMath-Leaderboard",
+    "mcjhn/ai",
+    "dvpearl/REFRAME",
+    "Agents-MCP-Hackathon/travel-planner-agent",
+    "Agents-MCP-Hackathon/Finario-AI-Agent-and-MCP",
+    "Jakob08/moneychatbot",
+    "Cudd1es/Dr-Bang",
+    "Secondprinsipal/image",
+    "Owen1756/DadGPT",
+    "Sad44587/Qwen-Qwen3-235B-A22B",
+    "Sourcelinksllc/Qwen-Qwen3-235B-A22B",
+    "Dredayz/Qwen-Qwen3-235B-A22B",
+    "moneymindsetig200/StartupGpt",
+    "Cyfer-ap/AI-Coding-Tutor",
+    "Nurisslam/Chat-Nurs",
+    "yangminded/Final_Assignment_Template",
+    "Agents-MCP-Hackathon/mcp-legal-copilot",
+    "Agents-MCP-Hackathon/AI-art-director",
+    "Agents-MCP-Hackathon/FinFLow",
+    "Agents-MCP-Hackathon/CSV-2-SQLAgent",
+    "sizzlebop/ZeroGPU-LLM-Inference",
+    "ReallyFloppyPenguin/AICodepen",
+    "SarowarSaurav/Finetuned-SLM",
+    "asifHuggingFace/webui",
+    "huggingfaceramki/Ramkiran_searchgpt",
+    "Shabah2000/Qwen44-Demo",
+    "Shirochi/Glossarion",
+    "fagun18/fagun-browser-testing",
+    "ai-department-lpnu/scientific-rag",
+    "ai-department-lpnu/paper-survey-agent",
+    "TAK0708/nawatobi_ai_mpv",
+    "hacktogone/uncensored-chat",
+    "eacheampong/demo_agent",
+    "MaryEremikhina/First_agent_template",
+    "znacer/Final_Assignment",
+    "Unknown504/web-ui",
+    "heimdall777/Final_Assignment",
+    "akiko19191/Better_tool_calling",
+    "renzoide/Final_Assignment_Template",
+    "Cwatasut/Qwen-Qwen3-235B-A22B",
+    "mdicio/Final_Assignment_Template",
+    "Anshul3878/Qwen-Qwen3-235B-A22B",
+    "Nymbo/MCP-Image-Gen",
+    "tlpp7/Qwen-Qwen3-235B-A22B",
+    "pir8mack/Qwen-Qwen3-235B-A22B",
+    "yaomingkelv/Qwen-Qwen3-235B-A22B",
+    "joseph6x/Final_Assignment_Template",
+    "AdcloseNN/Qwen-Qwen3-235B-A22B",
+    "Aabbhishekk/MCP_Playground",
+    "maharjaved/Qwen-Qwen3-235B-A22B",
+    "mbaneshi/Qwen-Qwen3-235B-A22B",
+    "xe1phix/Qwen3-Demo",
+    "genaitiwari/Qwen-Qwen3-235B-A22B",
+    "deletedemotions/Glactic-A22B",
+    "littlemargins/Qwen-Qwen3-235B-A22B",
+    "stegano/Qwen-Qwen3-235B-A22B",
+    "Musa0909/Qwen-Qwen3-235B-A22B",
+    "sugam28/Qwen-Qwen3-235B-A22B",
+    "Prabhu1980/Qwen-Qwen3-235B-A22B",
+    "KraTUZen/LogicLink-Project-Space",
+    "wlchee/Final_Assignment_Template",
+    "luizbweb/Qwen-Qwen3-235B-A22B",
+    "Codingxx/Qwen-Qwen3-235B-A22Bss",
+    "kingarnica/Qwen3-Demo",
+    "drecokie/dre",
+    "chandugeesala0/Qwen-Qwen3-235B-A22B",
+    "TejAndrewsACC/ChatACC",
+    "mfoud444/aiai",
+    "mfoud444/wow",
+    "Mycatwontstfu/Qwen-Qwen3-235B-A22B",
+    "Eugenemal/Qwen-Qwen3-235B-A22B",
+    "Riyan200324/Qwen-Qwen3-235B-A22B",
+    "chen90922/Qwen-Qwen3-235B-A22B",
+    "Felguk/Qwen3-235B-A22B",
+    "echo3700/Qwen-Qwen3-235B-A22B",
+    "testtestjjj/Qwen-Qwen3-235B-A22B",
+    "Greff3/ChatVision",
+    "PhotoVisionRSX/Qwen3-235B-A22B"
+  ],
+  "createdAt": "2025-04-27T03:53:46.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 235093634560
+    },
+    "total": 235093634560
+  },
+  "inference": "warm",
+  "usedStorage": 470203304443
+}

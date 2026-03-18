@@ -1,0 +1,132 @@
+{
+  "_id": "66598d3cc3196fbd0f1d0efa",
+  "id": "Qwen/Qwen2-1.5B",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen2",
+    "text-generation",
+    "pretrained",
+    "conversational",
+    "en",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 113886,
+  "likes": 100,
+  "modelId": "Qwen/Qwen2-1.5B",
+  "author": "Qwen",
+  "sha": "8a16abf2848eda07cc5253dec660bf1ce007ad7a",
+  "lastModified": "2024-06-06T14:36:18.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "model_type": "qwen2",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system\nYou are a helpful assistant<|im_end|>\n' }}{% endif %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
+      "eos_token": "<|endoftext|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "pretrained"
+    ],
+    "license": "apache-2.0"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "merges.txt"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "vocab.json"
+    }
+  ],
+  "spaces": [
+    "filapro/cad-recode",
+    "Justinrune/LLaMA-Factory",
+    "tomaszki/visualize_attention",
+    "manuelcozar55/LexAIcon",
+    "Rhedar/Qwen-Qwen2-1.5B",
+    "fuzzy-mittenz/Qwen-Qwen2-1.5B",
+    "Omega-02/Qwen-Qwen2-1.5B",
+    "SanatKulkarni/Qwen-Qwen2-1.5B",
+    "engrharis/mechanical",
+    "msun415/Llamole",
+    "jacob-c/resumescreener_v2",
+    "manu02/token-attention-viewer",
+    "Quaoro/cad-recode",
+    "Pavantej/qwen2-titans-miras",
+    "cdpearlman/LLMVis",
+    "casamN/FATIMA_AMOS",
+    "ihababadi/finetuninng"
+  ],
+  "createdAt": "2024-05-31T08:41:32.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 1543714304
+    },
+    "total": 1543714304
+  },
+  "inference": "warm",
+  "usedStorage": 20883215112
+}

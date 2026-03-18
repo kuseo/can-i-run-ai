@@ -1,0 +1,104 @@
+{
+  "_id": "666d80efea11ab8f28354473",
+  "id": "Qwen/Qwen2-57B-A14B-Instruct-GGUF",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "tags": [
+    "gguf",
+    "instruct",
+    "chat",
+    "text-generation",
+    "en",
+    "license:apache-2.0",
+    "endpoints_compatible",
+    "region:us",
+    "conversational"
+  ],
+  "downloads": 487,
+  "likes": 17,
+  "modelId": "Qwen/Qwen2-57B-A14B-Instruct-GGUF",
+  "author": "Qwen",
+  "sha": "94f9b6bfa2811afec9ce190f14e4ab6a88687561",
+  "lastModified": "2024-06-17T16:31:06.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {},
+  "cardData": {
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "instruct",
+      "chat"
+    ],
+    "license": "apache-2.0"
+  },
+  "gguf": {
+    "total": 57408658944,
+    "architecture": "qwen2moe",
+    "context_length": 32768,
+    "chat_template": "{% for message in messages %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
+    "bos_token": "<|endoftext|>",
+    "eos_token": "<|endoftext|>"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-fp16-00001-of-00003.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-fp16-00002-of-00003.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-fp16-00003-of-00003.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-q3_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-q4_0.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-q4_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-q5_0.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-q5_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-q6_k.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-q8_0-00001-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2-57b-a14b-instruct-q8_0-00002-of-00002.gguf"
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2024-06-15T11:54:23.000Z",
+  "usedStorage": 817407381568
+}

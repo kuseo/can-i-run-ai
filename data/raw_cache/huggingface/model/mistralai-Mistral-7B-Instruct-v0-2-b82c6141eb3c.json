@@ -1,0 +1,242 @@
+{
+  "_id": "65770c3426ef61bbf101d4da",
+  "id": "mistralai/Mistral-7B-Instruct-v0.2",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "pytorch",
+    "safetensors",
+    "mistral",
+    "text-generation",
+    "finetuned",
+    "mistral-common",
+    "conversational",
+    "arxiv:2310.06825",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 2941152,
+  "likes": 3092,
+  "modelId": "mistralai/Mistral-7B-Instruct-v0.2",
+  "author": "mistralai",
+  "sha": "63a8b081895390a26e140280378bc85ec8bce07a",
+  "lastModified": "2025-07-24T16:57:21.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is your favorite condiment?"
+        }
+      ]
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "MistralForCausalLM"
+    ],
+    "model_type": "mistral",
+    "tokenizer_config": {
+      "bos_token": "<s>",
+      "chat_template": "{%- if messages[0]['role'] == 'system' %}\n    {%- set system_message = messages[0]['content'] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n\n{{- bos_token }}\n{%- for message in loop_messages %}\n    {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) %}\n        {{- raise_exception('After the optional system message, conversation roles must alternate user/assistant/user/assistant/...') }}\n    {%- endif %}\n    {%- if message['role'] == 'user' %}\n        {%- if loop.first and system_message is defined %}\n            {{- ' [INST] ' + system_message + '\\n\\n' + message['content'] + ' [/INST]' }}\n        {%- else %}\n            {{- ' [INST] ' + message['content'] + ' [/INST]' }}\n        {%- endif %}\n    {%- elif message['role'] == 'assistant' %}\n        {{- ' ' + message['content'] + eos_token}}\n    {%- else %}\n        {{- raise_exception('Only user and assistant roles are supported, with the exception of an initial optional system message!') }}\n    {%- endif %}\n{%- endfor %}\n",
+      "eos_token": "</s>",
+      "pad_token": null,
+      "unk_token": "<unk>",
+      "use_default_system_prompt": false
+    }
+  },
+  "cardData": {
+    "library_name": "transformers",
+    "license": "apache-2.0",
+    "tags": [
+      "finetuned",
+      "mistral-common"
+    ],
+    "new_version": "mistralai/Mistral-7B-Instruct-v0.3",
+    "inference": false,
+    "widget": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "What is your favorite condiment?"
+          }
+        ]
+      }
+    ],
+    "extra_gated_description": "If you want to learn more about how we process your personal data, please read our <a href=\"https://mistral.ai/terms/\">Privacy Policy</a>."
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "model-00001-of-00003.safetensors"
+    },
+    {
+      "rfilename": "model-00002-of-00003.safetensors"
+    },
+    {
+      "rfilename": "model-00003-of-00003.safetensors"
+    },
+    {
+      "rfilename": "model.safetensors.index.json"
+    },
+    {
+      "rfilename": "pytorch_model-00001-of-00003.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00002-of-00003.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00003-of-00003.bin"
+    },
+    {
+      "rfilename": "pytorch_model.bin.index.json"
+    },
+    {
+      "rfilename": "special_tokens_map.json"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer.model"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [
+    "ginigen-ai/smol-worldcup",
+    "flowers-team/StickToYourRoleLeaderboard",
+    "mteb/leaderboard_legacy",
+    "prometheus-eval/BiGGen-Bench-Leaderboard",
+    "Ashishm/parkrun_assist",
+    "r4k5O/deepsite-project-l9y0q",
+    "ImShekhuu/CreditAI",
+    "KingNish/OpenGPT-4o",
+    "KingNish/JARVIS",
+    "featherless-ai/try-this-model",
+    "eduagarcia/open_pt_llm_leaderboard",
+    "allenai/WildBench",
+    "JournalistsonHF/ai-scraper",
+    "allenai/ZebraLogic",
+    "chansung/vid2persona",
+    "shi-labs/CuMo-7b-zero",
+    "barunsaha/slide-deck-ai",
+    "speakleash/open_pl_llm_leaderboard",
+    "awacke1/GPT-4o-omni-text-audio-image-video",
+    "MuntasirHossain/RAG-PDF-Chatbot",
+    "chansung/paper_qa",
+    "logikon/open_cot_leaderboard",
+    "Ateeqq/Mistral-7B-Instruct-v0.2-Chatbot",
+    "KBaba7/Quant",
+    "Vision-CAIR/MiniGPT4-video",
+    "Nymbo/Serverless-TextGen-Hub",
+    "Sarath0x8f/Document-QA-bot",
+    "ngebodh/SimpleChatbot",
+    "NiansuhAI/HFLLMs",
+    "contextcite/context-cite",
+    "KingNish/Voice-Chat-AI",
+    "fffiloni/miniGPT4-Video-Zero",
+    "Tuana/hackernews-summaries",
+    "AiActivity/AI-Assistant",
+    "awacke1/AI-MovieMaker-Comedy",
+    "Hansimov/hf-llm-api",
+    "awacke1/Arxiv-Paper-Search-And-QA-RAG-Pattern",
+    "Skier8402/mistral-super-fast",
+    "gsarti/pecore",
+    "SustainabilityLabIITGN/VayuChat",
+    "FallnAI/Quantize-HF-Models",
+    "chansung/gradio_together_tgi",
+    "MCP-1st-Birthday/DETERMINATOR",
+    "bhaskartripathi/LLM_Quantization",
+    "radinhas/hf-llm-api",
+    "Justinrune/LLaMA-Factory",
+    "openfree/LLM_Quantization",
+    "SharvNey/prompt-optimizer",
+    "harshitv804/MedChat",
+    "NiansuhAI/Main",
+    "Mr-Vicky-01/chat-with-PDF",
+    "harshitv804/LawGPT",
+    "MMPano/MMPano",
+    "Visal9252/AI_Content_Generator",
+    "sepioo/facebook-translation",
+    "Agents-MCP-Hackathon/Huggingface-Space-Commander",
+    "TheBlueberry-AI/Mistral-7b-v0.2",
+    "ROHAN181/pdf-chatbot",
+    "cot-leaderboard/open-cot-dashboard",
+    "ruslanmv/convert_to_gguf",
+    "kartik91/Image-To-Story",
+    "hitmanblade/PowerPoint-AI",
+    "AFischer1985/AI-RAG-Interface-to-Hub",
+    "asigalov61/Karaoke-MIDI-Search",
+    "devuxious/PowerPoint-AI",
+    "MarkoVidrih/Chat-With-PDF-document",
+    "suriya7/Chatbot-PDF",
+    "samim2024/PDF-RAG",
+    "LAWGPT/attorneygpt",
+    "Jaward/optimus",
+    "kaleidoskop-hug/StreamlitChat_Test",
+    "waloneai/PowerPoint-AI-basic",
+    "WildEval/ZebraLogic",
+    "cellerson/AgentCourseFinalProject",
+    "Paul-Joshi/website-summarizers-RAG",
+    "ruslanmv/hf-llm-api",
+    "awacke1/Multimodal-Science-and-Music-Lab",
+    "I-AdityaGoyal/NoteBot",
+    "NCTCMumbai/nctc-pdf-chatbot",
+    "awacke1/RescuerOfStolenBikes",
+    "dnzblgn/RAG_PDF_langchain",
+    "seawolf2357/LLM_Quantization",
+    "CyberTud/legalchat",
+    "mgbam/builder",
+    "officialhimanshu595/llama-factory",
+    "awacke1/ScienceBrain.AI",
+    "Sagar23p/mistralAI_chatBoat",
+    "Omdena-MentalHealth-team-consolidated/MindfulMedia_Mentor",
+    "Qazi-Mudassar-Ilyas/RAGWithMSExcel",
+    "dar-tau/selfie",
+    "Pavan178/pdf-chatbot",
+    "awacke1/ChatStreamlitMultiplayer",
+    "awacke1/AIKnowledgeTreeBuilder",
+    "Shashikiran42/Banking_Regulations_Compliance_ChatBOT",
+    "totolook/Quant",
+    "phucbienvan/AppChat",
+    "SmileXing/leaderboard",
+    "SelmaNajih001/StockPredictionExplanation",
+    "helenai/openvino_transformers_streaming",
+    "wop/BibleLearner_AI"
+  ],
+  "createdAt": "2023-12-11T13:18:44.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 7241732096
+    },
+    "total": 7241732096
+  },
+  "inference": "warm",
+  "usedStorage": 29496005526
+}

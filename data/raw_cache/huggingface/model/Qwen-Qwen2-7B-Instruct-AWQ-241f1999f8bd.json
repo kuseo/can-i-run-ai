@@ -1,0 +1,133 @@
+{
+  "_id": "666154bbf57dbfbdc3696bd2",
+  "id": "Qwen/Qwen2-7B-Instruct-AWQ",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen2",
+    "text-generation",
+    "chat",
+    "conversational",
+    "en",
+    "arxiv:2309.00071",
+    "base_model:Qwen/Qwen2-7B-Instruct",
+    "base_model:quantized:Qwen/Qwen2-7B-Instruct",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "4-bit",
+    "awq",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 7340,
+  "likes": 22,
+  "modelId": "Qwen/Qwen2-7B-Instruct-AWQ",
+  "author": "Qwen",
+  "sha": "f7621c98023fa293e743c692981a3c8f5b564b86",
+  "lastModified": "2024-08-21T10:30:36.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "model_type": "qwen2",
+    "quantization_config": {
+      "bits": 4,
+      "quant_method": "awq"
+    },
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n' }}{% endif %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "license": "apache-2.0",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "chat"
+    ],
+    "base_model": "Qwen/Qwen2-7B-Instruct"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "merges.txt"
+    },
+    {
+      "rfilename": "model-00001-of-00002.safetensors"
+    },
+    {
+      "rfilename": "model-00002-of-00002.safetensors"
+    },
+    {
+      "rfilename": "model.safetensors.index.json"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "vocab.json"
+    }
+  ],
+  "spaces": [
+    "Justinrune/LLaMA-Factory",
+    "msun415/Llamole"
+  ],
+  "createdAt": "2024-06-06T06:18:35.000Z",
+  "safetensors": {
+    "parameters": {
+      "I32": 6525288448,
+      "F16": 1090328064
+    },
+    "total": 7615616512
+  },
+  "usedStorage": 6301482008
+}

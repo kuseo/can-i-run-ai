@@ -1,0 +1,114 @@
+{
+  "_id": "621ffdc136468d709f17b79f",
+  "id": "google/t5-large-ssm-nq",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "pytorch",
+    "tf",
+    "jax",
+    "t5",
+    "text2text-generation",
+    "en",
+    "dataset:c4",
+    "dataset:wikipedia",
+    "dataset:natural_questions",
+    "arxiv:2002.08909",
+    "arxiv:1910.10683",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 59,
+  "likes": 5,
+  "modelId": "google/t5-large-ssm-nq",
+  "author": "google",
+  "sha": "1be57f9738601da4addf835ace7a2dad7e8750b4",
+  "lastModified": "2023-01-24T16:52:12.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "My name is Julien and I like to"
+    },
+    {
+      "text": "I like traveling by train because"
+    },
+    {
+      "text": "Paris is an amazing place to visit,"
+    },
+    {
+      "text": "Once upon a time,"
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "T5ForConditionalGeneration"
+    ],
+    "model_type": "t5",
+    "tokenizer_config": {
+      "eos_token": "</s>",
+      "unk_token": "<unk>",
+      "pad_token": "<pad>"
+    }
+  },
+  "cardData": {
+    "language": "en",
+    "datasets": [
+      "c4",
+      "wikipedia",
+      "natural_questions"
+    ],
+    "pipeline_tag": "text2text-generation",
+    "license": "apache-2.0"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForSeq2SeqLM",
+    "pipeline_tag": "text2text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "flax_model.msgpack"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "pytorch_model.bin"
+    },
+    {
+      "rfilename": "special_tokens_map.json"
+    },
+    {
+      "rfilename": "spiece.model"
+    },
+    {
+      "rfilename": "tf_model.h5"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [
+    "Sharathhebbar24/One-stop-for-Open-source-models",
+    "ericanthonymitchell/model-editing",
+    "K00B404/One-stop-till-you-drop"
+  ],
+  "createdAt": "2022-03-02T23:29:05.000Z",
+  "usedStorage": 11804049320
+}

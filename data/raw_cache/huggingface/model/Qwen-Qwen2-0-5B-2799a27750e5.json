@@ -1,0 +1,149 @@
+{
+  "_id": "66598c73f769c3c443bd2852",
+  "id": "Qwen/Qwen2-0.5B",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen2",
+    "text-generation",
+    "pretrained",
+    "conversational",
+    "en",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 483606,
+  "likes": 164,
+  "modelId": "Qwen/Qwen2-0.5B",
+  "author": "Qwen",
+  "sha": "91d2aff3f957f99e4c74c962f2f408dcc88a18d8",
+  "lastModified": "2024-10-22T13:47:30.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "model_type": "qwen2",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system\nYou are a helpful assistant<|im_end|>\n' }}{% endif %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
+      "eos_token": "<|endoftext|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "pretrained"
+    ],
+    "license": "apache-2.0",
+    "new_version": "Qwen/Qwen2.5-0.5B"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "merges.txt"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "vocab.json"
+    }
+  ],
+  "spaces": [
+    "eduagarcia/open_pt_llm_leaderboard",
+    "microsoft/MInference",
+    "Justinrune/LLaMA-Factory",
+    "as-cle-bert/smolLM-arena",
+    "linxianzhong0128/Linly-Talker",
+    "xcczach/mini-omni-s2s",
+    "Thouph/prompt2tag-qwen2-0.5b-v0.1-demo",
+    "Thouph/tag2prompt-qwen2-0.5b-v0.1-demo",
+    "Big-Nasty089/Qwen-Qwen2-0.5B",
+    "Ringokun/condensate-theorem",
+    "Ritori/Qwen-Qwen2-0.5B",
+    "Dongzhixiao/Qwen-Qwen2-0.5B",
+    "thepianist9/Linly",
+    "CanadianGamer/Qwen-Qwen2-0.5B",
+    "Amitontheweb/Params_Playground",
+    "test2023h5/chinese_wyw",
+    "test2023h5/fastapi_wyw",
+    "uetuluk/student-llm-guard",
+    "shanghai-rits/llmguard-demo",
+    "Gudupao/test",
+    "K00B404/diffusion_try",
+    "abi445/mini-omni-s2s",
+    "vaultmesh/Qwen-Qwen2-0.5B",
+    "Jagad1234unique/Ai",
+    "BICORP/MInference",
+    "msun415/Llamole",
+    "bhav0410/transliteration",
+    "MickDlima/Qwen-Qwen2-0.5B",
+    "Shriti09/qwen-base-summarizer",
+    "AVINASH00725/MaaGpt",
+    "anomaly05/project",
+    "anomaly05/final",
+    "mimi800/coder-backend-ai",
+    "xdghgjghchg/Train",
+    "xdghgjghchg/Train_xd",
+    "chenvision/first",
+    "cdpearlman/LLMVis",
+    "gbengs/Fynd-Fuel-test",
+    "gbengs/fyndfuel2",
+    "shapiron/openenv-letter-env"
+  ],
+  "createdAt": "2024-05-31T08:38:11.000Z",
+  "usedStorage": 7342283550
+}

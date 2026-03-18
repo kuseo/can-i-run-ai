@@ -1,0 +1,103 @@
+{
+  "_id": "6679fc09f6c638e62072189f",
+  "id": "google/gemma-2-instruct-9b-keras",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "keras-hub",
+  "tags": [
+    "keras-hub",
+    "text-generation",
+    "arxiv:2009.03300",
+    "arxiv:1905.07830",
+    "arxiv:1911.11641",
+    "arxiv:1904.09728",
+    "arxiv:1905.10044",
+    "arxiv:1907.10641",
+    "arxiv:1811.00937",
+    "arxiv:1809.02789",
+    "arxiv:1911.01547",
+    "arxiv:1705.03551",
+    "arxiv:2107.03374",
+    "arxiv:2108.07732",
+    "arxiv:2110.14168",
+    "arxiv:2009.11462",
+    "arxiv:2101.11718",
+    "arxiv:2110.08193",
+    "arxiv:1804.09301",
+    "arxiv:2109.07958",
+    "arxiv:1804.06876",
+    "arxiv:2103.03874",
+    "arxiv:2304.06364",
+    "arxiv:2206.04615",
+    "arxiv:2203.09509",
+    "region:us"
+  ],
+  "downloads": 4,
+  "likes": 7,
+  "modelId": "google/gemma-2-instruct-9b-keras",
+  "author": "google",
+  "sha": "a6c11eefd74b1e9cb20f465977c6d7c9ccf49af8",
+  "lastModified": "2024-11-15T18:13:16.000Z",
+  "gated": "manual",
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "My name is Julien and I like to"
+    },
+    {
+      "text": "I like traveling by train because"
+    },
+    {
+      "text": "Paris is an amazing place to visit,"
+    },
+    {
+      "text": "Once upon a time,"
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "keras_hub": {}
+  },
+  "cardData": {
+    "library_name": "keras-hub",
+    "pipeline_tag": "text-generation",
+    "extra_gated_heading": "Access Gemma on Hugging Face",
+    "extra_gated_prompt": "To access Gemma on Hugging Face, you\u2019re required to review and agree to Google\u2019s usage license. To do this, please ensure you\u2019re logged in to Hugging Face and click below. Requests are processed immediately.",
+    "extra_gated_button_content": "Acknowledge license"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "assets/tokenizer/vocabulary.spm"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "metadata.json"
+    },
+    {
+      "rfilename": "model.weights.h5"
+    },
+    {
+      "rfilename": "preprocessor.json"
+    },
+    {
+      "rfilename": "task.json"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    }
+  ],
+  "spaces": [
+    "huggingface/keras-chatbot-arena",
+    "vumichien/keras-chatbot-arena"
+  ],
+  "createdAt": "2024-06-24T23:06:49.000Z",
+  "usedStorage": 18489145875
+}

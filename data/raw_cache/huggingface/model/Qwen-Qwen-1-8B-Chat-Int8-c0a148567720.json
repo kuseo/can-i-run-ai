@@ -1,0 +1,240 @@
+{
+  "_id": "6567fa479bd68823e2d61eb8",
+  "id": "Qwen/Qwen-1_8B-Chat-Int8",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen",
+    "text-generation",
+    "custom_code",
+    "zh",
+    "en",
+    "arxiv:2309.16609",
+    "arxiv:2305.08322",
+    "arxiv:2009.03300",
+    "8-bit",
+    "gptq",
+    "region:us"
+  ],
+  "downloads": 84,
+  "likes": 5,
+  "modelId": "Qwen/Qwen-1_8B-Chat-Int8",
+  "author": "Qwen",
+  "sha": "2fb5c225fe592d8d891cbf6c1ed5924cabe48a18",
+  "lastModified": "2023-12-13T15:43:42.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "\u6211\u53eb\u6731\u5229\u5b89\uff0c\u6211\u559c\u6b22"
+    },
+    {
+      "text": "\u6211\u53eb\u6258\u9a6c\u65af\uff0c\u6211\u7684\u4e3b\u8981"
+    },
+    {
+      "text": "\u6211\u53eb\u739b\u4e3d\u4e9a\uff0c\u6211\u6700\u559c\u6b22\u7684"
+    },
+    {
+      "text": "\u6211\u53eb\u514b\u62c9\u62c9\uff0c\u6211\u662f"
+    },
+    {
+      "text": "\u4ece\u524d\uff0c"
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "QWenLMHeadModel"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_qwen.QWenConfig",
+      "AutoModelForCausalLM": "modeling_qwen.QWenLMHeadModel"
+    },
+    "model_type": "qwen",
+    "quantization_config": {
+      "bits": 8,
+      "quant_method": "gptq"
+    },
+    "tokenizer_config": {}
+  },
+  "cardData": {
+    "language": [
+      "zh",
+      "en"
+    ],
+    "tags": [
+      "qwen"
+    ],
+    "pipeline_tag": "text-generation",
+    "inference": false
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "custom_class": "modeling_qwen.QWenLMHeadModel",
+    "pipeline_tag": "text-generation"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "NOTICE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "assets/logo.jpg"
+    },
+    {
+      "rfilename": "assets/qwen_tokenizer.png"
+    },
+    {
+      "rfilename": "assets/react_showcase_001.png"
+    },
+    {
+      "rfilename": "assets/react_showcase_002.png"
+    },
+    {
+      "rfilename": "assets/wechat.png"
+    },
+    {
+      "rfilename": "cache_autogptq_cuda_256.cpp"
+    },
+    {
+      "rfilename": "cache_autogptq_cuda_kernel_256.cu"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "configuration_qwen.py"
+    },
+    {
+      "rfilename": "cpp_kernels.py"
+    },
+    {
+      "rfilename": "examples/react_prompt.md"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "modeling_qwen.py"
+    },
+    {
+      "rfilename": "quantize_config.json"
+    },
+    {
+      "rfilename": "qwen.tiktoken"
+    },
+    {
+      "rfilename": "qwen_generation_utils.py"
+    },
+    {
+      "rfilename": "tokenization_qwen.py"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [
+    "qingxu98/gpt-academic",
+    "Justinrune/LLaMA-Factory",
+    "officialhimanshu595/llama-factory",
+    "zjuzjw/gpt-academic",
+    "Yuan2006/gpt-academic-siliconflow-free",
+    "CaiRou-Huang/gpt-academic-test",
+    "Ayndpa/gpt-academic",
+    "everr/gpt-academicrrrr",
+    "Cyburger/die",
+    "adminstr/gpt-academic",
+    "JACK-Chen/gpt-academic-private",
+    "justseemore/gpt-academic",
+    "new-ames/gpt-academic-Joy",
+    "behindeu/gpt-academic",
+    "Chuanming/gpt-academic",
+    "leong001/gpt-academic",
+    "Rong233/gpt-academic-for-Jiang",
+    "JerryYin777/gpt-academic-hust",
+    "yl5545/gpt-academic",
+    "zhou005/gpt-academic",
+    "stack86/gpt-academic",
+    "smith8/gpt1",
+    "Alanxxk/gpt-academic",
+    "abing0215/gpt-academic-final",
+    "viod/gpt-academic",
+    "qingxu98/gpt_academic",
+    "amber0628h/gpt-academic",
+    "Gnib/TecGPT",
+    "oncehere/gpt-academic",
+    "BLDC888/gpt-academic72",
+    "Liyu910228/gpt-academic",
+    "xiaohua1011/gpt-academicc",
+    "li0808/gpt-academic",
+    "zhou005/gpt-academic2",
+    "caodan/xueshugpt",
+    "onlyyoufabian/gpt-academic",
+    "oneapi/gpt-academic",
+    "eggacheb/gpt_academic",
+    "szdavidxiong/gpt-academic2",
+    "Harrison3/gpt-academic",
+    "lipan/gpt-academic",
+    "eastsheng/gpt_academic",
+    "xiangbin-bupt/gpt-academic2",
+    "Soullqs1/gpt-academic",
+    "hf5566/gpt-academic",
+    "leexiaoyao/gpt-academic222",
+    "houin/gpt-academic",
+    "JerryZhouYG/gpt-academic",
+    "Appledum/academic",
+    "Lyccc0210/gpt-academic",
+    "iridescentX/gpt_academic",
+    "bioinfoark/academic",
+    "bioinfoark/academic_docker",
+    "MolChai/gpt-academic_3.72",
+    "zxsipola123456/gpt-academic",
+    "paulyang5312/gpt-academic",
+    "tang-x/gpt_academic",
+    "XJFKKK/gpt_academic",
+    "cd2000/gpt-academic",
+    "hiro086/boxapi-gpt-academic",
+    "ask-lin/gpt-academic",
+    "ymfsing/gpt_academic",
+    "MaktubCN/gpt-academic",
+    "sbmzhcn/gpt_academic",
+    "vwo50/gpt-academic",
+    "jackpeng/ACADEMIC",
+    "lizw1017/gpt-academic",
+    "msun415/Llamole",
+    "MoonTracer/gpt-academic",
+    "nbugs/academic",
+    "Andy-Lau1984/my_study",
+    "HeyHEyyyyyy/gpt-academic",
+    "Ronaldodev/fastapi_django_main_live",
+    "WenDavid/gpt_academic",
+    "uoghluvm/gpt-academic",
+    "Naibo/gpt-academic",
+    "kevalgajjar/gpt-academic",
+    "ZhouZzzzz/gpt_Zacademic"
+  ],
+  "createdAt": "2023-11-30T02:58:15.000Z",
+  "safetensors": {
+    "parameters": {
+      "I32": 1214251008,
+      "BF16": 622430208,
+      "F16": 509952
+    },
+    "total": 1837191168
+  },
+  "usedStorage": 2489973992
+}

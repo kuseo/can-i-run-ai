@@ -1,0 +1,181 @@
+{
+  "_id": "6567f9cbd0a121b8e8049cad",
+  "id": "Qwen/Qwen-1_8B-Chat",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen",
+    "text-generation",
+    "custom_code",
+    "zh",
+    "en",
+    "arxiv:2309.16609",
+    "arxiv:2305.08322",
+    "arxiv:2009.03300",
+    "region:us"
+  ],
+  "downloads": 6447,
+  "likes": 125,
+  "modelId": "Qwen/Qwen-1_8B-Chat",
+  "author": "Qwen",
+  "sha": "1d0f68de57b88cfde81f3c3e537f24464d889081",
+  "lastModified": "2023-12-13T15:43:38.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "\u6211\u53eb\u6731\u5229\u5b89\uff0c\u6211\u559c\u6b22"
+    },
+    {
+      "text": "\u6211\u53eb\u6258\u9a6c\u65af\uff0c\u6211\u7684\u4e3b\u8981"
+    },
+    {
+      "text": "\u6211\u53eb\u739b\u4e3d\u4e9a\uff0c\u6211\u6700\u559c\u6b22\u7684"
+    },
+    {
+      "text": "\u6211\u53eb\u514b\u62c9\u62c9\uff0c\u6211\u662f"
+    },
+    {
+      "text": "\u4ece\u524d\uff0c"
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "QWenLMHeadModel"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_qwen.QWenConfig",
+      "AutoModelForCausalLM": "modeling_qwen.QWenLMHeadModel"
+    },
+    "model_type": "qwen",
+    "tokenizer_config": {}
+  },
+  "cardData": {
+    "language": [
+      "zh",
+      "en"
+    ],
+    "tags": [
+      "qwen"
+    ],
+    "pipeline_tag": "text-generation",
+    "inference": false
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "custom_class": "modeling_qwen.QWenLMHeadModel",
+    "pipeline_tag": "text-generation"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "NOTICE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "assets/logo.jpg"
+    },
+    {
+      "rfilename": "assets/qwen_tokenizer.png"
+    },
+    {
+      "rfilename": "assets/react_showcase_001.png"
+    },
+    {
+      "rfilename": "assets/react_showcase_002.png"
+    },
+    {
+      "rfilename": "assets/wechat.png"
+    },
+    {
+      "rfilename": "cache_autogptq_cuda_256.cpp"
+    },
+    {
+      "rfilename": "cache_autogptq_cuda_kernel_256.cu"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "configuration_qwen.py"
+    },
+    {
+      "rfilename": "cpp_kernels.py"
+    },
+    {
+      "rfilename": "examples/react_prompt.md"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "model-00001-of-00002.safetensors"
+    },
+    {
+      "rfilename": "model-00002-of-00002.safetensors"
+    },
+    {
+      "rfilename": "model.safetensors.index.json"
+    },
+    {
+      "rfilename": "modeling_qwen.py"
+    },
+    {
+      "rfilename": "qwen.tiktoken"
+    },
+    {
+      "rfilename": "qwen_generation_utils.py"
+    },
+    {
+      "rfilename": "tokenization_qwen.py"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [
+    "eduagarcia/open_pt_llm_leaderboard",
+    "Justinrune/LLaMA-Factory",
+    "yhavinga/dutch-tokenizer-arena",
+    "Tonic/Qwen1_8B-Chat",
+    "linxianzhong0128/Linly-Talker",
+    "officialhimanshu595/llama-factory",
+    "Zulelee/langchain-chatchat",
+    "IS2Lab/S-Eval",
+    "hoshoo21/Custom_RAG",
+    "a2948764576888/TSUNG",
+    "silk-road/ChatHaruhi-Qwen118k-Extended",
+    "NLPark/Qwen1_8B-Chat",
+    "TeamTonic/TruEraMultiMed",
+    "Tonic/TruLensQwen1_8B",
+    "thepianist9/LinlyTalk",
+    "thepianist9/Linly",
+    "thepianist9/Loonly",
+    "thepianist9/lop",
+    "united-avatars/linly",
+    "weismart1807/Linly-Talker",
+    "sohiebwedyan/NAJEB",
+    "msun415/Llamole",
+    "SmokeyBandit/Snake_agents",
+    "Ah707/ChatLM",
+    "omar1232/SuriAi",
+    "jinv2/qwen-lora-financial-explainer-ui",
+    "jinv2/hemiplegia-qa-bot",
+    "Ronaldodev/fastapi_django_main_live",
+    "likhonsheikh/sheikhxqwen",
+    "Qhrrrrrrrr/Mirror-Backend"
+  ],
+  "createdAt": "2023-11-30T02:56:11.000Z",
+  "usedStorage": 3673678272
+}

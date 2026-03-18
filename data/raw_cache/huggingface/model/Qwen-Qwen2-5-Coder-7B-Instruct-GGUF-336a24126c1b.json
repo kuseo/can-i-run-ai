@@ -1,0 +1,184 @@
+{
+  "_id": "66eabc37bcfa5271dcd6824a",
+  "id": "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "gguf",
+    "code",
+    "codeqwen",
+    "chat",
+    "qwen",
+    "qwen-coder",
+    "text-generation",
+    "en",
+    "arxiv:2409.12186",
+    "arxiv:2407.10671",
+    "base_model:Qwen/Qwen2.5-Coder-7B-Instruct",
+    "base_model:quantized:Qwen/Qwen2.5-Coder-7B-Instruct",
+    "license:apache-2.0",
+    "endpoints_compatible",
+    "region:us",
+    "conversational"
+  ],
+  "downloads": 99528,
+  "likes": 206,
+  "modelId": "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF",
+  "author": "Qwen",
+  "sha": "13fb94bfda8c8cf22497dc57b78f391a9acb426a",
+  "lastModified": "2024-11-12T07:59:32.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {},
+  "cardData": {
+    "license": "apache-2.0",
+    "license_link": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct-GGUF/blob/main/LICENSE",
+    "language": [
+      "en"
+    ],
+    "base_model": [
+      "Qwen/Qwen2.5-Coder-7B-Instruct"
+    ],
+    "pipeline_tag": "text-generation",
+    "library_name": "transformers",
+    "tags": [
+      "code",
+      "codeqwen",
+      "chat",
+      "qwen",
+      "qwen-coder"
+    ]
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModel"
+  },
+  "gguf": {
+    "total": 7615616512,
+    "architecture": "qwen2",
+    "context_length": 131072,
+    "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- messages[0]['content'] }}\n    {%- else %}\n        {{- 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.' }}\n    {%- endif %}\n    {{- \"\\n\\n# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0]['content'] + '<|im_end|>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>system\\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) or (message.role == \"assistant\" and not message.tool_calls) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {{- '<|im_start|>' + message.role }}\n        {%- if message.content %}\n            {{- '\\n' + message.content }}\n        {%- endif %}\n        {%- for tool_call in message.tool_calls %}\n            {%- if tool_call.function is defined %}\n                {%- set tool_call = tool_call.function %}\n            {%- endif %}\n            {{- '\\n<tool_call>\\n{\"name\": \"' }}\n            {{- tool_call.name }}\n            {{- '\", \"arguments\": ' }}\n            {{- tool_call.arguments | tojson }}\n            {{- '}\\n</tool_call>' }}\n        {%- endfor %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if (loop.index0 == 0) or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n{%- endif %}\n",
+    "bos_token": "<|endoftext|>",
+    "eos_token": "<|im_end|>"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": ".msc"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-fp16-00001-of-00004.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-fp16-00002-of-00004.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-fp16-00003-of-00004.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-fp16-00004-of-00004.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-fp16.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q2_k.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q3_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q4_0-00001-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q4_0-00002-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q4_0.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q4_k_m-00001-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q4_k_m-00002-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q4_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q5_0-00001-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q5_0-00002-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q5_k_m-00001-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q5_k_m-00002-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q5_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q6_k-00001-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q6_k-00002-of-00002.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q6_k.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q8_0-00001-of-00003.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q8_0-00002-of-00003.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q8_0-00003-of-00003.gguf"
+    },
+    {
+      "rfilename": "qwen2.5-coder-7b-instruct-q8_0.gguf"
+    }
+  ],
+  "spaces": [
+    "ADIJASA/AriosGPT",
+    "AIencoder/Axon",
+    "sayalimetkar/optimized_model",
+    "likhonsheikh/anthropic-compatible-api",
+    "NithinAI12/NIUS-Nithin_AI",
+    "coco1990/BigData-Ops-Copilot",
+    "Arif571/android-coder",
+    "nikhtu10/anthropic-compatible-api",
+    "ahmedtouzani39/raymondreddington",
+    "ADICODERID/chiper-7Alpha",
+    "Sachin5112/model1"
+  ],
+  "createdAt": "2024-09-18T11:40:39.000Z",
+  "usedStorage": 100439254112
+}

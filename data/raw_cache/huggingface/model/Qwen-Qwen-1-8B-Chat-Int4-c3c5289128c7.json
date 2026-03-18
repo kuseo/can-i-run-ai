@@ -1,0 +1,158 @@
+{
+  "_id": "6567fa76ac03c4c7416f9b2a",
+  "id": "Qwen/Qwen-1_8B-Chat-Int4",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen",
+    "text-generation",
+    "custom_code",
+    "zh",
+    "en",
+    "arxiv:2309.16609",
+    "arxiv:2305.08322",
+    "arxiv:2009.03300",
+    "4-bit",
+    "gptq",
+    "region:us"
+  ],
+  "downloads": 370,
+  "likes": 36,
+  "modelId": "Qwen/Qwen-1_8B-Chat-Int4",
+  "author": "Qwen",
+  "sha": "62ee27f810e7f59905ee1dac4ccc86d593dd57f4",
+  "lastModified": "2023-12-13T15:43:40.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "\u6211\u53eb\u6731\u5229\u5b89\uff0c\u6211\u559c\u6b22"
+    },
+    {
+      "text": "\u6211\u53eb\u6258\u9a6c\u65af\uff0c\u6211\u7684\u4e3b\u8981"
+    },
+    {
+      "text": "\u6211\u53eb\u739b\u4e3d\u4e9a\uff0c\u6211\u6700\u559c\u6b22\u7684"
+    },
+    {
+      "text": "\u6211\u53eb\u514b\u62c9\u62c9\uff0c\u6211\u662f"
+    },
+    {
+      "text": "\u4ece\u524d\uff0c"
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "QWenLMHeadModel"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_qwen.QWenConfig",
+      "AutoModelForCausalLM": "modeling_qwen.QWenLMHeadModel"
+    },
+    "model_type": "qwen",
+    "quantization_config": {
+      "bits": 4,
+      "quant_method": "gptq"
+    },
+    "tokenizer_config": {}
+  },
+  "cardData": {
+    "language": [
+      "zh",
+      "en"
+    ],
+    "tags": [
+      "qwen"
+    ],
+    "pipeline_tag": "text-generation",
+    "inference": false
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "custom_class": "modeling_qwen.QWenLMHeadModel",
+    "pipeline_tag": "text-generation"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "NOTICE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "assets/logo.jpg"
+    },
+    {
+      "rfilename": "assets/qwen_tokenizer.png"
+    },
+    {
+      "rfilename": "assets/react_showcase_001.png"
+    },
+    {
+      "rfilename": "assets/react_showcase_002.png"
+    },
+    {
+      "rfilename": "assets/wechat.png"
+    },
+    {
+      "rfilename": "cache_autogptq_cuda_256.cpp"
+    },
+    {
+      "rfilename": "cache_autogptq_cuda_kernel_256.cu"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "configuration_qwen.py"
+    },
+    {
+      "rfilename": "cpp_kernels.py"
+    },
+    {
+      "rfilename": "examples/react_prompt.md"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "modeling_qwen.py"
+    },
+    {
+      "rfilename": "quantize_config.json"
+    },
+    {
+      "rfilename": "qwen.tiktoken"
+    },
+    {
+      "rfilename": "qwen_generation_utils.py"
+    },
+    {
+      "rfilename": "tokenization_qwen.py"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [
+    "Justinrune/LLaMA-Factory",
+    "officialhimanshu595/llama-factory",
+    "msun415/Llamole",
+    "Ronaldodev/fastapi_django_main_live"
+  ],
+  "createdAt": "2023-11-30T02:59:02.000Z",
+  "usedStorage": 1878105016
+}

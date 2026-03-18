@@ -1,0 +1,221 @@
+{
+  "_id": "66e98dd5899bdb384bd953b4",
+  "id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen2",
+    "text-generation",
+    "chat",
+    "conversational",
+    "en",
+    "arxiv:2407.10671",
+    "base_model:Qwen/Qwen2.5-1.5B",
+    "base_model:finetune:Qwen/Qwen2.5-1.5B",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 8912388,
+  "likes": 641,
+  "modelId": "Qwen/Qwen2.5-1.5B-Instruct",
+  "author": "Qwen",
+  "sha": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "lastModified": "2024-09-25T12:32:50.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "model_type": "qwen2",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- messages[0]['content'] }}\n    {%- else %}\n        {{- 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.' }}\n    {%- endif %}\n    {{- \"\\n\\n# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0]['content'] + '<|im_end|>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>system\\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) or (message.role == \"assistant\" and not message.tool_calls) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {{- '<|im_start|>' + message.role }}\n        {%- if message.content %}\n            {{- '\\n' + message.content }}\n        {%- endif %}\n        {%- for tool_call in message.tool_calls %}\n            {%- if tool_call.function is defined %}\n                {%- set tool_call = tool_call.function %}\n            {%- endif %}\n            {{- '\\n<tool_call>\\n{\"name\": \"' }}\n            {{- tool_call.name }}\n            {{- '\", \"arguments\": ' }}\n            {{- tool_call.arguments | tojson }}\n            {{- '}\\n</tool_call>' }}\n        {%- endfor %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if (loop.index0 == 0) or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n{%- endif %}\n",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "license": "apache-2.0",
+    "license_link": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/blob/main/LICENSE",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "base_model": "Qwen/Qwen2.5-1.5B",
+    "tags": [
+      "chat"
+    ],
+    "library_name": "transformers"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "merges.txt"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "vocab.json"
+    }
+  ],
+  "spaces": [
+    "pliny-the-prompter/obliteratus",
+    "TTimur/OpenLLMKyrgyzLeaderboard_v0.1",
+    "cvachet/pdf-chatbot",
+    "eduagarcia/open_pt_llm_leaderboard",
+    "KBaba7/Quant",
+    "Skywork/UniPic",
+    "aizip-dev/SLM-RAG-Arena",
+    "KangLiao/Puffin",
+    "AiActivity/AI-Assistant",
+    "FallnAI/Quantize-HF-Models",
+    "bhaskartripathi/LLM_Quantization",
+    "GeorgiosIoannouCoder/cuny-tech-prep-tutorial-6",
+    "openfree/LLM_Quantization",
+    "ruslanmv/convert_to_gguf",
+    "MERaLiON/SeaEval_Leaderboard",
+    "lightmate/llm-chatbot",
+    "seawolf2357/LLM_Quantization",
+    "rubenroy/Zurich-1.5B",
+    "totolook/Quant",
+    "Anecs/anecdote_generator_ru",
+    "GeorgiosIoannouCoder/cuny-tech-prep-tutorial-5",
+    "gevans3000/Qwen-Qwen2.5-1.5B-Instruct",
+    "rjaved/DictionaryTest02",
+    "K00B404/LLM_Quantization",
+    "Agnuxo/OpenCLAW-Agent",
+    "JoannaKOKO/StoryTelling_with_image_input",
+    "Sami2000/OSINT_DEMO",
+    "manuelaschrittwieser/SQL-Assistant-Prod",
+    "daryau777/mindarin.ai",
+    "TheNano-AI/Nano-AI",
+    "srcrszhu/Qwen-Qwen2.5-7B-Instruct",
+    "sakaltcommunity/Traningafri",
+    "MRuslanR/AskYourVideo",
+    "Walid-Ahmed/Text_generation",
+    "tigaspar/teste_arquivos",
+    "MathFrenchToast/Final_Assignment_Template",
+    "Abdallah-Helmy/word-test",
+    "Abdallah-Helmy/word-finder",
+    "ishandutta/multimodal-myntra-shoes-rag-pipeline",
+    "sulcan/EPS_HEP2025",
+    "ArthyP/enhanced-rag-demo",
+    "Entz/mcp-stock-math",
+    "valmarrugel302/irtaza",
+    "Mikey31/SentimentAnalysis",
+    "AhmedBenElsayed/Graduation_Project",
+    "ganeshborkar08/qwen",
+    "AndrejsBoka/my_first_testing_space",
+    "RenzWoo/Portfolio_2",
+    "Hetul803/Mindmesh",
+    "neovalle/SystemPromptTestsGPU",
+    "randrewsv/ai-debate",
+    "JERRYPAN617/qwen2.5-psydoctor-demo",
+    "Tas01/AI_Image_Storyteller_Caption",
+    "Speedofmastery/orynxml-backend",
+    "MCP-1st-Birthday/Sylo3285",
+    "Wills17/Fridge2Dish",
+    "denniscecca/aiondra_kernel",
+    "yusenthebot/agentic-language-partner",
+    "gworley3/kakuora",
+    "MrAlexGov/chat-bots-test",
+    "pygenlabs/openglob-ai",
+    "nikitaaaswsdwdw/My-Therepist",
+    "nimakhankh/NimaPersonalChat",
+    "Ariharan22/agri-assistant",
+    "omurga/yazilim",
+    "Nolsafan/RISE",
+    "vivek29/crypto-algo-reasoning-demo",
+    "MauMauM/meu-hello-world",
+    "Oss11/Quantize-HF-Models",
+    "Xlnk/Quantize-HF-Models",
+    "exploitz3r0bbd/Quantize-HF-Models",
+    "aa-nadim/nadim-1st-inference",
+    "M-Alkassem/gaia-agent-malkassem",
+    "Reubencf/Konkani-Qwen2.5-1.5B",
+    "iwtstd/iwtsdHome",
+    "sunldigv3/sunldigv3-Qwen",
+    "HedronCreeper/Qwen",
+    "HedronCreeper/CreeperAI",
+    "HedronCreeper/cryptodashboard",
+    "nattawut03/CalmSpace",
+    "Pikeras/Equitia-evaluation-tool",
+    "sasa2008/IntelliBot",
+    "MustafaSiddig37/Flex-AI-Engine",
+    "riteshraj31/medical-rag-chatbot",
+    "kenmandal/market-forge-env",
+    "ShynBui/OU_chatbot_admission",
+    "rajeshlion/ask-baba-bhAIro",
+    "Danielsz/Qwen-Qwen2.5-1.5B-Instruct",
+    "Shrey099/chatbot_simple",
+    "gchoi/Qwen-Qwen2.5-1.5B-Instruct",
+    "Dunirov/Qwen-Qwen2.5-1.5B-Instruct",
+    "eternalBlissard/Qwen-Qwen2.5-1.5B-Instruct",
+    "bflooreonline/Qwen-Qwen2.5-1.5B-Instruct",
+    "alyliann/CTP-Week-9",
+    "faryadk/Qwen-Qwen2.5-1.5B-Instruct",
+    "monteri/lyrics-qwen",
+    "rapid12k4/Qwen-Qwen2.5-1.5B-Instruct",
+    "lilmeaty/Hhhgg",
+    "scott12355/ScottBot",
+    "scott12355/DocketTest"
+  ],
+  "createdAt": "2024-09-17T14:10:29.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 1543714304
+    },
+    "total": 1543714304
+  },
+  "inference": "warm",
+  "usedStorage": 3087467144
+}

@@ -1,0 +1,106 @@
+{
+  "_id": "6662549062de925acfa31fb0",
+  "id": "Qwen/Qwen2-1.5B-Instruct-GGUF",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "tags": [
+    "gguf",
+    "chat",
+    "instruct",
+    "text-generation",
+    "en",
+    "license:apache-2.0",
+    "endpoints_compatible",
+    "region:us",
+    "conversational"
+  ],
+  "downloads": 15008,
+  "likes": 27,
+  "modelId": "Qwen/Qwen2-1.5B-Instruct-GGUF",
+  "author": "Qwen",
+  "sha": "c62434db644497c0ee545c690bb66a67eba6eb3f",
+  "lastModified": "2024-06-18T03:24:58.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "cardData": {
+    "license": "apache-2.0",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "chat",
+      "instruct"
+    ]
+  },
+  "gguf": {
+    "total": 1543714304,
+    "architecture": "qwen2",
+    "context_length": 32768,
+    "chat_template": "{% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n' }}{% endif %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
+    "bos_token": "<|endoftext|>",
+    "eos_token": "<|im_end|>"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-fp16.gguf"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-q2_k.gguf"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-q3_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-q4_0.gguf"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-q4_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-q5_0.gguf"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-q5_k_m.gguf"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-q6_k.gguf"
+    },
+    {
+      "rfilename": "qwen2-1_5b-instruct-q8_0.gguf"
+    }
+  ],
+  "spaces": [
+    "Mrbeastjr/LASU-SMARTAPP-AI-ASSISTANCE",
+    "ayushsoni155/invoice_to_json",
+    "hazeum/Jarvis",
+    "Liu9299/my-ecommerce-agent",
+    "masa111/test_mili"
+  ],
+  "createdAt": "2024-06-07T00:30:08.000Z",
+  "usedStorage": 21127168416
+}

@@ -1,0 +1,267 @@
+{
+  "_id": "66e902f34eeaced24a2787f8",
+  "id": "Qwen/Qwen2.5-32B-Instruct",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen2",
+    "text-generation",
+    "chat",
+    "conversational",
+    "en",
+    "arxiv:2309.00071",
+    "arxiv:2407.10671",
+    "base_model:Qwen/Qwen2.5-32B",
+    "base_model:finetune:Qwen/Qwen2.5-32B",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 2892192,
+  "likes": 337,
+  "modelId": "Qwen/Qwen2.5-32B-Instruct",
+  "author": "Qwen",
+  "sha": "5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd",
+  "lastModified": "2024-09-25T12:33:09.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "model_type": "qwen2",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- messages[0]['content'] }}\n    {%- else %}\n        {{- 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.' }}\n    {%- endif %}\n    {{- \"\\n\\n# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0]['role'] == 'system' %}\n        {{- '<|im_start|>system\\n' + messages[0]['content'] + '<|im_end|>\\n' }}\n    {%- else %}\n        {{- '<|im_start|>system\\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- for message in messages %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) or (message.role == \"assistant\" and not message.tool_calls) %}\n        {{- '<|im_start|>' + message.role + '\\n' + message.content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {{- '<|im_start|>' + message.role }}\n        {%- if message.content %}\n            {{- '\\n' + message.content }}\n        {%- endif %}\n        {%- for tool_call in message.tool_calls %}\n            {%- if tool_call.function is defined %}\n                {%- set tool_call = tool_call.function %}\n            {%- endif %}\n            {{- '\\n<tool_call>\\n{\"name\": \"' }}\n            {{- tool_call.name }}\n            {{- '\", \"arguments\": ' }}\n            {{- tool_call.arguments | tojson }}\n            {{- '}\\n</tool_call>' }}\n        {%- endfor %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if (loop.index0 == 0) or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- message.content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n{%- endif %}\n",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "license": "apache-2.0",
+    "license_link": "https://huggingface.co/Qwen/Qwen2.5-32B-Instruct/blob/main/LICENSE",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "base_model": "Qwen/Qwen2.5-32B",
+    "tags": [
+      "chat"
+    ],
+    "library_name": "transformers"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "merges.txt"
+    },
+    {
+      "rfilename": "model-00001-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00002-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00003-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00004-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00005-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00006-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00007-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00008-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00009-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00010-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00011-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00012-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00013-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00014-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00015-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00016-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model-00017-of-00017.safetensors"
+    },
+    {
+      "rfilename": "model.safetensors.index.json"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "vocab.json"
+    }
+  ],
+  "spaces": [
+    "fffiloni/SkyReels-V2",
+    "HuggingFaceH4/on-policy-distillation",
+    "flowers-team/StickToYourRoleLeaderboard",
+    "eduagarcia/open_pt_llm_leaderboard",
+    "logikon/open_cot_leaderboard",
+    "KBaba7/Quant",
+    "Agents-MCP-Hackathon/PMCP-AgenticProjectManager",
+    "FallnAI/Quantize-HF-Models",
+    "bhaskartripathi/LLM_Quantization",
+    "openfree/LLM_Quantization",
+    "14eee109giet/SkyReels-V2",
+    "cot-leaderboard/open-cot-dashboard",
+    "ruslanmv/convert_to_gguf",
+    "MERaLiON/SeaEval_Leaderboard",
+    "Dudu0043/SkyReels-V2",
+    "svjack/SkyReels-V2",
+    "filbench/filbench-leaderboard",
+    "seawolf2357/LLM_Quantization",
+    "totolook/Quant",
+    "K00B404/LLM_Quantization",
+    "UltraRonin/LR2Bench_old",
+    "zhwang4ai/GenerativeReasoningBenchmark",
+    "jesusvilela/FastingApp",
+    "Bossmarc747/SkyReels-V2",
+    "abrezey/mcp-census",
+    "halishrichard17/SkyReels-V2",
+    "asifHuggingFace/webui",
+    "stoneyard/SkyReels-V2",
+    "Speedofmastery/orynxml-backend",
+    "fagun18/fagun-browser-testing",
+    "Oss11/Quantize-HF-Models",
+    "Xlnk/Quantize-HF-Models",
+    "exploitz3r0bbd/Quantize-HF-Models",
+    "eternalBlissard/Qwen-Qwen2.5-32B-Instruct",
+    "mimifuel2018/Qwen2.5-72B",
+    "all3n1k/Qwen-Qwen2.5-32B-Instruct",
+    "pain565/Qwen-Qwen2.5-32B-Instruct",
+    "affandes/try-deploy-qwen",
+    "Janusz13/Qwen-Qwen2.5-32B-Instruct",
+    "dharmendrapatel/Qwen-Qwen2.5-32B-Instruct",
+    "99i/si",
+    "Koshyndra/Qwen-Qwen2.5-32B-Instruct",
+    "georgeek/hf-llm-bill-chat",
+    "lkjjj26/MisConceptTutor_MS",
+    "Crazy0Creations/Qwen-Qwen2.5-32B-Instruct",
+    "cicero-im/synthetic-data-generator-new",
+    "Socialmediaprophet/synthetic-data-generator",
+    "albaarcos/synthetic-data-generator_3",
+    "Aiyion/First_agent_template",
+    "tingao/synthetic-data-generator",
+    "heboya8/demo",
+    "chriswu25/PDFMathTranslate-Docker",
+    "huynhtrungkiet09032005/pdf-translate-api",
+    "909ahmed/synthetic-data-generator",
+    "Sanjeev23oct/browser-use-sg",
+    "Unknown504/web-ui",
+    "ClarenceYCLI/Final_Assignment",
+    "kanekirwan/kanekirwan",
+    "juanmackie/YourBench",
+    "baggy2797/ShortFormReelGen",
+    "Nobi04/Qwen-Qwen2.5-32B-Instruct",
+    "FilipeR/SkyReels-V2-OK",
+    "kennylim/agents_course_final_assignment",
+    "audioer/LLM_demo_docker",
+    "emravoan/skyreels-v2",
+    "bingzhiyihan/LinguaHaru-gradio",
+    "Kingrane/SkyReels-V2",
+    "pablozamit/SkyReels-V2",
+    "wyy000111/PDFMathTranslate-Docker",
+    "cjb97/Agent_Course_Final_Assignment",
+    "xuan2401/Xu_AN_Space",
+    "Siriusxhx/Qwen",
+    "abhishekudeniyan/Agents-MCP-Hackathon",
+    "binhboong/Final_Assignment_Template",
+    "Treyrem/RobotPai",
+    "rumanmoulik/materials-project-chat",
+    "bchander/agents_course",
+    "Leeson1118/pdf-math-translate",
+    "bekimoon/SkyReels-V2",
+    "ivangabriele/trl-sandbox",
+    "lwant/Agent_Course_Final_Assignment",
+    "DakshChaudhary/Agent_GAIA_Benchmark",
+    "simonnsanita/browseruseapiv2",
+    "pgonzzz/skyreels-v2",
+    "irke-ai-dev/irke-web-openai-1",
+    "abhijee/SkyReels-V2",
+    "beatsbyzibit/SkyReels-V2",
+    "Speedofmastery/or",
+    "K00B404/convert_to_gguf",
+    "JPEGPrints/Skys",
+    "mkhatcha/CUA",
+    "talhaazfar01/web-ui-interface",
+    "talhaazfar01/web-interface",
+    "asifHuggingFace/Browser_Web_UI_Automation",
+    "1inkusFace/SkyReelsV2",
+    "vishaljoshi24/trl-4-dnd",
+    "david167/question-generation-api",
+    "binary1ne/web-ui",
+    "bavanshz/SkyReels-V2",
+    "natabrizy/myscreencoder"
+  ],
+  "createdAt": "2024-09-17T04:17:55.000Z",
+  "inference": "warm",
+  "usedStorage": 65527841856
+}

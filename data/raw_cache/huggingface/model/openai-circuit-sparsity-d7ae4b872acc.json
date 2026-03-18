@@ -1,0 +1,123 @@
+{
+  "_id": "693b4826188f1cfa4e1eab93",
+  "id": "openai/circuit-sparsity",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "circuitgpt",
+    "text-generation",
+    "custom_code",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 1005,
+  "likes": 203,
+  "modelId": "openai/circuit-sparsity",
+  "author": "openai",
+  "sha": "ebf2603cfe24e5c09e31169d9e34a9fd3d15230c",
+  "lastModified": "2025-12-12T07:36:26.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "My name is Julien and I like to"
+    },
+    {
+      "text": "I like traveling by train because"
+    },
+    {
+      "text": "Paris is an amazing place to visit,"
+    },
+    {
+      "text": "Once upon a time,"
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "CircuitGPTForCausalLM"
+    ],
+    "auto_map": {
+      "AutoConfig": "config.CircuitGPTConfig",
+      "AutoModelForCausalLM": "modeling_circuitgpt.CircuitGPTForCausalLM"
+    },
+    "model_type": "circuitgpt",
+    "tokenizer_config": {
+      "eos_token": "<|endoftext|>"
+    }
+  },
+  "cardData": {
+    "license": "apache-2.0",
+    "pipeline_tag": "text-generation",
+    "library_name": "transformers"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "custom_class": "modeling_circuitgpt.CircuitGPTForCausalLM",
+    "pipeline_tag": "text-generation"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE.MD"
+    },
+    {
+      "rfilename": "NOTICE.MD"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "__init__.py"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "config.py"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "gpt.py"
+    },
+    {
+      "rfilename": "hook_utils.py"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "modeling_circuitgpt.py"
+    },
+    {
+      "rfilename": "special_tokens_map.json"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer.model"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [
+    "mrfakename/circuit-sparsity"
+  ],
+  "createdAt": "2025-12-11T22:39:34.000Z",
+  "safetensors": {
+    "parameters": {
+      "F32": 419124736
+    },
+    "total": 419124736
+  },
+  "usedStorage": 1676536262
+}

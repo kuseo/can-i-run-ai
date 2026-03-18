@@ -1,0 +1,80 @@
+{
+  "_id": "666a3738d3ee30f4822d666c",
+  "id": "nvidia/gpt3-8b-multi-3.5t-base",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "Megatron-LM",
+  "tags": [
+    "Megatron-LM",
+    "nvidia",
+    "Mamba",
+    "Mamba-2",
+    "SSM",
+    "8B",
+    "text-generation",
+    "en",
+    "arxiv:2406.07887",
+    "arxiv:2405.21060",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "downloads": 0,
+  "likes": 8,
+  "modelId": "nvidia/gpt3-8b-multi-3.5t-base",
+  "author": "nvidia",
+  "sha": "51d7f04a0720b1abc16094a7368702edd58196f1",
+  "lastModified": "2024-06-13T20:39:22.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "My name is Julien and I like to"
+    },
+    {
+      "text": "I like traveling by train because"
+    },
+    {
+      "text": "Paris is an amazing place to visit,"
+    },
+    {
+      "text": "Once upon a time,"
+    }
+  ],
+  "model-index": null,
+  "cardData": {
+    "license": "apache-2.0",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "nvidia",
+      "Megatron-LM",
+      "Mamba",
+      "Mamba-2",
+      "SSM",
+      "8B"
+    ],
+    "library_name": "Megatron-LM"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "latest_checkpointed_iteration.txt"
+    },
+    {
+      "rfilename": "mt_nlg_plus_multilingual_ja_zh_the_stack_frac_015_256k.model"
+    },
+    {
+      "rfilename": "release/mp_rank_00/model_optim_rng.pt"
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2024-06-13T00:03:04.000Z",
+  "usedStorage": 34165403608
+}

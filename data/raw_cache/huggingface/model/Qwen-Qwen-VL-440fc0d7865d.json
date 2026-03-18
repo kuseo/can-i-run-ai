@@ -1,0 +1,157 @@
+{
+  "_id": "64ded58b931a8e1c2c7c170d",
+  "id": "Qwen/Qwen-VL",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "pytorch",
+    "qwen",
+    "text-generation",
+    "custom_code",
+    "zh",
+    "en",
+    "arxiv:2308.12966",
+    "eval-results",
+    "region:us"
+  ],
+  "downloads": 47252,
+  "likes": 276,
+  "modelId": "Qwen/Qwen-VL",
+  "author": "Qwen",
+  "sha": "0547ed36a86561e2e42fecec8fd0c4f6953e33c4",
+  "lastModified": "2024-01-25T15:16:24.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "\u6211\u53eb\u6731\u5229\u5b89\uff0c\u6211\u559c\u6b22"
+    },
+    {
+      "text": "\u6211\u53eb\u6258\u9a6c\u65af\uff0c\u6211\u7684\u4e3b\u8981"
+    },
+    {
+      "text": "\u6211\u53eb\u739b\u4e3d\u4e9a\uff0c\u6211\u6700\u559c\u6b22\u7684"
+    },
+    {
+      "text": "\u6211\u53eb\u514b\u62c9\u62c9\uff0c\u6211\u662f"
+    },
+    {
+      "text": "\u4ece\u524d\uff0c"
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "QWenLMHeadModel"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_qwen.QWenConfig",
+      "AutoModelForCausalLM": "modeling_qwen.QWenLMHeadModel"
+    },
+    "model_type": "qwen",
+    "tokenizer_config": {}
+  },
+  "cardData": {
+    "language": [
+      "zh",
+      "en"
+    ],
+    "tags": [
+      "qwen"
+    ],
+    "pipeline_tag": "text-generation",
+    "inference": false
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "custom_class": "modeling_qwen.QWenLMHeadModel",
+    "pipeline_tag": "text-generation"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "configuration_qwen.py"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "modeling_qwen.py"
+    },
+    {
+      "rfilename": "pytorch_model-00001-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00002-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00003-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00004-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00005-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00006-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00007-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00008-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00009-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00010-of-00010.bin"
+    },
+    {
+      "rfilename": "pytorch_model.bin.index.json"
+    },
+    {
+      "rfilename": "qwen.tiktoken"
+    },
+    {
+      "rfilename": "qwen_generation_utils.py"
+    },
+    {
+      "rfilename": "tokenization_qwen.py"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "visual.py"
+    }
+  ],
+  "spaces": [
+    "TeamTonic/VLChat-OfficialDemo",
+    "znskiss/Qwen-VL",
+    "tonic-ai/Qwen-VL-Chat",
+    "dsfdsfddfer4/Qwen-VL-MaxTgBotByte",
+    "dsfdsfddfer4/Qwen-VL-Maxfgs32dsByte",
+    "Kabilash10/QwenVL-7B-Demo",
+    "Kabilash10/MedSum-Falcon-Demo",
+    "Manasa1/AI_Physician_App",
+    "jon-fernandes/OCR",
+    "Malaji71/maquina_de_pensar",
+    "dhikaroofi/qwen",
+    "KCprsnlcc/my-qwen-space",
+    "weimang/ZhenJue_IAD"
+  ],
+  "createdAt": "2023-08-18T02:20:59.000Z",
+  "usedStorage": 38628154374
+}

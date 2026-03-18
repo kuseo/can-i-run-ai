@@ -1,0 +1,99 @@
+{
+  "_id": "66ce6a3fd620749ad837b943",
+  "id": "nvidia/Llama3-ChatQA-2-8B",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "tags": [
+    "pytorch",
+    "llama",
+    "nvidia",
+    "chatqa-2",
+    "chatqa",
+    "llama-3",
+    "text-generation",
+    "conversational",
+    "en",
+    "arxiv:2401.10225",
+    "arxiv:2407.14482",
+    "region:us"
+  ],
+  "downloads": 94,
+  "likes": 17,
+  "modelId": "nvidia/Llama3-ChatQA-2-8B",
+  "author": "nvidia",
+  "sha": "828c866f4d90f88c002ed456e28ef89358bcb5b8",
+  "lastModified": "2024-09-10T05:04:18.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "LLaMAForCausalLM"
+    ],
+    "model_type": "llama",
+    "tokenizer_config": {
+      "bos_token": "<|begin_of_text|>",
+      "chat_template": "{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '<|eot_id|>' %}{% if loop.index0 == 0 %}{% set content = bos_token + content %}{% endif %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}{% endif %}",
+      "eos_token": "<|end_of_text|>"
+    }
+  },
+  "cardData": {
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "nvidia",
+      "chatqa-2",
+      "chatqa",
+      "llama-3",
+      "pytorch"
+    ]
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "overview.png"
+    },
+    {
+      "rfilename": "pytorch_model-00001-of-00002.bin"
+    },
+    {
+      "rfilename": "pytorch_model-00002-of-00002.bin"
+    },
+    {
+      "rfilename": "pytorch_model.bin.index.json"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2024-08-28T00:07:27.000Z",
+  "usedStorage": 16060647303
+}

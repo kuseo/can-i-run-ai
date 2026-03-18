@@ -1,0 +1,91 @@
+{
+  "_id": "621ffdc136468d709f17b6ec",
+  "id": "google/reformer-crime-and-punishment",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "pytorch",
+    "rust",
+    "reformer",
+    "text-generation",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "downloads": 120769,
+  "likes": 11,
+  "modelId": "google/reformer-crime-and-punishment",
+  "author": "google",
+  "sha": "8fcd50a33ea773f3bacf3fecdf193c9ca2c060ac",
+  "lastModified": "2024-02-29T09:53:44.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "My name is Julien and I like to"
+    },
+    {
+      "text": "I like traveling by train because"
+    },
+    {
+      "text": "Paris is an amazing place to visit,"
+    },
+    {
+      "text": "Once upon a time,"
+    }
+  ],
+  "config": {
+    "architectures": [
+      "ReformerModelWithLMHead"
+    ],
+    "model_type": "reformer",
+    "tokenizer_config": {}
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "generation_config_for_text_generation.json"
+    },
+    {
+      "rfilename": "pytorch_model.bin"
+    },
+    {
+      "rfilename": "rust_model.ot"
+    },
+    {
+      "rfilename": "spiece.model"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [
+    "Sharathhebbar24/One-stop-for-Open-source-models",
+    "docs-demos/reformer-crime-and-punishment",
+    "utec/SpaceJam",
+    "utec/Space_de_Milton",
+    "K00B404/One-stop-till-you-drop"
+  ],
+  "createdAt": "2022-03-02T23:29:05.000Z",
+  "usedStorage": 44277905
+}

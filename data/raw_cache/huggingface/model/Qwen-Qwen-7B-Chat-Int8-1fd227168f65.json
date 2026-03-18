@@ -1,0 +1,183 @@
+{
+  "_id": "652668f49340bbf0c425d807",
+  "id": "Qwen/Qwen-7B-Chat-Int8",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen",
+    "text-generation",
+    "custom_code",
+    "zh",
+    "en",
+    "arxiv:2309.16609",
+    "arxiv:2305.08322",
+    "arxiv:2009.03300",
+    "arxiv:2305.05280",
+    "arxiv:2210.03629",
+    "8-bit",
+    "gptq",
+    "region:us"
+  ],
+  "downloads": 195,
+  "likes": 9,
+  "modelId": "Qwen/Qwen-7B-Chat-Int8",
+  "author": "Qwen",
+  "sha": "e531de0d6952c934ec7496b000b7b8fbbbcbc884",
+  "lastModified": "2023-12-13T15:44:47.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "\u6211\u53eb\u6731\u5229\u5b89\uff0c\u6211\u559c\u6b22"
+    },
+    {
+      "text": "\u6211\u53eb\u6258\u9a6c\u65af\uff0c\u6211\u7684\u4e3b\u8981"
+    },
+    {
+      "text": "\u6211\u53eb\u739b\u4e3d\u4e9a\uff0c\u6211\u6700\u559c\u6b22\u7684"
+    },
+    {
+      "text": "\u6211\u53eb\u514b\u62c9\u62c9\uff0c\u6211\u662f"
+    },
+    {
+      "text": "\u4ece\u524d\uff0c"
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "QWenLMHeadModel"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_qwen.QWenConfig",
+      "AutoModelForCausalLM": "modeling_qwen.QWenLMHeadModel"
+    },
+    "model_type": "qwen",
+    "quantization_config": {
+      "bits": 8,
+      "quant_method": "gptq"
+    },
+    "tokenizer_config": {}
+  },
+  "cardData": {
+    "language": [
+      "zh",
+      "en"
+    ],
+    "tags": [
+      "qwen"
+    ],
+    "pipeline_tag": "text-generation",
+    "inference": false
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "custom_class": "modeling_qwen.QWenLMHeadModel",
+    "pipeline_tag": "text-generation"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "NOTICE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "assets/cli_demo.gif"
+    },
+    {
+      "rfilename": "assets/code_interpreter_showcase_001.jpg"
+    },
+    {
+      "rfilename": "assets/logo.jpg"
+    },
+    {
+      "rfilename": "assets/react_showcase_001.png"
+    },
+    {
+      "rfilename": "assets/react_showcase_002.png"
+    },
+    {
+      "rfilename": "assets/wechat.png"
+    },
+    {
+      "rfilename": "cache_autogptq_cuda_256.cpp"
+    },
+    {
+      "rfilename": "cache_autogptq_cuda_kernel_256.cu"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "configuration_qwen.py"
+    },
+    {
+      "rfilename": "cpp_kernels.py"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "model-00001-of-00005.safetensors"
+    },
+    {
+      "rfilename": "model-00002-of-00005.safetensors"
+    },
+    {
+      "rfilename": "model-00003-of-00005.safetensors"
+    },
+    {
+      "rfilename": "model-00004-of-00005.safetensors"
+    },
+    {
+      "rfilename": "model-00005-of-00005.safetensors"
+    },
+    {
+      "rfilename": "model.safetensors.index.json"
+    },
+    {
+      "rfilename": "modeling_qwen.py"
+    },
+    {
+      "rfilename": "quantize_config.json"
+    },
+    {
+      "rfilename": "qwen.tiktoken"
+    },
+    {
+      "rfilename": "qwen_generation_utils.py"
+    },
+    {
+      "rfilename": "tokenization_qwen.py"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [
+    "Justinrune/LLaMA-Factory",
+    "officialhimanshu595/llama-factory",
+    "Yijun-Yang/ReadReview",
+    "msun415/Llamole",
+    "Ronaldodev/fastapi_django_main_live"
+  ],
+  "createdAt": "2023-10-11T09:20:52.000Z",
+  "safetensors": {
+    "parameters": {
+      "F16": 1246285824,
+      "I32": 6476005376
+    },
+    "total": 7722291200
+  },
+  "usedStorage": 9123956912
+}

@@ -1,0 +1,140 @@
+{
+  "_id": "668663a4cb750a53d341fd5f",
+  "id": "deepseek-ai/ESFT-gate-translation-lite",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "deepseek_v2",
+    "text-generation",
+    "conversational",
+    "custom_code",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "downloads": 34,
+  "likes": 4,
+  "modelId": "deepseek-ai/ESFT-gate-translation-lite",
+  "author": "deepseek-ai",
+  "sha": "291a60ac7f32aa26c87081f1f4fda5590d78b61b",
+  "lastModified": "2024-07-05T05:48:42.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "config": {
+    "architectures": [
+      "DeepseekV2ForCausalLM"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_deepseek.DeepseekV2Config",
+      "AutoModel": "modeling_deepseek.DeepseekV2Model",
+      "AutoModelForCausalLM": "modeling_deepseek.DeepseekV2ForCausalLM"
+    },
+    "model_type": "deepseek_v2",
+    "tokenizer_config": {
+      "bos_token": {
+        "__type": "AddedToken",
+        "content": "<\uff5cbegin\u2581of\u2581sentence\uff5c>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "eos_token": {
+        "__type": "AddedToken",
+        "content": "<\uff5cend\u2581of\u2581sentence\uff5c>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "pad_token": {
+        "__type": "AddedToken",
+        "content": "<\uff5cend\u2581of\u2581sentence\uff5c>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "unk_token": null,
+      "chat_template": "{% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{{ bos_token }}{% for message in messages %}{% if message['role'] == 'user' %}{{ 'User: ' + message['content'] + '\n\n' }}{% elif message['role'] == 'assistant' %}{{ 'Assistant: ' + message['content'] + eos_token }}{% elif message['role'] == 'system' %}{{ message['content'] + '\n\n' }}{% endif %}{% endfor %}{% if add_generation_prompt %}{{ 'Assistant:' }}{% endif %}"
+    }
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "all_punct.txt"
+    },
+    {
+      "rfilename": "byteVocab.txt"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "configuration_deepseek.py"
+    },
+    {
+      "rfilename": "expert_cfg.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "model-00001-of-000001.safetensors"
+    },
+    {
+      "rfilename": "model.safetensors.index.json"
+    },
+    {
+      "rfilename": "modeling_deepseek.py"
+    },
+    {
+      "rfilename": "tokenization_deepseek.py"
+    },
+    {
+      "rfilename": "tokenization_deepseek_fast.py"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    }
+  ],
+  "spaces": [],
+  "createdAt": "2024-07-04T08:56:04.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 1055391744
+    },
+    "total": 1055391744
+  },
+  "usedStorage": 2110826640
+}

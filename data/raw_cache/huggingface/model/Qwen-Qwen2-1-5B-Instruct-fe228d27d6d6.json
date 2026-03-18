@@ -1,0 +1,215 @@
+{
+  "_id": "665d87fc0f43f1c4ad1ce2a1",
+  "id": "Qwen/Qwen2-1.5B-Instruct",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen2",
+    "text-generation",
+    "chat",
+    "conversational",
+    "en",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 2878864,
+  "likes": 161,
+  "modelId": "Qwen/Qwen2-1.5B-Instruct",
+  "author": "Qwen",
+  "sha": "ba1cf1846d7df0a0591d6c00649f57e798519da8",
+  "lastModified": "2024-06-06T14:36:57.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "model_type": "qwen2",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n' }}{% endif %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "license": "apache-2.0",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "chat"
+    ]
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "merges.txt"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "vocab.json"
+    }
+  ],
+  "spaces": [
+    "haodongli/DVD",
+    "KwabsHug/GameConfigIdea",
+    "Sachin222/Migration-Intelligence-Agent",
+    "gen6scp/sana-zero",
+    "alexnasa/ReCamMaster-ZEROGPU",
+    "jbilcke-hf/OmniAvatar",
+    "fffiloni/Stand-In",
+    "Justinrune/LLaMA-Factory",
+    "rahul7star/PusaV1",
+    "as-cle-bert/smolLM-arena",
+    "jbilcke-hf/ReCamMaster",
+    "Kunbyte/Lumen",
+    "thankfulcarp/Wan_t2v_FusionX_with_Loras",
+    "open-nlp/Chris-lab",
+    "tecuhtli/Mori_Bot",
+    "kushalkachari/Personal_Chatbot",
+    "alonsosilva/Qwen2-1.5B-Instruct",
+    "Cybersoulja/Qwen-Qwen2-1.5B-Instruct",
+    "Hack337/WavGPT",
+    "rahul207/LanguageTranslation",
+    "Metal3d/force-reasoning-any-model",
+    "asifHuggingFace/webui",
+    "Invescoz/VI1",
+    "danibarro9/tfm-derm-gradio",
+    "Invescoz/Server-B",
+    "Speedofmastery/orynxml-backend",
+    "fagun18/fagun-browser-testing",
+    "paivalucass/ai-restaurant-recommend",
+    "devAby/YourHonor",
+    "vilarin/vllm-chat",
+    "vetrovvlad/protobench",
+    "Heroyzx/Qwen-Qwen2-1.5B-Instruct",
+    "ramhemanth580/text2text_with_Dockers",
+    "jonathanjordan21/purchasing_api",
+    "thepowerfuldeez/Arxiv-summarizer",
+    "Anson69/HoolsPic",
+    "lintasmediadanawa/hf-llm-api",
+    "CYZ2006/Qwen-Qwen2-1.5B-Instruct",
+    "NadiaBedhiafi/AbnormalBehavior",
+    "d1059103218/igers",
+    "EdVirul/testmodels",
+    "JiakaiDu/RAG_Test",
+    "Abhikhade/Aquabotica",
+    "Alekseystr/translate_chat_ai",
+    "PTWZ/gradioappdemo",
+    "asv7j/HelperBot",
+    "SengTak/LEC_HarmfulPromptClassifier",
+    "SoCrazy/DipeSike",
+    "msun415/Llamole",
+    "Swarmeta-AI/Twig-V0-Alpha-Demo-CPU",
+    "Harishwar/lalai",
+    "nadav-ed-26/vllm-playgroung",
+    "zhuhai111/sana-cpu",
+    "K00B404/GenericChatBot",
+    "K00B404/QwenBuddy",
+    "Sanjeev23oct/browser-use-sg",
+    "ABSOLUTEUNB/natasha-demo",
+    "Unknown504/web-ui",
+    "georad/sbsmapper",
+    "kanekirwan/kanekirwan",
+    "Hieucyber2208/Foodstack",
+    "Ovladimirovich1969/comfyui-assistant",
+    "wedyanessam/Real_Time_Interactive_Avatar_v2",
+    "vitorg-ux/First_agent_template",
+    "dangwang1407/qwen2-chat-api",
+    "dangwang1407/my-chat-assistant",
+    "yannis2025/Final_Assignment_Template_0",
+    "Maza086/chatbot",
+    "ivangabriele/trl-sandbox",
+    "DrZimmer/Final_GAIA_test",
+    "simonnsanita/browseruseapiv2",
+    "zohaib2834/ai-nlp-assistant",
+    "Speedofmastery/or",
+    "mkhatcha/CUA",
+    "faizaaska517/PyRIT_demo",
+    "gabrielerizzopro/tarocchi-hf-1",
+    "amateus1/minutes_maker_ai",
+    "BolaNash/Elnasekh-Qwen-API",
+    "talhaazfar01/web-ui-interface",
+    "talhaazfar01/web-interface",
+    "asifHuggingFace/Browser_Web_UI_Automation",
+    "vishaljoshi24/trl-4-dnd",
+    "Lopishan5757/zero-ai",
+    "eeryhue/RAG-Application",
+    "binary1ne/web-ui",
+    "PeteHarris3001/SOCIAL-PARAPHRASER",
+    "Exxiew/mistralai-Mistral-7B-Instruct-v0.2",
+    "Mephesto1/Nora_Chatbot",
+    "Invescoz/Server-A",
+    "eli265/icdl-question-generator",
+    "kutubbia-ai/kutubbia-chatbot",
+    "giangpt-212/Browser_Automation",
+    "Fergusmacleod/Stand-In",
+    "Nanasupreme09/Tribe_AI",
+    "Invescoz/Rapnss-Vidyut",
+    "meweibel/First_agent_template",
+    "Carlosxxxxxx/Stand-In",
+    "omi98/test",
+    "softjapan/qwen2-jaquad-lora",
+    "arundh987/CareerForgeQwen"
+  ],
+  "createdAt": "2024-06-03T09:08:12.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 1543714304
+    },
+    "total": 1543714304
+  },
+  "inference": "warm",
+  "usedStorage": 20279235336
+}

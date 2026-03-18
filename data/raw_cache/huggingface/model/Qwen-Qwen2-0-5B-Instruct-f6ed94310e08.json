@@ -1,0 +1,217 @@
+{
+  "_id": "665d877e957df09a0751515e",
+  "id": "Qwen/Qwen2-0.5B-Instruct",
+  "private": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "qwen2",
+    "text-generation",
+    "chat",
+    "conversational",
+    "en",
+    "base_model:Qwen/Qwen2-0.5B",
+    "base_model:finetune:Qwen/Qwen2-0.5B",
+    "license:apache-2.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "downloads": 371938,
+  "likes": 200,
+  "modelId": "Qwen/Qwen2-0.5B-Instruct",
+  "author": "Qwen",
+  "sha": "c540970f9e29518b1d8f06ab8b24cba66ad77b6d",
+  "lastModified": "2024-08-21T10:23:36.000Z",
+  "gated": false,
+  "disabled": false,
+  "widgetData": [
+    {
+      "text": "Hi, what can you help me with?"
+    },
+    {
+      "text": "What is 84 * 3 / 2?"
+    },
+    {
+      "text": "Tell me an interesting fact about the universe!"
+    },
+    {
+      "text": "Explain quantum computing in simple terms."
+    }
+  ],
+  "model-index": null,
+  "config": {
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "model_type": "qwen2",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n' }}{% endif %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "cardData": {
+    "license": "apache-2.0",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "chat"
+    ],
+    "base_model": "Qwen/Qwen2-0.5B"
+  },
+  "transformersInfo": {
+    "auto_model": "AutoModelForCausalLM",
+    "pipeline_tag": "text-generation",
+    "processor": "AutoTokenizer"
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "LICENSE"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "config.json"
+    },
+    {
+      "rfilename": "generation_config.json"
+    },
+    {
+      "rfilename": "merges.txt"
+    },
+    {
+      "rfilename": "model.safetensors"
+    },
+    {
+      "rfilename": "tokenizer.json"
+    },
+    {
+      "rfilename": "tokenizer_config.json"
+    },
+    {
+      "rfilename": "vocab.json"
+    }
+  ],
+  "spaces": [
+    "KwabsHug/GameConfigIdea",
+    "eduagarcia/open_pt_llm_leaderboard",
+    "Xenova/webgpu-chat-qwen2",
+    "gen6scp/sana-zero",
+    "seanpedrickcase/Light-PDF-Web-QA-Chatbot",
+    "nvidia/judges-verdict",
+    "Justinrune/LLaMA-Factory",
+    "alonsosilva/Qwen2-0.5B-Instruct",
+    "xu-song/self-chat",
+    "MGZON/mgzon-app",
+    "kapilyadav7155/neobot",
+    "noxinc/webgpu-chat-qwen2",
+    "ApaCu/Qwen",
+    "Ais203/aigen",
+    "Douzk/hablaya-chatbot",
+    "SmilyAI-Nova/Low-latency-cpu-voice-chat",
+    "SmilyAI-Nova/Nova-Voice-chat",
+    "Speedofmastery/orynxml-backend",
+    "hihhhhhhhftrh/Back",
+    "AlissenMoreno61/Lora-Character",
+    "jerwng/llm-project-3",
+    "dianacasti/personality-chatbot",
+    "Andres37062/character-chat-rpg",
+    "FauzanAriyatmoko/LLM-ChatBot-Document",
+    "GAP-Pathum/PathumGPT",
+    "srk-dot-ai/Tic-Tac-Toe",
+    "SWJC/Qwen-Qwen2-0.5B-Instruct",
+    "tangbentcltest/Qwen-Qwen2-0.5B-Instruct",
+    "wd11/Qwen-Qwen2-0.5B-Instruct",
+    "iamfaith/Qwen2-0.5B-Instruct-app",
+    "bh4/webgpu-chat-qwen2",
+    "JCHAVEROT/ZEPHYR",
+    "rajeshlion/ask-baba-bhAIro",
+    "masharpe/all-prefix-optimal-coupling-demo-1",
+    "K00B404/RAGoLLAMA",
+    "ZoniaChatbot/ZoniaQwen",
+    "nonomino/qwenny",
+    "gehnew/resume_demo",
+    "wangyanping05/Qwen-Qwen2-0.5B-Instruct",
+    "JiakaiDu/RAG_Test",
+    "msun415/Llamole",
+    "Swarmeta-AI/Twig-V0-Alpha-Demo-CPU",
+    "nurrizkyaj/chatbot-qwen",
+    "Zwounds/Boolean_Search_Query_Model",
+    "nirbo/Finetune-Test",
+    "zhuhai111/sana-cpu",
+    "Jubao26/my-first-chatbot",
+    "atorojaen/MisogynyDetector",
+    "techindia2025/Qwen_medbot",
+    "ivangabriele/trl-sandbox",
+    "wellwisherofindia/AyurvedaSFT",
+    "TuringsSolutions/Tool_World",
+    "1MR/Mychatmodel",
+    "frankenliu/tokenizer-multi-demo",
+    "kanninian/chatbot_test",
+    "Speedofmastery/or",
+    "AryanRathod3097/kimi-k2-chat",
+    "faizaaska517/PyRIT_demo",
+    "vishaljoshi24/trl-4-dnd",
+    "DamonSalv/labwiz",
+    "rbbist/Nepali_Chatbot_V3",
+    "DeryFerd/Finetune-LLM-Taxonomy",
+    "yetgrass/resume-optimizer",
+    "Nuzwa/_safe_Pak_112Guide_",
+    "illa123/illabt",
+    "luzhanshi/Img2StoryMp3",
+    "richmond050/Cognita",
+    "meweibel/First_agent_template",
+    "Dileepkumar46/sql-llama-app",
+    "Dileepkumar46/sql-llama-app-v2",
+    "nilkeri/smolagents-code-gr",
+    "EduardoZM/qwen2-sentiment-streamlit",
+    "vamsi478/mentorai",
+    "pallavi07/mentor_ai",
+    "ahm1378/multimodal-rag-demo",
+    "craiitech/student_admission_rsu",
+    "hype1524/MultiModel",
+    "Keeby-smilyai/test",
+    "chinmay-shekatkar/Audio_Catcher",
+    "arundh987/CareerForge2",
+    "arundh987/CareerForgeQwen",
+    "luowenhong/demo1",
+    "amoregab123/MIDTERM_GENAI",
+    "yadavkapil23/Corex",
+    "Danil2001smb/Zahara-creative-ai",
+    "Speedofmastery/yyhh",
+    "Speedofmastery/uhhjj",
+    "Speedofmastery/hhhhh",
+    "Speedofmastery/yyuujhu",
+    "Speedofmastery/yyuu-complete-ai",
+    "Speedofmastery/orynxml-ai",
+    "Speedofmastery/orynxml",
+    "Speedofmastery/orynxml-complete",
+    "HFChewy/Llama-3_HPLC_Method_Development__Troubleshooting",
+    "mooraslan/prompt-understanding-test",
+    "mchan10/ai-use-case-coach",
+    "xavhl/aurora-question-answeirng",
+    "darbynova/demo-model-deployment",
+    "modular-ai/naturalwellness-rlhf",
+    "Abubaker10/car-assistant-Arabic"
+  ],
+  "createdAt": "2024-06-03T09:06:06.000Z",
+  "safetensors": {
+    "parameters": {
+      "BF16": 494032768
+    },
+    "total": 494032768
+  },
+  "usedStorage": 7040278603
+}
