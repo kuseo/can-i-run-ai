@@ -21,6 +21,8 @@ uv run canirunai check \
 
 By default, the SDK ships with an offline-capable seed catalog so `update/list/get/check` work without live network parsing. Set `sdk.prefer_live_requests = true` in a custom config to enable live source fetch attempts.
 
+Live collection is now implemented with deterministic parsers for Wikipedia and Hugging Face sources. The intended parser policy is "rules first, LLM only on failure": rule-based parsing runs first, and an LLM parser should only be used as a fallback when deterministic parsing cannot recover a valid structured result.
+
 ## For More Information
 
 - [CLI](docs/cli.md)

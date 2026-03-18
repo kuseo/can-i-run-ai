@@ -72,6 +72,13 @@ These commands write catalog JSON files and do not print the catalog contents. T
 updated cpu catalog with 3 items
 ```
 
+Whether the update uses live collection or seed data depends on config:
+
+- if `sdk.prefer_live_requests = false`, update uses the bundled seed catalogs,
+- if `sdk.prefer_live_requests = true`, update tries live collection first,
+- if live collection fails and `sdk.offline_seed_fallback = true`, it falls back to seed data,
+- if live collection fails and `sdk.offline_seed_fallback = false`, the command fails.
+
 ### `update cpu`
 
 ```bash
@@ -88,8 +95,8 @@ Behavior:
 Current implementation note:
 
 - by default this uses the bundled seed CPU catalog,
-- if `sdk.prefer_live_requests = true`, it can fetch raw Wikipedia HTML first,
-- it still falls back to bundled seed specs because the HTML-to-spec parser is not yet wired.
+- if `sdk.prefer_live_requests = true`, it fetches live Wikipedia HTML and parses CPU tables into structured specs,
+- the parser path is deterministic first; an LLM parser is reserved for fallback-only use when rule-based parsing fails.
 
 ### `update gpu`
 
@@ -107,8 +114,8 @@ Behavior:
 Current implementation note:
 
 - by default this uses the bundled seed GPU catalog,
-- with live requests enabled it can fetch raw Wikipedia HTML,
-- it still falls back to bundled seed specs for the normalized output.
+- with live requests enabled it fetches live Wikipedia HTML and parses GPU tables into structured specs,
+- the parser path is deterministic first; an LLM parser is reserved for fallback-only use when rule-based parsing fails.
 
 ### `update model`
 
@@ -128,10 +135,11 @@ Behavior:
 
 Current implementation note:
 
-- without `--hfname`, the command uses the bundled seed model catalog,
-- with `--hfname` and `sdk.prefer_live_requests = true`, the CLI can attempt a live Hugging Face API fetch,
-- if the live path fails, it falls back to the seed model catalog,
-- if `--hfname` is provided but the repo does not exist in the seed catalog and live fetch is unavailable, the command fails.
+- without `--hfname`, the command uses the bundled seed model catalog by default,
+- with `--hfname` and `sdk.prefer_live_requests = true`, the CLI performs a live single-repo Hugging Face fetch,
+- without `--hfname` and `sdk.prefer_live_requests = true`, the CLI can build a bulk live model catalog from the configured Hugging Face teams list,
+- the live normalization path is deterministic first; an LLM parser is reserved for fallback-only use when rule-based parsing fails,
+- if the live path fails, it falls back to the seed model catalog only when `sdk.offline_seed_fallback = true`.
 
 ## `list`
 
@@ -352,8 +360,8 @@ uv run canirunai check \
 
 The CLI surface is stable enough for the current MVP, but some behavior is intentionally incomplete.
 
-- CPU and GPU update commands do not yet produce live structured specs from Wikipedia HTML.
-- Full Hugging Face catalog discovery is not implemented yet.
+- CPU and GPU live updates use heuristic table matching and may still miss or over-include some Wikipedia rows.
+- Full Hugging Face catalog discovery is still limited by the configured teams list and collection caps.
 - `get` currently only advertises `--output json`, not `--output wide`.
 - Error formatting is mostly the default Click or Python exception behavior.
 - No shell completion, progress bars, or batch export commands exist yet.

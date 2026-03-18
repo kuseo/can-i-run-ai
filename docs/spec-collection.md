@@ -11,8 +11,10 @@ The collection flow is:
 1. Choose a source for a resource type such as CPU, GPU, or model.
 2. Fetch raw source data when live requests are enabled.
 3. Preserve the raw source payload in `raw_cache`.
-4. Convert the source data into typed Pydantic spec objects.
-5. Merge the new specs into the persistent JSON catalogs under `data/specs`.
+4. Try a deterministic rule-based parser first.
+5. Only if that parser fails to produce a valid structured result, allow an LLM parser fallback.
+6. Convert the final parsed data into typed Pydantic spec objects.
+7. Merge the new specs into the persistent JSON catalogs under `data/specs`.
 
 The persistent catalogs are the canonical runtime data source for the rest of the SDK.
 
@@ -22,18 +24,22 @@ The persistent catalogs are the canonical runtime data source for the rest of th
 - Preserve source provenance such as `source_url`, collection time, revision id, or repo sha.
 - Support incremental updates instead of rebuilding everything from scratch every time.
 - Separate raw-source acquisition from normalization and scoring.
+- Prefer deterministic parsing whenever possible.
+- Use an LLM parser only as a fallback when rule-based parsing fails.
 - Allow future live crawlers and LLM parsers without changing the downstream SDK interface.
 
 ## Current MVP Behavior
 
-The current implementation is an offline-capable MVP.
+The current implementation is still offline-capable, but live collection is now partially operational.
 
-- CPU and GPU updates use bundled seed catalogs by default.
-- Live fetch support exists for Wikipedia raw HTML capture, but the HTML-to-spec parser is not fully wired yet.
-- Model updates support a partial live path for single Hugging Face repos when `--hfname` is used and live requests are enabled.
+- CPU and GPU updates still use bundled seed catalogs by default because `sdk.prefer_live_requests` defaults to `false`.
+- When live requests are enabled, CPU and GPU updates fetch Wikipedia HTML, parse tables with a deterministic HTML table parser, and write live specs into the local catalogs.
+- Model updates support both a single-repo live path and a bulk live catalog path through Hugging Face.
+- If live collection fails and `sdk.offline_seed_fallback = true`, the collectors fall back to the bundled seed catalogs.
+- If live collection fails and `sdk.offline_seed_fallback = false`, the update command fails instead of silently switching to seed data.
 - The seed catalogs allow `update`, `list`, `get`, and `check` to work in environments without network access.
 
-This means the architecture is already split the right way, but not every source path is fully live yet.
+This means the architecture is split the right way and now has a working live path, but the parsing heuristics are still evolving.
 
 ## Resource Types
 
@@ -59,7 +65,10 @@ Typical CPU fields include:
 - `source_url`
 - `source_revision_id`
 
-In the current MVP, `update cpu` returns the bundled CPU seed list and writes it into `data/specs/cpu.json`.
+Current behavior:
+
+- by default, `update cpu` writes the bundled CPU seed list into `data/specs/cpu.json`,
+- with `sdk.prefer_live_requests = true`, it fetches live Wikipedia pages and extracts CPU specs with the rule-based table parser.
 
 ### GPU Specs
 
@@ -84,7 +93,10 @@ Typical GPU fields include:
 - `source_url`
 - `source_revision_id`
 
-In the current MVP, `update gpu` returns the bundled GPU seed list and writes it into `data/specs/gpu.json`.
+Current behavior:
+
+- by default, `update gpu` writes the bundled GPU seed list into `data/specs/gpu.json`,
+- with `sdk.prefer_live_requests = true`, it fetches live Wikipedia pages and extracts GPU specs with the rule-based table parser.
 
 ### Model Specs
 
@@ -106,11 +118,12 @@ Typical model fields include:
 - `source_url`
 - `source_sha`
 
-In the current MVP:
+Current behavior:
 
-- `update model` without `--hfname` uses the bundled seed model catalog.
-- `update model --hfname <repo>` can attempt a live Hugging Face fetch when `sdk.prefer_live_requests = true`.
-- The live path maps a Hugging Face payload into `ModelSpec`, infers precision or quantization, and records raw payloads in cache.
+- `update model` without `--hfname` uses the bundled seed model catalog by default,
+- with `sdk.prefer_live_requests = true`, `update model --hfname <repo>` performs a live single-repo Hugging Face fetch,
+- with `sdk.prefer_live_requests = true`, `update model` can also build a bulk live catalog from the configured Hugging Face teams list,
+- the live path maps Hugging Face payloads into `ModelSpec`, infers precision or quantization when possible, and records raw payloads in cache.
 
 ## Source Acquisition
 
@@ -121,7 +134,8 @@ The intended Wikipedia approach is:
 1. Use the MediaWiki API to fetch page revisions and parsed HTML.
 2. Record revision ids so catalog entries can be traced to a concrete source version.
 3. Cache the raw HTML locally.
-4. Parse the HTML into normalized CPU or GPU spec records.
+4. Parse the HTML into normalized CPU or GPU spec records with a deterministic HTML table parser.
+5. If deterministic parsing cannot recover valid structured rows, use an LLM parser only as a fallback.
 
 This separation matters because Wikipedia tables are not stable across sections, generations, or vendors.
 
@@ -129,9 +143,11 @@ In the current code, enabling live requests causes the collectors to:
 
 - fetch the target Wikipedia page HTML,
 - store it under `raw_cache`,
-- fall back to the seed catalog for the actual structured spec output.
+- parse the HTML with a rule-based table parser,
+- convert matching rows into `CpuSpec` or `GpuSpec`,
+- fall back to seed data only if live collection fails and seed fallback is allowed.
 
-That gives the project a place to add a real parser later without redesigning the update flow.
+The intended long-term rule is still deterministic parser first, LLM parser only on failure.
 
 ### Hugging Face
 
@@ -141,8 +157,9 @@ The intended Hugging Face approach is:
 2. Extract repo metadata, config, model card data, and sibling file lists.
 3. Infer normalized fields like precision, format, quantization, parameter count, and context length.
 4. Store the resulting `ModelSpec` entries in the local catalog.
+5. Use an LLM parser only as a fallback for cases that cannot be normalized deterministically.
 
-The current implementation already does part of this for single-repo updates. It reads fields such as:
+The current implementation already supports both single-repo and limited bulk live updates. It reads fields such as:
 
 - repo id
 - config values
@@ -153,6 +170,8 @@ The current implementation already does part of this for single-repo updates. It
 - sha
 
 It then derives a `canonical_name` in the form `repo_id@variant`.
+
+As with Wikipedia collection, the parsing policy is deterministic first and LLM fallback only when rules fail.
 
 ## Raw Cache
 
@@ -176,6 +195,12 @@ Each spec can include a `raw_ref.cache_key` that points back to the cached sourc
 ## Normalization Principles
 
 Collection is not just fetch-and-save. The raw data is normalized into stable internal records.
+
+The preferred normalization order is:
+
+1. deterministic field extraction,
+2. schema validation,
+3. LLM fallback only if deterministic parsing fails or the source shape is not recoverable with rules.
 
 Important normalization rules include:
 
@@ -251,8 +276,8 @@ The current structure is designed to support later upgrades without breaking the
 
 Likely future extensions include:
 
-- a real Wikipedia HTML-to-schema parser,
-- OpenAI Structured Outputs based parsing for difficult source layouts,
+- refinement of the current Wikipedia HTML-to-schema parser,
+- OpenAI Structured Outputs based fallback parsing for difficult source layouts,
 - wider Hugging Face catalog sync,
 - additional variant extraction rules for GGUF, GPTQ, AWQ, and similar formats,
 - revision-aware incremental updates,

@@ -48,20 +48,20 @@ safe_context_ratio = 0.80
 - `log_level`
   Loguru log level.
 - `prefer_live_requests`
-  If `true`, collectors try live requests to Wikipedia or Hugging Face before falling back.
+  If `true`, collectors try live requests to Wikipedia or Hugging Face before falling back. CPU and GPU updates then use the deterministic live table parser, and model updates use live Hugging Face API collection.
 - `offline_seed_fallback`
-  Seed-catalog fallback toggle reserved for the offline MVP. The current collectors still fall back to bundled seed data when live parsing is incomplete.
+  Controls whether collectors may fall back to bundled seed data when live collection fails. If `false`, live update errors are surfaced instead of silently using seed catalogs.
 
 - `[openai_parser]`
-  Settings for the future Structured Outputs parser integration.
+  Settings for the Structured Outputs fallback parser integration.
 - `api_key`
   Supports `ENV:VARIABLE_NAME` syntax. `ENV:OPENAI_API_KEY` means "read from the `OPENAI_API_KEY` environment variable".
 - `base_url`
   OpenAI-compatible API base URL.
 - `model`
-  Model name intended for structured parsing.
+  Model name intended for fallback structured parsing.
 - `max_retries`, `timeout_sec`
-  Retry and timeout controls for parser requests.
+  Retry and timeout controls for fallback parser requests.
 
 - `[wikipedia]`
   Settings for Wikipedia collection.
@@ -122,3 +122,11 @@ safe_context_ratio = 0.80
 - Nested sections are merged recursively. Overriding `[scoring] safe_context_ratio` does not erase the rest of `[scoring]`.
 - `ENV:...` strings are resolved after merging. This is why `api_key = "ENV:OPENAI_API_KEY"` works in both the default file and custom files.
 - A wrong key or wrong type fails validation during startup because the config is validated with Pydantic.
+
+## Parser Policy
+
+The intended parser policy is deterministic first and LLM second.
+
+- Live CPU and GPU updates first try the rule-based Wikipedia table parser.
+- Live model updates first try deterministic Hugging Face API normalization.
+- The `openai_parser` settings exist for fallback behavior only. An LLM parser should run only if the deterministic parser fails to produce schema-valid structured data.
