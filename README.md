@@ -10,6 +10,8 @@ This project was inspired by [canirun.ai](https://canirun.ai), and its ideation 
 
 ```bash
 uv sync
+# Run these update commands once when initializing local catalogs,
+# or again later only when you want to refresh the stored specs.
 uv run canirunai update cpu
 uv run canirunai update gpu
 uv run canirunai update model
@@ -30,6 +32,72 @@ context: safe=15501 max=18237
 throughput: decode=59.56 tps prefill=1429.48 tps
 memory: weights=14.19 GB total_at_safe=22.82 GB headroom=1.18 GB
 bottlenecks: gpu_bandwidth, gpu_compute
+```
+
+Example `list cpu --output wide` output:
+
+```text
+AMD 110 | 4C/8T | 4.3 GHz boost
+AMD 1200 | 4C/4T | 3.4 GHz boost
+AMD 1200 (AF) | 4C/4T | 3.4 GHz boost
+...
+```
+
+Example `get cpu "AMD Ryzen 9 7950X"` output:
+
+```text
+AMD Ryzen 9 7950X
+kind: cpu
+source_url: https://en.wikipedia.org/wiki/List_of_AMD_Ryzen_processors
+aliases: ['ryzen 9 7950x']
+vendor: amd
+family: Ryzen 9
+model: 7950X
+...
+```
+
+Example `list gpu --output wide` output:
+
+```text
+AMD 3D Rage | 0.001953125 GiB | 0.32 GB/s
+AMD 3D Rage II | 0.001953125 GiB | 0.664 GB/s
+AMD Aerith (Steam Deck) | 16.0 GiB | 88.0 GB/s
+...
+```
+
+Example `get gpu "NVIDIA GeForce RTX 4090"` output:
+
+```text
+NVIDIA GeForce RTX 4090
+kind: gpu
+source_url: https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units
+aliases: ['GeForce RTX 4090']
+vendor: nvidia
+product_line: GeForce
+codename: AD102-300
+...
+```
+
+Example `list model --output wide` output:
+
+```text
+deepseek-ai/DeepSeek-Math-V2@fp8 | ? params | ? ctx | fp8
+deepseek-ai/DeepSeek-Prover-V2-671B@fp8 | ? params | ? ctx | fp8
+deepseek-ai/DeepSeek-R1@bf16 | 70000000000 params | 32768 ctx | bf16
+...
+```
+
+Example `get model "Qwen/Qwen2.5-7B-Instruct@bf16"` output:
+
+```text
+Qwen/Qwen2.5-7B-Instruct@bf16
+kind: model
+source_url: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct
+aliases: ['Qwen/Qwen2.5-7B-Instruct']
+hf_repo_id: Qwen/Qwen2.5-7B-Instruct
+variant: {'precision': 'bf16', 'format': 'safetensors'}
+task: text-generation
+...
 ```
 
 The same command with `--output json`:

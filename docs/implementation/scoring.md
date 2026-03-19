@@ -138,6 +138,35 @@ Important current detail:
 
 So a two-GPU run may keep the same context and headroom as a one-GPU run while only throughput changes.
 
+## Multi-CPU Interpretation
+
+The current implementation treats multiple CPUs as additional host thread capacity, not as separate NUMA-aware compute domains.
+
+That means:
+
+- all selected CPUs contribute their `threads` count into one summed thread budget
+- the engine does not model socket locality, NUMA effects, memory topology, or asymmetric CPU performance
+- multi-CPU input only affects throughput scaling, not VRAM fit, context size, or model placement
+
+The summed CPU thread budget is used to cap replica scaling:
+
+```text
+cpu_cap_ratio = min(1.0, total_threads / (replica_count * cpu_threads_per_replica))
+```
+
+Where:
+
+- `total_threads` is the sum of `threads` across all selected CPUs
+- `replica_count` is the number of individually loadable GPU replicas
+- `cpu_threads_per_replica` comes from config
+
+Practical consequence:
+
+- adding CPUs can increase total decode throughput only when the previous result was CPU-thread-limited
+- adding CPUs does not increase `safe_context_tokens`
+- adding CPUs does not make an unloadable GPU become loadable
+- adding CPUs does not enable model sharding or any multi-socket placement strategy
+
 ## Throughput Estimation
 
 Decode throughput is estimated from two upper bounds and the smaller bound wins.
